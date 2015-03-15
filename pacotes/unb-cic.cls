@@ -353,7 +353,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
-\ProvidesClass{unb-cic}[2008/06/05 v0.93 Classe para trabalhos CIC UnB]
+\ProvidesClass{pacotes/unb-cic}[2008/06/05 v0.93 Classe para trabalhos CIC UnB]
 
 %%
 %% --- Contextualização do departamento ---
@@ -395,19 +395,14 @@
 \def\@nomecurso{\@empty}
 \def\@assunto{Monografia (\@ifundefined{XeTeXversion}{Gradua\c{c}\~ao}{Graduação})}
 \DeclareOptionX{mestrado}{\@mestradotrue
-                     \gdef\@nomecurso{Mestrado em Inform\'atica}%
-                     \gdef\@assunto{Disserta\c{c}\~ao (Mestrado)}%
-                     \gdef\@mododeescrita{Disserta\c{c}\~ao}}
+                     \gdef\@nomecurso{Mestrado em Computa\c{c}\~ao}%
+                     \gdef\@assunto{Tese (Mestrado)}}
 
 \DeclareOptionX{bacharelado}{\@mestradofalse
-                     \gdef\@nomecurso{Bacharelado em Ci\^encia da
-                       Computa\c{c}\~ao}%
-                     \gdef\@mododeescrita{Monografia}}
+                     \gdef\@nomecurso{Bacharelado em Ci\^encia da Computa\c{c}\~ao}}
 
 \DeclareOptionX{licenciatura}{\@mestradofalse
-                    \gdef\@nomecurso{Curso de Computa\c{c}\~ao ---
-                      Licenciatura}
-                    \gdef\@mododeescrita{Monografia}}
+                    \gdef\@nomecurso{Curso de Computa\c{c}\~ao --- Licenciatura}}
 
 %modo de geração do PDF
 \newif\if@ForScreenView
@@ -497,7 +492,7 @@
 \fi
 
 \RequirePackage{graphicx}
-\RequirePackage{boites}
+\RequirePackage{pacotes/boites}
 \RequirePackage[a4paper,includefoot]{geometry}
 
 \if@baselineskip\else
@@ -506,7 +501,7 @@
 \fi
 
 %para gerar o label {TotPaginas}
-\RequirePackage{atbegshi}
+\RequirePackage{pacotes/atbegshi}
 \newcounter{TotPaginas}
 
 %%
@@ -677,7 +672,7 @@
 	\endgroup%
 }
 \newcommand*{\@logosize}{20}%tamanho da fonte utilizada (em pt)
-\newcommand{\@logo}[1][positivo_cor]{%imprime o logo da UnB
+\newcommand{\@logo}[1][imagens/positivo_cor]{%imprime o logo da UnB
 	\begingroup%
 		\newskip\len@brasiliaw%largura da palavra Brasilia
 		\newskip\len@uadesch%URW Arial descender height
@@ -816,13 +811,13 @@
 
 \def\at@coorienta[#1]#2#3{\def\@sexocoorientador{Coorientadora}%
                         \def\@nomecoorientador{#2}%
-                        \def\@filicoorientador{#3}}%
-                        %%%\@defsegundomembro{#2}{#3}}
+                        \def\@filicoorientador{#3}%
+                        \@defsegundomembro{#2}{#3}}
 
 \def\at@cooriento#1#2{\def\@sexocoorientador{Coorientador}%
                         \def\@nomecoorientador{#1}%
-                        \def\@filicoorientador{#2}}%
-                        %%%\@defsegundomembro{#1}{#2}}
+                        \def\@filicoorientador{#2}%
+                        \@defsegundomembro{#1}{#2}}
 
 % definicao da banca
 % o orientador é sempre o primeiro membro da banca
@@ -915,7 +910,7 @@
 			\@logo\vfill%
 			\@printfulltitle\vfill%
 			{\large\@author}\vfill%
-			\@mododeescrita\ apresentada como requisito parcial\\
+			Monografia apresentada como requisito parcial\\
 			para conclus\~ao do \@nomecurso\vfill%
 			\@sexoorientador\\\@nomeorientador\\%
 			\if@coorientador
@@ -936,7 +931,7 @@
 			\@logo\vfill%
 			\@printfulltitle\vfill%
 			{\large\@author}\vfill%
-			\@mododeescrita\  apresentada como requisito parcial\\
+			Monografia apresentada como requisito parcial\\
 			para conclus\~ao do \@nomecurso\vfill
 			\@nomeorientador\ (\@sexoorientador)\\
 			\@filiorientador\\[1cm]
@@ -966,7 +961,7 @@
     	\hskip\@quadskip%
 		\parbox{\@boxwidth}{
 			\vskip\@quadskip%
-			\primeiroautorinv.\\[\baselineskip]%
+			\primeiroautorinv.\\ \segundoautor. \\[\baselineskip]%
 			\mbox{\hskip\@quadskip}%
 			\parbox{\@boxparwidth}{%
 				\@title\ / %
@@ -1010,9 +1005,9 @@
 			\begin{tabular}{l}%
 				\@nomeorientador\ (\@sexoorientador) --- \@filiorientador\\
  				\@nomedois\
- 				%%\if@coorientador
- 					%%(\@sexocoorientador)
- 				%%\fi
+ 				\if@coorientador
+ 					(\@sexocoorientador)
+ 				\fi
  				 --- \@filidois\\
   				\@nometres\ --- \@filitres
 	 			\if@quartomembro

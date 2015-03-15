@@ -1,4 +1,4 @@
-\documentclass[mestrado]{unb-cic}
+\documentclass[mestrado]{pacotes/unb-cic}
 \usepackage[american,brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{indentfirst}
@@ -11,11 +11,11 @@
 
 % definicoes previas do documento
 \selectlanguage{brazil}
-\title{Título}
+\title{Titulo}
 
 \orientador[a]{\prof[a] \dr[a] Genaina Nunes Rodrigues}{CIC/UnB}
 
-\coordenador{\prof \dr }{CIC/UnB}
+\coordenador{\prof \dr Fulano}{CIC/UnB}
 
 \diamesano{9}{Junho}{2016}
 
@@ -25,6 +25,7 @@
 \membrobanca{\prof }{CIC/UnB}
 
 \autor{Gabriel Siqueira}{Rodrigues}
+
 \CDU{004.4}
 
 \palavraschave{dependabilidade}
@@ -37,7 +38,7 @@
 
 \pretextual
 \begin{agradecimentos}
-Agradecemos à nossa orientadora, \prof[a] \dr[a] Genaina Nunes Rodrigues, 
+%Agradecemos à nossa orientadora, \prof[a] \dr[a] Genaina Nunes Rodrigues, 
 \end{agradecimentos}
 
 \begin{resumo}
@@ -60,16 +61,38 @@ In this work we present ...
 
 \textual
 
-%\input{chapters/capitulo}
-\input{chapters/introducao}
+\chapter{Introduction}
+\input{intro/introduction}
+\input{intro/research_questions}
+\input{intro/soluction}
+
+\chapter{Background}
+
+\input{background/self_adaptability}
+\input{background/architecture}
+\input{background/cloud}
+\input{background/gore}
+\input{background/dependability}
+\input{background/model_checking}
+
+\chapter{Related Work}
+\input{related/self_adaptability}
+\input{related/architecture}
+\input{related/gore}
+\input{related/dependability}
+\input{related/model_checking}
+%\input{related/ecs}
+
+%\input{content}
+\chapter{Evaluation}
+\input{end/evaluation}
+\chapter{Conclusion}
+\input{end/conclusion}
+
 \postextual
 \anexos 
-\input{chapters/validacao}
 
-\bibliographystyle{abnt-num}
+
+\bibliographystyle{plain}
 \bibliography{bibliografia}
-
-
 \end{document}
-
-

@@ -34,26 +34,29 @@
   \catcode46 12 % .
   \catcode58 12 % :
   \catcode64 11 % @
-  \catcode123 1 % {
-  \catcode125 2 % }
   \expandafter\let\expandafter\x\csname ver@infwarerr.sty\endcsname
-  \ifx\x\relax % plain-TeX, first loading
-  \else
-    \def\empty{}%
-    \ifx\x\empty % LaTeX, first loading,
-      % variable is initialized, but \ProvidesPackage not yet seen
+  \ifcase 0%
+    \ifx\x\relax % plain
     \else
-      \catcode35 6 % #
-      \expandafter\ifx\csname PackageInfo\endcsname\relax
-        \def\x#1#2{%
-          \immediate\write-1{Package #1 Info: #2.}%
-        }%
+      \ifx\x\empty % LaTeX
       \else
-        \def\x#1#2{\PackageInfo{#1}{#2, stopped}}%
+        1%
       \fi
-      \x{infwarerr}{The package is already loaded}%
-      \aftergroup\endinput
     \fi
+  \else
+    \catcode35 6 % #
+    \catcode123 1 % {
+    \catcode125 2 % }
+    \expandafter\ifx\csname PackageInfo\endcsname\relax
+      \def\x#1#2{%
+        \immediate\write-1{Package #1 Info: #2.}%
+      }%
+    \else
+      \def\x#1#2{\PackageInfo{#1}{#2, stopped}}%
+    \fi
+    \x{infwarerr}{The package is already loaded}%
+    \endgroup
+    \expandafter\endinput
   \fi
 \endgroup
 \begingroup
@@ -66,8 +69,6 @@
   \catcode47 12 % /
   \catcode58 12 % :
   \catcode64 11 % @
-  \catcode91 12 % [
-  \catcode93 12 % ]
   \catcode123 1 % {
   \catcode125 2 % }
   \expandafter\ifx\csname ProvidesPackage\endcsname\relax
@@ -78,9 +79,6 @@
   \else
     \def\x#1#2[#3]{\endgroup
       #2[{#3}]%
-      \ifx#1\@undefined
-        \xdef#1{#3}%
-      \fi
       \ifx#1\relax
         \xdef#1{#3}%
       \fi

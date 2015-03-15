@@ -8,15 +8,12 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2007-2010 by
-%%    Heiko Oberdiek <heiko.oberdiek at googlemail.com>
+%% Copyright (C) 2007, 2008 by Heiko Oberdiek <oberdiek@uni-freiburg.de>
 %% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either
-%% version 1.3c of this license or (at your option) any later
-%% version. This version of this license is in
-%%    http://www.latex-project.org/lppl/lppl-1-3c.txt
-%% and the latest version of this license is in
+%% version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in
 %%    http://www.latex-project.org/lppl.txt
 %% and version 1.3 or later is part of all distributions of
 %% LaTeX version 2005/12/01 or later.
@@ -24,9 +21,6 @@
 %% This work has the LPPL maintenance status "maintained".
 %% 
 %% This Current Maintainer of this work is Heiko Oberdiek.
-%% 
-%% The Base Interpreter refers to any `TeX-Format',
-%% because some files are installed in TDS:tex/generic//.
 %% 
 %% This work consists of the main source file atbegshi.dtx
 %% and the derived files
@@ -40,26 +34,29 @@
   \catcode46 12 % .
   \catcode58 12 % :
   \catcode64 11 % @
-  \catcode123 1 % {
-  \catcode125 2 % }
   \expandafter\let\expandafter\x\csname ver@atbegshi.sty\endcsname
-  \ifx\x\relax % plain-TeX, first loading
-  \else
-    \def\empty{}%
-    \ifx\x\empty % LaTeX, first loading,
-      % variable is initialized, but \ProvidesPackage not yet seen
+  \ifcase 0%
+    \ifx\x\relax % plain
     \else
-      \catcode35 6 % #
-      \expandafter\ifx\csname PackageInfo\endcsname\relax
-        \def\x#1#2{%
-          \immediate\write-1{Package #1 Info: #2.}%
-        }%
+      \ifx\x\empty % LaTeX
       \else
-        \def\x#1#2{\PackageInfo{#1}{#2, stopped}}%
+        1%
       \fi
-      \x{atbegshi}{The package is already loaded}%
-      \aftergroup\endinput
     \fi
+  \else
+    \catcode35 6 % #
+    \catcode123 1 % {
+    \catcode125 2 % }
+    \expandafter\ifx\csname PackageInfo\endcsname\relax
+      \def\x#1#2{%
+        \immediate\write-1{Package #1 Info: #2.}%
+      }%
+    \else
+      \def\x#1#2{\PackageInfo{#1}{#2, stopped}}%
+    \fi
+    \x{atbegshi}{The package is already loaded}%
+    \endgroup
+    \expandafter\endinput
   \fi
 \endgroup
 \begingroup
@@ -72,8 +69,6 @@
   \catcode47 12 % /
   \catcode58 12 % :
   \catcode64 11 % @
-  \catcode91 12 % [
-  \catcode93 12 % ]
   \catcode123 1 % {
   \catcode125 2 % }
   \expandafter\ifx\csname ProvidesPackage\endcsname\relax
@@ -84,9 +79,6 @@
   \else
     \def\x#1#2[#3]{\endgroup
       #2[{#3}]%
-      \ifx#1\@undefined
-        \xdef#1{#3}%
-      \fi
       \ifx#1\relax
         \xdef#1{#3}%
       \fi
@@ -94,7 +86,7 @@
   \fi
 \expandafter\x\csname ver@atbegshi.sty\endcsname
 \ProvidesPackage{atbegshi}%
-  [2010/03/25 v1.12 At begin shipout hook (HO)]
+  [2008/07/31 v1.9 At begin shipout hook (HO)]
 \begingroup
   \catcode123 1 % {
   \catcode125 2 % }
@@ -131,21 +123,19 @@
 \begingroup\expandafter\expandafter\expandafter\endgroup
 \expandafter\ifx\csname RequirePackage\endcsname\relax
   \input infwarerr.sty\relax
-  \input ltxcmds.sty\relax
 \else
   \RequirePackage{infwarerr}[2007/09/09]%
-  \RequirePackage{ltxcmds}[2010/03/01]%
 \fi
 \begingroup\expandafter\expandafter\expandafter\endgroup
 \expandafter\ifx\csname @ifdefinable\endcsname\relax
   \def\AtBegShi@CheckDefinable#1{%
     \ifcase\ifx#1\relax
-             \ltx@one
+             \@ne
            \else
              \ifx#1\@undefined
-               \ltx@one
+               \@ne
              \else
-               \ltx@zero
+               \z@
              \fi
            \fi
       \errmessage{%
@@ -160,10 +150,10 @@
     \@ifdefinable{#1}{}%
   }%
 \fi
-\ltx@newif\ifAtBegShi@Discarded
+\newif\ifAtBegShi@Discarded
 \AtBegShi@CheckDefinable\AtBeginShipoutDiscard
 \def\AtBeginShipoutDiscard{%
-  \deadcycles=\ltx@zero
+  \deadcycles=\z@
   \global\AtBegShi@Discardedtrue
 }
 \begingroup\expandafter\expandafter\expandafter\endgroup
@@ -184,7 +174,7 @@ X \global
   \setbox\AtBeginShipoutBox=%
 }
 \def\AtBegShi@Test{%
-X \ifdim\lastkern=0pt %
+X \ifdim\lastkern=\z@
 E \ifnum\AtBegShi@GroupLevel<\currentgrouplevel
     \expandafter\aftergroup
   \fi
@@ -200,9 +190,8 @@ X \endgroup
     \csname set@typeset@protect\endcsname
     \global\AtBegShi@Discardedfalse
     \AtBegShi@Hook
-    \expandafter\gdef\expandafter\AtBegShi@HookNext
-    \expandafter{\expandafter}%
     \AtBegShi@HookNext
+    \gdef\AtBegShi@HookNext{}%
     \ifAtBegShi@Discarded
       \@PackageInfoNoLine{atbegshi}{Shipout page discarded}%
       \global\AtBegShi@Discardedfalse
@@ -213,7 +202,7 @@ X \endgroup
     \else
       \AtBegShi@First
       \let\protect\AtBegShi@OrgProtect
-      \AtBeginShipoutOriginalShipout\box\AtBeginShipoutBox
+      \AtBegShi@OrgShipout\box\AtBeginShipoutBox
     \fi
   \fi
 }
@@ -224,19 +213,19 @@ X \endgroup
     \def\@empty{}%
     \ifx\AtBegShi@HookFirst\@empty
     \else
-      \setbox\ltx@zero=\vbox{%
+      \setbox\z@=\vbox{%
         \begingroup
           \AtBegShi@HookFirst
         \endgroup
       }%
-      \wd\ltx@zero=0pt %
-      \ht\ltx@zero=0pt %
-      \dp\ltx@zero=0pt %
+      \wd\z@=\z@
+      \ht\z@=\z@
+      \dp\z@=\z@
       \global\setbox\AtBeginShipoutBox=\vbox{%
-        \baselineskip 0pt\relax
-        \lineskip 0pt\relax
-        \lineskiplimit 0pt\relax
-        \copy\ltx@zero
+        \baselineskip\z@skip
+        \lineskip\z@skip
+        \lineskiplimit\z@
+        \copy\z@
         \copy\AtBeginShipoutBox
       }%
     \fi
@@ -269,8 +258,8 @@ X \endgroup
 \expandafter\ifx\csname g@addto@macro\endcsname\relax
   \long\def\AtBegShi@AddTo#1#2{%
     \begingroup
-      \toks\ltx@zero\expandafter{#1#2}%
-      \xdef#1{\the\toks\ltx@zero}%
+      \toks\z@\expandafter{#1#2}%
+      \xdef#1{\the\toks\z@}%
     \endgroup
   }%
 \else
@@ -294,17 +283,10 @@ X \endgroup
 }
 \AtBegShi@CheckDefinable\AtBeginShipoutInit
 \def\AtBeginShipoutInit{%
-  \ltx@IfUndefined{newbox}{%
-    \@PackageError{atbegshi}{%
-      \string\AtBeginShipoutInit\space failed\MessageBreak
-       because of missing \expandafter\string\csname newbox\endcsname
-    }\@ehc
-  }{%
-    \csname newbox\endcsname\AtBeginShipoutBox
-    \AtBegShi@CheckDefinable\AtBeginShipoutOriginalShipout
-    \global\let\AtBeginShipoutOriginalShipout\shipout
-    \global\let\shipout\AtBegShi@Shipout
-  }%
+  \csname newbox\endcsname\AtBeginShipoutBox
+  \AtBegShi@CheckDefinable\AtBegShi@OrgShipout
+  \global\let\AtBegShi@OrgShipout\shipout
+  \global\let\shipout\AtBegShi@Shipout
   \gdef\AtBeginShipoutInit{}%
 }
 \begingroup\expandafter\expandafter\expandafter\endgroup
@@ -355,16 +337,16 @@ X \endgroup
 \else
   \endgroup
   \def\AtBegShi@BeginPicture{%
-    \setbox\ltx@zero=\hbox\bgroup
+    \setbox0=\hbox\bgroup
     \begingroup
     \ignorespaces
   }%
   \def\AtBegShi@EndPicture{%
     \endgroup
     \egroup
-    \ht\ltx@zero=0pt\relax
-    \dp\ltx@zero=0pt\relax
-    \copy\ltx@zero
+    \ht0=0pt\relax
+    \dp0=0pt\relax
+    \copy0 %
   }%
 \fi
 \def\AtBeginShipoutUpperLeft#1{%
@@ -443,8 +425,8 @@ X \endgroup
           \let\AtBegShi@found\relax
           \ifx\shipout\AtBegShi@Crop@shipout
             \def\AtBegShi@found{\shipout}%
-          \else\ifx\AtBeginShipoutOriginalShipout\AtBegShi@Crop@shipout
-            \def\AtBegShi@found{\AtBeginShipoutOriginalShipout}%
+          \else\ifx\AtBegShi@OrgShipout\AtBegShi@Crop@shipout
+            \def\AtBegShi@found{\AtBegShi@OrgShipout}%
           \else\ifx\@EveryShipout@Org@Shipout\AtBegShi@Crop@shipout
             \def\AtBegShi@found{\@EveryShipout@Org@Shipout}%
           \else\ifx\GPTorg@shipout\AtBegShi@Crop@shipout
@@ -470,9 +452,9 @@ X \endgroup
               \CROP@@ship
             }%
             \def\CROP@shiplist{%
-              \lineskip 0pt\relax
-              \lineskiplimit 0pt\relax
-              \baselineskip 0pt\relax
+              \lineskip\z@
+              \lineskiplimit\z@
+              \baselineskip\z@
               \CROP@kernel
               \box\AtBeginShipoutBox
             }%
@@ -518,8 +500,8 @@ X \endgroup
       \let\AtBegShi@found\relax
       \ifx\shipout\AtBegShi@Everyshi@shipout
         \def\AtBegShi@found{\shipout}%
-      \else\ifx\AtBeginShipoutOriginalShipout\AtBegShi@Everyshi@shipout
-        \def\AtBegShi@found{\AtBeginShipoutOriginalShipout}%
+      \else\ifx\AtBegShi@OrgShipout\AtBegShi@Everyshi@shipout
+        \def\AtBegShi@found{\AtBegShi@OrgShipout}%
       \else\ifx\CROP@shipout\AtBegShi@Everyshi@shipout
         \def\AtBegShi@found{\CROP@shipout}%
       \else\ifx\GPTorg@shipout\AtBegShi@Everyshi@shipout
@@ -554,7 +536,7 @@ X \endgroup
         \def\AtBegShi@Everyshi@Output{%
           \ifvoid\AtBeginShipoutBox
           \else
-            \global\setbox\ltx@cclv\box\AtBeginShipoutBox
+            \global\setbox\@cclv\box\AtBeginShipoutBox
             \expandafter\@EveryShipout@Output
           \fi
         }%
@@ -600,19 +582,19 @@ X \endgroup
     }%
     \ifx\AtBegShi@Memoir@shipi\mem@shipi
       \ifcase\ifx\AtBegShi@Memoir@shipiiA\mem@shipii
-               \ltx@zero
+               \z@
              \else
                \ifx\AtBegShi@Memoir@shipiiB\mem@shipii
-                 \ltx@zero
+                 \z@
                \else
-                 \ltx@one
+                 \@ne
                \fi
              \fi
         \let\AtBegShi@found\relax
         \ifx\shipout\AtBegShi@Memoir@shipout
           \def\AtBegShi@found{\shipout}%
-        \else\ifx\AtBeginShipoutOriginalShipout\AtBegShi@Memoir@shipout
-          \def\AtBegShi@found{\AtBeginShipoutOriginalShipout}%
+        \else\ifx\AtBegShi@OrgShipout\AtBegShi@Memoir@shipout
+          \def\AtBegShi@found{\AtBegShi@OrgShipout}%
         \else\ifx\CROP@shipout\AtBegShi@Memoir@shipout
           \def\AtBegShi@found{\CROP@shipout}%
         \else\ifx\GPTorg@shipout\AtBegShi@Memoir@shipout
