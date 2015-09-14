@@ -1,0 +1,5 @@
+pdflatex -interaction=nonstopmode dissertacao
+pdflatex -interaction=nonstopmode dissertacao
+bibtex dissertacao
+pdflatex -interaction=nonstopmode dissertacao
+okular dissertacao.pdf&

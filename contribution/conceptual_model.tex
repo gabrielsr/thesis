@@ -1,0 +1,52 @@
+\section{Conceptual Model}
+\label{conceptual_model}
+
+An agent is an unit in the system capable of take independent actions. In your conceptual model an agent is an independent computational unit that manages its own resources (CPU, memory, disk, sensors, etc).
+
+
+\begin{itemize}
+  \item \textbf{Capability}: description of a kind of goal that an agent can perform.   Its an interface description in the architecture. (e.g SUM a and b)
+  \item \textbf{Goal Instance}: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
+  \item \textbf{Strategy}: a strategy is a 'Capability Goal' alternative implementation (e.g (SUM,a,b) => {a+b}). Its also a module in the architecture.
+  \item \textbf{Strategies Resepository}: repository of know strategies
+  \item \textbf{Utilitarian Function}: select strategies based on context
+  \item \textbf{Runtime Context Model}: data structures that represent the knowledge of the agent.
+\end{itemize}
+
+In the proposed model an actor achieve a goal by \emph{deploing a strategy}. For instance the deployment of goals is a capability itself, as follows
+
+\begin{itemize}
+\item \textbf{<Fulfill Goals> Goal} the capability of fulfill generic goals.
+
+\item \textbf{<Utilitarianlly Fulfill Goals> Strategy } strategy to fulfill goals by selecting available strategies and evaluating them with an utilitarian function. Consist of 3 sub-goals:
+  \begin{itemize}
+    \item Find Matching Strategies
+    \item Decide on Strategies
+    \item Deploy the Selected Strategy
+  \end{itemize}
+\end{itemize}
+
+And the following three strategies implement the previous 3 goals.
+
+\begin{itemize}
+  \item \textbf{<Find Local Matching Strategies> Strategy} accomplish <find matching strategies>
+  return the list of matching strategies. An matching strategy is any strategy that implement the goal interface.
+
+  \item \textbf{<Utilitarianlly Select a Strategy> Strategy} accomplish <Utilitarianlly Fulfill Goals>
+  use a pre-configured utilitarian function that analyses strategies metadata and select a strategy.
+
+  \item \textbf{<Deploy Strategy> Strategy} accomplish <Deploy Strategy>.
+  Consist of call the strategy code for the 'goal issue' runtime context model.
+\end{itemize}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{strategy_deployment}
+  \caption{The deployment of a strategy}
+  \label{fig:agent_composition}
+\end{figure}
+
+
+
+%\section{Document Organization}

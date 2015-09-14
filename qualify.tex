@@ -6,8 +6,10 @@
 \usepackage{xcolor,graphicx,url}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs} % for tables
+\usepackage{setspace}%%% more space for advisor notes
 \usepackage{verbatim} %% multiline comments
 \usepackage{dirtytalk} %% Quotes
+\usepackage{pacotes/tikz-uml} % UML
 
 \graphicspath{ {imagens/} } % path to images
 
@@ -72,36 +74,29 @@
 \chapter{Introduction}
 \input{intro/introduction}
 \input{intro/problem_definition}
-\input{intro/proposal}
-\input{intro/contributions}
-\input{intro/plan_for_completion}
+%\input{intro/contributions}
 
 \chapter{Background}
 
 %\input{background/self_adaptability}
-%\input{background/architecture}
-%\input{background/cloud}
-%\input{background/gore}
-%\input{background/dependability}
-%\input{background/model_checking}
+%\input{background/goal_model}
+%\input{background/arch_based_adapt}
+\input{background/dependability}
+\input{background/programming/inversion_of_control}
 
 
-\chapter{Related Work}
-%\input{related/self_adaptability}
-%\input{related/open_system}
-%\input{related/model_at_runtime}
-%\input{related/component_based}
-%\input{related/dependability}
-%\input{related/ecs}
-\input{related/related}
-
+\chapter{Proposal}
+\input{intro/proposal}
 \input{contribution/conceptual_model}
-
-%\input{content}
-%\chapter{Evaluation}
-%\input{end/evaluation}
-%\chapter{Conclusion}
-%\input{end/conclusion}
+\input{related/related}
+\chapter{Objectives}
+\input{qualification/objectives}
+\chapter{Methodology}
+\input{qualification/methodology}
+\chapter{Expected Results}
+\input{qualification/expected_results}
+\chapter{Chronogram}
+\input{qualification/chronogram}
 
 \postextual
 \anexos

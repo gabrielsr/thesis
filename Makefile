@@ -1,40 +1,28 @@
 DOCFILE= dissertacao
 DOCNAME= "dissertacao"
 RM= rm -rf
-LATEX= latex
-DVIPDF= dvipdfm
-DVIPS= dvips
-
-VIEWDVI= xdvi
-VIEWPDF= evince
-VIEWPS= gv
-PCTMAKER= mkpct
+LATEX= pdflatex -interaction=nonstopmode
+#-shell-escape  -file-line-error
+BIBTEX= bibtex
+VIEWPDF= okular
 
 TODAY=`date +"%Y-%m-%d"`
 
-.PHONY: core dvi ps pdf clean superclean snapshot pack all images
+.PHONY: core pdf clean
 
 core:
-	${LATEX} ${DOCFILE}.tex
-	${LATEX} ${DOCFILE}.tex
+	${LATEX} ${DOCFILE}
+	${LATEX} ${DOCFILE}
 
-dvi:
-	make core
-	${VIEWDVI} ${DOCFILE}.dvi
+bib:
+	${BIBTEX} ${DOCFILE}
 
-ps:
-	make core
-	${DVIPS} -o ${DOCNAME}.ps ${DOCFILE}.dvi
-	${VIEWPS} ${DOCNAME}.ps
-	
 pdf:
 	make core
-	${DVIPDF} -p a4 -o ${DOCNAME}.pdf ${DOCFILE}.dvi
+	make bib
+	${LATEX} ${DOCFILE}
 	${VIEWPDF} ${DOCNAME}.pdf
-	
 
 clean:
 	${RM} *.aux *.blg *.dvi *.lof *.log *.pgn *.tex~ *.backup *.toc *~ *.out *.brf
 	${RM} conteudo/*aux conteudo/*blg conteudo/*dvi conteudo/*lof conteudo/*log conteudo/*pgn conteudo/*tex~ conteudo/*backup conteudo/*toc conteudo/*~
-
-
