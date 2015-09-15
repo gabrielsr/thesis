@@ -1,4 +1,11 @@
-In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to integrate different systems, to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation scenarios. The self-adaptive alternative to tackle complexity consist in packing together with functional code, self-adaptation code capable of handling uncertainty by monitoring the context and adapting at runtime.
+In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to integrate different systems, to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation scenarios.
+Assumptions that in more stable domains could be made at design time for dynamic domains needs to be made at runtime.
+
+The self-adaptive alternative is to tackle complexity by packing together with functional code, self-adaptation code capable of handling uncertainty by monitoring the context and adapting at runtime. To develop such systems we need a model for reasoning about it at runtime.
+
+
+%Current solutions are limited in scope, domain and adaptation strategies used.
+
 
 % Motivation
 
@@ -9,18 +16,15 @@ In the last decade we have seen advances in the study of autonomic computing sys
 
 % Problems
 
+
 Goal oriented requirements engineering approaches have gained special attention as a technique to specify self-adaption systems. Goal modeling represents a shift in relation to Object Oriented approaches as it focus on stakeholder need and states that the system needs to achieve and not in the system structure. \cite{ali_goal-based_2010}
 
 Dalpiaz proposed Runtime Goal-Models, opposed to the traditional (design-time) Goal Models. He argue that the traditional goals models don't have details for reason about the execution of a goal. \cite{dalpiaz_runtime_2013} % TODO other proposes
 
 In the other side, architecture-based or component-based approaches take care of the implementation of runtime modeling of the system, evaluate the model, planning and execution of adaptation strategies at system level by acting on components of the system or by replacing them. \cite{garlan_software_2009}
 
-
-% TODO open-adaptation, multi-agents
+% DSPL (Dynamic Software Product Lines) provide models to check the configuration of the system.
 
 % why get both together?
-% Traceability of goals at runtime. With focus on dependability
-% Eu quero que o software seja dependable, traceability is a
-
-
-In relation to runtime support for self-adaptation systems, to the best of our knowledge there is no proposal of middleware that support goal-model at runtime and component-based adaptation.
+ While goal models allow us to reason about the requirements of the system and its execution context and component based engineering about the system structure, by the best of our knowledge there is no integrated model.
+ In this work we will explore the integration of the two approaches to allow reasoning about the relationship between the system requirements, structure and context of execution. The objective is be able to trace the system goals accomplishment at runtime.
