@@ -1,24 +1,25 @@
-In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation contexts.
+% In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation contexts.
 
 
-% With increasing popularity of mobile computation and wireless networks we have seen the rise of  interest in new domains of computation that lead to open-systems that should organize itself.
-% ubiquous, IoT, assisted living
+With increasing popularity of mobile computation and wireless networks we have seen the rise of  interest in new domains of computation that uses the capacity of heterogeneous computer units in a given location.
+Example of such domains are Ubiquitous Computing \cite{bell_yesterdays_2007}, Internet of Things (IoT)\cite{atzori_internet_2010}, Assisted Living\cite{kleinberger_ambient_2007} and Opportunistic Computing\cite{smaldone_improving_2011}. In this domains, the environment has a great level of uncertainty (context variability) as the computational resources greatly varies from place to place.
+Solutions for these domains would benefit if they could plan the deployment of the system for a given context. To make this possible the system should handle context variability.
+
 % It's the case of \textit{mobile clouds} witch opportunistically form networks to harvest the power of mobile heterogeneous devices \cite{viswanathan_uncertainty-aware_2015}. Such systems could be mapped to multi-agent systems (MAS). In multi-agent systems each agent is a computerized unit capable of make independent decisions.
 
-The self-adaptive alternative is to tackle complexity by packing together with functional code, self-adaptation code capable of handling uncertainty by monitoring the context and adapting at runtime. Assumptions that in more stable domains could be made at design time, now, for dynamic domains, we should made at runtime. To develop such systems we need a model for reasoning about the system at runtime and change it.
+Self-Adaptive Systems (SAS) tackle uncertainty by packing together functional code with self-adaptation code capable of handling uncertainty by monitoring the context in order to adapt at runtime.
+Architecture-based (or component-based) approaches adapt the systems by acting on components of the system or by replacing them\cite{garlan_software_2009}. A possible solution for development of applications for environment with a high level of uncertainty would be to choose an architecture at runtime for the given environment, distributing software components between available computational units and setting up the right communication channels. But to make it possible we need also a model of the system so we can reason about possible system structure in face of the system requirements and context.
+So is important to trace system components back to requirements.
 
-% Problems
-
-Architecture-based or component-based approaches take care of the implementation of runtime modeling of the system, evaluate the model, planning and execution of adaptation strategies at system level by acting on components of the system or by replacing them\cite{garlan_software_2009}. But this approaches lack a way of model the requirements of the system.
-
-Goal oriented requirements engineering approaches have gained special attention as a technique to specify self-adaption systems. Goal modeling represents a shift in relation to Object Oriented approaches as it focus on stakeholder need and states that the system needs to achieve and not in the system structure. \cite{ali_goal-based_2010}
-
-Dalpiaz proposed Runtime Goal-Models, opposed to the traditional (design-time) Goal Models. He argue that the traditional goals models don't have details for reason about the execution of a goal. \cite{dalpiaz_runtime_2013} % TODO other proposes
+Goal Oriented Requirements Engineering (GORE) approaches have gained special attention as a technique to specify self-adaptative systems. GORE models are design-time models used by system analysts and stakeholders to reason about the system requirements.  Goal modeling represents a shift in relation to Object Oriented approaches as it focus on stakeholder goals and states that the system needs to achieve and not in how it achieves it\cite{ali_goal-based_2010}. Dalpiaz et al.\cite{dalpiaz_runtime_2013} proposed Runtime Goal-Models, for reason about runtime fulfillment of goals.
 
 % DSPL (Dynamic Software Product Lines) provide models to check the configuration of the system.
 
-% contextual goal models
-
 % why get both together?
- While goal models allow us to reason about the requirements of the system and its execution context and component based engineering about the system structure, by the best of our knowledge there is no integrated model.
- In this work we will explore the integration of the two approaches to allow reasoning about the relationship between the system requirements, structure and context of execution. The objective is be able to trace the system goals accomplishment at runtime.
+ Goal models allow us to reason about the requirements of the system and its execution context. And component based engineering about the system structure. To the best of our knowledge there is no integrated model to reason about the system structure in relation to its contexts and requirements.
+
+% Por exemplo existem contexto em que se faz necessário utilizar diferentes técnicas de tolerancia a falha a depender da criticidade das tarefas e do contexto de execução.
+Such model would allow us to built more dependable systems. For example, we could choose to use fault tolerance techniques to more critical tasks of the system.
+% desta forma é importante definir perviamente as estratégicas que ele pode atender em tempo de projeto e em tempo de execução garantir que elas sejam implementadas conforme definido em tempo de projeto.
+
+ In this work we will explore the integration of approaches to allow reasoning about the relationship between the system goals, components and context of execution. The objective is be able to create valid deployment configurations, trace the system goals accomplishment at runtime and use fault tolerance techniques to improve the dependability of the system in face of error prone components.

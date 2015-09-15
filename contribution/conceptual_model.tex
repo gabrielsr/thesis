@@ -13,7 +13,7 @@ An agent, in multi-agent systems, is an unit in the system capable of take indep
 
 
 The system requirements will be represented by 'capacities'. Capacities are what goals a system can accomplish in a goal-model semantics. The system 'capacities' are implemented by 'strategies'.
-The 'strategy' is both a mean of achieving a goal (as in goal-based RE) and a component in the architecture. By this we aim at creating an appropriate abstraction to allow composable adaptable architecture while keeping the traceability between the requirements and implementation at runtime.
+The 'strategy' is both a mean of achieving a goal (as in GORE) and a component in the architecture. By this we aim at creating an appropriate abstraction to allow composable adaptable architecture while keeping the traceability between the requirements and implementation at runtime.
 
 An agent in the system has a repository of strategies that had all its runnable code. The agent have a model of that repository that it can use for reason about its capacities. The agent can also insert and remove strategies from its repository.
 
@@ -21,12 +21,12 @@ An agent in the system has a repository of strategies that had all its runnable 
   \item \textbf{Capability}: description of a kind of goal that an agent can perform.   Its an interface description in the architecture. (e.g SUM a and b)
   \item \textbf{Goal Instance}: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
   \item \textbf{Strategy}: a strategy is a 'Capability Goal' alternative implementation (e.g (SUM,a,b) => {a+b}). Its also a module in the architecture.
-  \item \textbf{Strategies Resepository}: repository of know strategies
+  \item \textbf{Strategies Repository}: repository of know strategies
   \item \textbf{Utilitarian Function}: select strategies based on context
   \item \textbf{Runtime Context Model}: data structures that represent the knowledge of the agent.
 \end{itemize}
 
-In the proposed model an actor achieve a goal by \emph{deploing a strategy}. For instance the deployment of goals is a capability itself, as follows:
+In the proposed model an actor achieve a goal by \emph{deploying a strategy}. For instance the deployment of goals is a capability itself, as follows:
 
 \begin{figure}
   \centering
