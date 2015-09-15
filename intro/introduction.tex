@@ -1,29 +1,23 @@
-In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to integrate different systems, to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation scenarios.
-Assumptions that in more stable domains could be made at design time for dynamic domains needs to be made at runtime.
-
-The self-adaptive alternative is to tackle complexity by packing together with functional code, self-adaptation code capable of handling uncertainty by monitoring the context and adapting at runtime. To develop such systems we need a model for reasoning about it at runtime.
+In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation contexts.
 
 
-%Current solutions are limited in scope, domain and adaptation strategies used.
-
-
-% Motivation
-
-% Dependable high dynamic systems
 % With increasing popularity of mobile computation and wireless networks we have seen the rise of  interest in new domains of computation that lead to open-systems that should organize itself.
 % ubiquous, IoT, assisted living
 % It's the case of \textit{mobile clouds} witch opportunistically form networks to harvest the power of mobile heterogeneous devices \cite{viswanathan_uncertainty-aware_2015}. Such systems could be mapped to multi-agent systems (MAS). In multi-agent systems each agent is a computerized unit capable of make independent decisions.
 
+The self-adaptive alternative is to tackle complexity by packing together with functional code, self-adaptation code capable of handling uncertainty by monitoring the context and adapting at runtime. Assumptions that in more stable domains could be made at design time, now, for dynamic domains, we should made at runtime. To develop such systems we need a model for reasoning about the system at runtime and change it.
+
 % Problems
 
+Architecture-based or component-based approaches take care of the implementation of runtime modeling of the system, evaluate the model, planning and execution of adaptation strategies at system level by acting on components of the system or by replacing them\cite{garlan_software_2009}. But this approaches lack a way of model the requirements of the system.
 
 Goal oriented requirements engineering approaches have gained special attention as a technique to specify self-adaption systems. Goal modeling represents a shift in relation to Object Oriented approaches as it focus on stakeholder need and states that the system needs to achieve and not in the system structure. \cite{ali_goal-based_2010}
 
 Dalpiaz proposed Runtime Goal-Models, opposed to the traditional (design-time) Goal Models. He argue that the traditional goals models don't have details for reason about the execution of a goal. \cite{dalpiaz_runtime_2013} % TODO other proposes
 
-In the other side, architecture-based or component-based approaches take care of the implementation of runtime modeling of the system, evaluate the model, planning and execution of adaptation strategies at system level by acting on components of the system or by replacing them. \cite{garlan_software_2009}
-
 % DSPL (Dynamic Software Product Lines) provide models to check the configuration of the system.
+
+% contextual goal models
 
 % why get both together?
  While goal models allow us to reason about the requirements of the system and its execution context and component based engineering about the system structure, by the best of our knowledge there is no integrated model.

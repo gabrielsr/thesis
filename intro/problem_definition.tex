@@ -2,9 +2,10 @@
 
 % is there any component model suitable to trace goals and component service.
 
-To allow the system make decisions about its structure based on requirements and context we need a model that can correlate this 3 concepts: the system, the requirements and context.
+To allow the system make decisions about its structure based on requirements and context we need a model that can correlate this 3 concepts: the system structure, the requirements and the context.
 
 What leads us to or general question:
+
 
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
@@ -16,6 +17,7 @@ What leads us to or general question:
 
 As this question is too difficult to answer directly we will make a proposal of solution and evaluate it. In this work we choose to represent requirements in a Goal Model based approach, the system structure from an architectural point of view and the context as a data reference resolution process.
 
+
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
     \parbox{0.95\textwidth}{%
@@ -23,16 +25,12 @@ As this question is too difficult to answer directly we will make a proposal of 
     }%
 }\bigskip
 
-Yet in relation to RQ1, to develop what would be a good model we did more questions in relation to the fitness of the model for the purpose of decide on system adaptations. The following is in direction of find i a given configuration of the system is valid.
+Yet in relation to RQ1, to develop what would be a good model we did more questions in relation to the fitness of the model for the purpose of decide on system adaptations. The following is in direction of find if a given configuration of the system is valid.
 
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
     \parbox{0.95\textwidth}{%
         \textbf{Research Question 3 (RQ3):} How to, using the model from RQ1, verify if systems goals are achievable at runtime in face of deployment (configuration) uncertainty.
-
-        Would it be possible to verify ...?
-
-        What model would allow us to verify if systems goals are achievable at runtime in face of deployment (configuration) uncertainty.
     }%
 }\bigskip
 
@@ -41,11 +39,9 @@ Beside check the system validity in other to forecast faults we want to be able 
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
     \parbox{0.95\textwidth}{%
-        \textbf{Research Question 4 (RQ4):} How to assure that goals instances are always achieved, if they are achievable, in face of components faults ?
+        \textbf{Research Question 4 (RQ4):} How to assure that goals are always achieved, if they are achievable, in face of components faults ?
     }%
 }\bigskip
-
-
 
 This research question is the search to insert fault-tolerance, to achieve dependability of the system in face of not dependable components. To achieve a greater level of manutenability, the faul-tolerance techniques should be portable.
 
@@ -58,50 +54,29 @@ point/restart and replication}) as portable components that plug in the runtime 
     }%
 }\bigskip
 
-
-
 We also want to asses if the model is a practical solution.
 
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
     \parbox{0.95\textwidth}{%
-        \textbf{Research Question 6 (RQ6):} The model could be used in a real world application, allowing the system to asses itself capacity of fulfill its requirements, self-heal in case of not and tolerate to faults?
+        \textbf{Research Question 6 (RQ6):} The model could be used to build a middleware that allows systems build on top of it to asses itself capacity of fulfill their requirements, self-heal in case of not and tolerate faults?
     }%
 }\bigskip
 
-
+As a side goal, we want to build a community around the middleware tool so we can evaluate it practical value for development of systems by third party.
 
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
     \parbox{0.95\textwidth}{%
-        \textbf{Research Question 7 (RQ7):} How to engage the community in a common experiment setup for self-adaptation, especially for dependability attributes, so we can compare different approaches ?
+        \textbf{Research Question 7 (RQ7):} How to engage the scientific community in a common experiment setup for self-adaptation, especially for dependability attributes, so we can compare different approaches ?
     }%
 }\bigskip
-
-
-\setlength{\fboxsep}{10pt}
-\noindent\fbox{%
-    \parbox{0.95\textwidth}{%
-        \textbf{Research Question 8 (RQ8):} Is it feasible to create an integrated model process for adaptive software by bridging goal-oriented requirements engineering with architecture-based adaptation?
-    }%
-}\bigskip
-
-
-
-% até quanto? qualitative / quantitative
-% first: traceability model
-How can we trace runtime component-systems from goal oriented perspective
-what would be a suitable model to represent the traceability between GORE and CBSA?
-% Model
-
-
-% component model that satisfy
-
-
-
-% analise and act?
-
-
-% Define architecture,
-
 %
+% As it is not enough be possible, it needs to be reproducible:
+%
+% \setlength{\fboxsep}{10pt}
+% \noindent\fbox{%
+%     \parbox{0.95\textwidth}{%
+%         \textbf{Research Question 8 (RQ8):} Is it feasible to create an integrated development process for self-adaptive software by bridging goal-oriented requirements engineering with architecture-based adaptation?
+%     }%
+% }\bigskip
