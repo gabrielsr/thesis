@@ -17,7 +17,8 @@
 
 % definicoes previas do documento
 %\selectlanguage{brazil}
-\title{A Runtime model and middleware for requirements-, structure- and context-aware systems }
+%\title{A Runtime model and middleware for requirements-, structure- and context-aware systems }
+\title{A Goal-Oriented Middleware for Dependable Self-Adaptive Systems}
 
 \orientador[a]{\prof[a] \dr[a] Genaina Nunes Rodrigues}{CIC/UnB}
 
@@ -56,15 +57,14 @@
 
 \begin{abstract}\textbf{}
 
-  In recent years we see a growing availability of devices with computer capabilities. With this come an opportunity for applications that use a number of heterogeneous computer units in dynamic environments. That environments have a high level of uncertainty from the point of view of the system designer.
+In recent years, we see a growing availability of devices with computer capabilities. Along with this advent, comes out an opportunity to develop and deploy applications that explore those devices in dynamic environments. However, such environments are inherently characterized by uncertainty, in particular from the perspective of the system designer. To design dependable solutions for environments with a high level of uncertainty, we need models at runtime to represent the system structure, requirements as well as the system's contexts of operation in an integrated way. In addition, we need methods to reason about the system levels of operation and change them at runtime, whenever needed. In this work, we propose to address those issues by devising a component-based model approach for self-adaptation relying on GORE (goal-oriented requirements engineering) and a component-based architecture model. By these means, we plan to develop a middleware that follows and implements that model. Last, but not least, the middleware we will provide fault tolerance strategies to build a foundation for dependable systems.
 
-  To design dependable solutions to environments with a high level of uncertainty we need models to represent system structure, requirements, context in an integrated way. We need also methods for reason about the system method and change it.
 
-  We propose a model based on Goal-Models and component-based architecture in the direction of fulfill this need. We will also develop a middleware that will keep that model. On top of that middleware we will provide fault tolerance strategies to build a foundation for dependable systems.
-
+  %We propose a model based on Goal-Models and component-based architecture in the direction of fulfill this need. We will also develop a middleware that will keep that model. On top of that middleware we will provide fault tolerance strategies to build a foundation for dependable systems.
+%%%%%%%%%
   % In a non-adaptive computer systems the computer is static linked to its function in the system.  To achieve a hight level of dependability in such systems one would either rely on right dependable units or on a hight level of redundancy. Both this solutions genearly leads to expensive systems. Appling self-adaptiveness is possible to a system tolerate to failures without a proibit level of redundancy. allow the development of dependable multi-processor heterogeneous systems in face of not dependable units with a lower level of redundancy.
 
-  % Our approach is a middleware that permit uses a  multi-agent runtime goal model, in witch agents can accomplish goals by selecting strategies in its local strategies repository, evaluating them by a utilitary function. On top of this we aim at easy the development of adaptable open-systems applications, allowing runtime discovery of peers and opportunistically sharing tasks between them, easy integration of new functional strategies and easy integration of new adaptation strategies.
+  % Our approach is a middleware that permit uses a  multi-agent runtime goal model, in witch agents can accomplish goals by selecting strategies in its local strategies repository, evaluating them by a utility function. On top of this we aim at easy the development of adaptable open-systems applications, allowing runtime discovery of peers and opportunistically sharing tasks between them, easy integration of new functional strategies and easy integration of new adaptation strategies.
 
 
 \end{abstract}
@@ -78,8 +78,9 @@
 
 \chapter{Introduction}
 \input{intro/introduction}
-\input{intro/problem_definition}
+%\input{intro/problem_definition}
 %\input{intro/contributions}
+\input{intro/research_questions}
 
 \chapter{Background}
 

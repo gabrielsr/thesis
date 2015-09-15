@@ -2,4 +2,4 @@ pdflatex -interaction=nonstopmode qualify
 pdflatex -interaction=nonstopmode qualify
 bibtex qualify
 pdflatex -interaction=nonstopmode qualify
-okular qualify.pdf&
+#okular qualify.pdf&
