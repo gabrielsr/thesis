@@ -1,17 +1,17 @@
 \section{Dependability}
 Dependability can be defined as the ability of a system to avoid faults in its services
-that (1) are more frequent or (2) more severe that is acceptable. Or as the characteristic of a system to be justifiably trusted.
+that (1) are more frequent or (2) more severe than acceptable. Or as the characteristic of a system to be justifiably trusted.
 
-A common terminology used for system deviations as the following: \cite{avizienis_basic_2004}
+A common terminology used for system deviations is the following: \cite{avizienis_basic_2004}
 
 \begin{itemize}
-  \textbf{failure}: or \textif{service failure} is a perceived deviation from the correct service provided by a system.
-  \textbf{error}: is a deviation of correct internal system state that can lead to its subsequent failure.
-  \textbf{fault}: is the adjudged or
+  \item \textbf{failure}: (or \textif{service failure}) is a perceived deviation from the correct service provided by a system.
+  \item \textbf{error}: is a deviation of correct internal system state that can lead to its subsequent failure.
+  \item \textbf{fault}: is the adjudged or
 hypothesized cause of an error
 \end{itemize}
 
-Dependability include the following attributes:\cite{avizienis_basic_2004}
+Dependability includes the following attributes:\cite{avizienis_basic_2004}
 \begin{itemize}
   \item \textbf{availability}: readiness for correct service.
   \item \textbf{reliability}: continuity of correct service.
@@ -22,7 +22,7 @@ user(s) and the environment.
 \end{itemize}
 
 
-Many means have been developed of how attain the attributes of dependability. This means can be classified as:
+Many means have been developed of how to attain the attributes of dependability. These means can be classified as:
 
 \begin{itemize}
   \item \textbf{Fault prevention} means to prevent the occurrence or introduction of faults.
@@ -31,11 +31,10 @@ Many means have been developed of how attain the attributes of dependability. Th
   \item \textbf{Fault forecasting} means to estimate the present number, the future incidence, and the likely consequences of faults.
 \end{itemize}
 
-
-% TODO dependability in face of uncertainty
-
 \section{Attain Dependability at Runtime }
-To keep dependability in face of uncertainty in the deployment environment some techniques was proposed for runtime analysis at runtime.
+To keep dependability in face of uncertainty in the deployment environment some techniques have been proposed for runtime analysis at runtime.
+
+% TODO you need to refer to other work related to dependability at runtime: antonio filieri work, QoSA, Salehie, Sam Malek. Not only the work we develop!
 
 Felipe et al\cite{guimaraes_framework_2013} propose a method of fault-tolerance for a scientific workflow execution in grid.
 
@@ -43,7 +42,7 @@ Alessandro Leite \cite{ferreira_leite_user_2014} propose a fault tolerance schem
 
 Danilo et al\cite{mendonca_dependability_2015} propose a methodology for fault forecasting by which developer, at design time, annotate the goal decomposition in goal model and specify context variables. A special tool generate a formula for, given a context, evaluate the probability of achieve a goal at runtime.
 
-% Pessoa et al \cite{pessoa_dependable_2015} propose a ... with and evaluate it with focus on safety ...
+% TODO Pessoa et al \cite{pessoa_dependable_2015} propose a ... with and evaluate it with focus on safety ...
 
 
  % reduce redundancy
