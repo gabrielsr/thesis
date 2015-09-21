@@ -42,6 +42,10 @@ gather all intermediate results and format as a dissertation.
 
 \item \emph{viva}
 
+<<<<<<< HEAD
+defend the dissertation.
+=======
 present the dissertation.
+>>>>>>> feature/qualify_rev5
 
 \end{enumerate}

@@ -98,6 +98,10 @@
 	year = {2015}
 }
 
+<<<<<<< HEAD
+@techreport{laddaga_self_1997,
+	title = {Self {Adaptive} {Software} {SOL} {BAA} 98-12},
+=======
 @inproceedings{van_lamsweerde_goal-oriented_2001,
 	address = {Washington, DC, USA},
 	series = {{RE} '01},
@@ -134,6 +138,7 @@
 
 @techreport{laddaga_self_1997,
 	title = {Self {Adaptive} {Software} {SOL} {BAA} 98 12},
+>>>>>>> feature/qualify_rev5
 	url = {http://people.csail.mit.edu/rladdaga/BAA98-12excerpt.html},
 	urldate = {2015-09-01},
 	author = {Laddaga, Robbert},
@@ -546,6 +551,8 @@
 	pages = {133--143}
 }
 
+<<<<<<< HEAD
+=======
 @incollection{morandini_goal-oriented_2009,
 	series = {Lecture {Notes} in {Computer} {Science}},
 	title = {A {Goal}-{Oriented} {Approach} for {Modelling} {Self}-organising {MAS}},
@@ -566,6 +573,7 @@
 	file = {Snapshot:/home/grodrigues/.zotero/zotero/n8z1kv93.default/zotero/storage/MIT428UK/10.html:text/html}
 }
 
+>>>>>>> feature/qualify_rev5
 @article{atzori_internet_2010,
 	title = {The {Internet} of {Things}: {A} {Survey}},
 	volume = {54},
@@ -627,6 +635,8 @@
 	pages = {126--139}
 }
 
+<<<<<<< HEAD
+=======
 @article{ali_requirements-driven_2014,
 	title = {Requirements-driven {Deployment}},
 	volume = {13},
@@ -959,6 +969,7 @@
 	pages = {100--109}
 }
 
+>>>>>>> feature/qualify_rev5
 @inproceedings{bachmann_managing_2001,
 	address = {New York, NY, USA},
 	series = {{SSR} '01},

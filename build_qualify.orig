@@ -3,5 +3,8 @@ pdflatex -interaction=nonstopmode qualify
 bibtex qualify
 pdflatex -interaction=nonstopmode qualify
 #okular qualify.pdf&
+<<<<<<< HEAD
+=======
 detex qualify.tex | sed '/^$/d' > qualify.txt
 
+>>>>>>> feature/qualify_rev5

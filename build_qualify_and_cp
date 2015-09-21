@@ -1,0 +1,2 @@
+./build_qualify
+xclip -i -selection c qualify.txt 

@@ -1,1 +1,36 @@
 \section{Goal}
+
+Goal-oriented requirements engineering (GORE) is concerned with the use of goals for eliciting, elaborating, structuring, specifying, analyzing, negotiating, documenting, and modifying requirements\cite{van_lamsweerde_goal-oriented_2001}.
+
+GORE models are the tool used by system analysts and stakeholders to reason about the system requirements. Goal modeling represents a shift in relation to traditional software development approaches as it focus on stakeholder goals and states that the system needs to achieve and not in how it achieves it\cite{ali_goal-based_2010}.
+
+
+\subsection{Concepts}
+
+A goal is an objective the system under consideration should achieve. \cite{\cite{van_lamsweerde_goal-oriented_2001}
+
+
+Goal models are graphs representing AND/OR-decomposition of abstract goals down to operationalisable leaf-level goals. \cite{morandini_operational_2009}
+
+\section{TROPOS}
+Tropos\cite{bresciani_tropos:_2004} is a methodology for develop multi-agent systems that uses goal models for requirement analyzes. Tropos encompasses the software development phases, from Early Requirements to Implementation and Testing.
+
+\subsection{The Tropos key concepts}
+
+The methodology adopts the i* \cite{yu_modelling_1996} modelling framework, which proposes the concepts of actor, goal, task, resource and social dependency to model both the system-to-be and its organizational operating environment\cite{bresciani_tropos:_2004}. In a more recent publication \cite{morandini_tropos_2014} (2014) about the Tropos modelling framework the concept of \textit{task} was renamed to \textit{plan}, and this is the one that we will use.
+
+The following are the key concepts in the Tropos metamodel\cite{morandini_tropos_2014}:
+
+\begin{itemize}
+    \item Actor: an entity that has strategic goals and intentionality
+    \item Goals: it represents actors’ strategic interests. \texit{Hard goals} are goals that have clear-cut criteria for deciding whether they are satisfied or not. \textit{Softgoals} have no clear-cut criteria and are normally used to describe preferences and quality-of-service demands.
+
+    \item Plan: it represents, at an abstract level, a way of doing something. The execution of a plan can be a means for satisfying a goal or for \textit{satisficing} (i.e. sufficiently satisfying) a softgoal.
+
+    \item Resource: it represents a physical or an informational entity.
+
+    \item Dependency: its a relationship between to actors that specify that one actor (the \textif{depended}) have a dependency to other actor (the \textit{dependee}) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the \texit{dependum}.
+
+    \item Capability: it represents both the \textit{ability} of an actor to perform some action and the \textit{opportunity} of doing this.
+
+\end{itemize}

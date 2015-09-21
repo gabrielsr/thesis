@@ -22,7 +22,11 @@ user(s) and the environment.
 \end{itemize}
 
 
+<<<<<<< HEAD
+Many means have been developed of how attain the attributes of dependability. This means can be classified as:
+=======
 Many means have been developed of how to attain the attributes of dependability. These means can be classified as:
+>>>>>>> feature/qualify_rev5
 
 \begin{itemize}
   \item \textbf{Fault prevention} means to prevent the occurrence or introduction of faults.

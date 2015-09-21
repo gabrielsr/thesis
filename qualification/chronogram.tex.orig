@@ -6,9 +6,14 @@ The proposed work is composed of the following activities:
 \item \emph{implement and validate a middleware (Core)}
 \item \emph{write paper about the middleware (Core)}
 \item \emph{implement and validate dependability strategies}
+<<<<<<< HEAD
+\item \emph{write dissertation}
+\item \emph{defend}
+=======
  \item \emph{write paper about dependability strategies}
 \item \emph{write up dissertation}
 \item \emph{viva}
+>>>>>>> feature/qualify_rev5
 
 % \item \emph{implement and validate runtime strategies incorporation mechanism in the middleware}
 %\item \emph{implement and validate multi-agent strategies}

@@ -11,11 +11,27 @@ The strategy is a alternative way of achieving a goal (as in GORE) and a compone
 
 Plans are implemented by code in the strategy component.
 
+<<<<<<< HEAD
+The system requirements will be represented by 'capacities'. Capacities are what goals a system can accomplish in a goal-model semantics. The system 'capacities' are implemented by 'strategies'.
+The 'strategy' is both a mean of achieving a goal (as in GORE) and a component in the architecture. By this we aim at creating an appropriate abstraction to allow composable adaptable architecture while keeping the traceability between the requirements and implementation at runtime.
+=======
 By this we aim at creating an appropriate abstraction to allow composable architecture while keeping the traceability between the requirements and implementation at runtime.
+>>>>>>> feature/qualify_rev5
 
 An agent in the system has a repository of strategies that had all its runnable code. The agent have a model of that repository that it can use for reason about its capacities and plans. The agent can also insert and remove plans from its repository.
 
 \begin{itemize}
+<<<<<<< HEAD
+  \item \textbf{Capability}: description of a kind of goal that an agent can perform.   Its an interface description in the architecture. (e.g SUM a and b)
+  \item \textbf{Goal Instance}: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
+  \item \textbf{Strategy}: a strategy is a 'Capability Goal' alternative implementation (e.g (SUM,a,b) => {a+b}). Its also a module in the architecture.
+  \item \textbf{Strategies Repository}: repository of know strategies
+  \item \textbf{Utilitarian Function}: select strategies based on context
+  \item \textbf{Runtime Context Model}: data structures that represent the knowledge of the agent.
+\end{itemize}
+
+In the proposed model an actor achieve a goal by \emph{deploying a strategy}. For instance the deployment of goals is a capability itself, as follows:
+=======
   \item \textbf{Capability}: description of a kind of goal that an agent can perform. Its an interface description in the architecture. (e.g SUM a and b)
   \item \textbf{Strategy}:
   \item \textbf{Plan}: a plan is a Capability alternative implementation (e.g (SUM,a,b) => {a+b}). Its also a module in the architecture.
@@ -23,6 +39,7 @@ An agent in the system has a repository of strategies that had all its runnable 
 \end{itemize}
 
 \subsection{Strategy Selection}
+>>>>>>> feature/qualify_rev5
 
 To allow component based adaptation we propose a mechanist of strategy selection at runtime.
 For a hight level of flexibility we propose that the selection mechanism in itself should be developed as components in the architecture.

@@ -1,3 +1,139 @@
+<<<<<<< HEAD
+
+
+
+
+
+
+
+ 
+
+ 
+ 
+ 
+
+ imagens/  
+
+
+
+
+
+
+A Goal-Oriented Middleware for Dependable Self-Adaptive Systems
+
+[a][a] [a] Genaina Nunes RodriguesCIC/UnB
+
+[a][a] [a] Alba Cristina Magalhaes Alves de MeloCIC/UnB
+
+9Junho2016
+
+
+CIC/UnB
+
+CIC/UnB
+
+Gabriel SiqueiraRodrigues
+
+004.4
+
+dependabilidade
+dependability
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+american
+
+
+
+In recent years, we see a growing availability of devices with computer capabilities. Along with this advent, comes out an opportunity to develop and deploy applications that explore those devices in dynamic environments. However, such environments are inherently characterized by uncertainty, in particular from the perspective of the system designer. To design dependable solutions for environments with a high level of uncertainty, we need models at runtime to represent the system structure, requirements as well as the system's contexts of operation in an integrated way. In addition, we need methods to reason about the system levels of operation and change them at runtime, whenever needed. In this work, we propose to address those issues by devising a component-based model approach for self-adaptation relying on GORE (goal-oriented requirements engineering) and a component-based architecture model. By these means, we plan to develop a middleware that follows and implements that model. Last, but not least, the middleware we will provide fault tolerance strategies to build a foundation for dependable systems.
+
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+Introduction
+
+
+
+With increasing popularity of mobile computation and wireless networks we have seen the rise of  interest in new domains of computation that uses the capacity of heterogeneous computer units in a given location.
+Example of such domains are ubiquitous, Internet of Things (IoT), assisted living and opportunistic mobile computing. In this domains, the environment has a great level of uncertainty (context variability) as the computational resources greatly varies from place to place.
+Solutions for these domains would benefit if they could plan the deployment of the system for a given context. To make this possible the system should handle context variability.
+
+
+
+Self-Adaptive Systems (SAS) tackle uncertainty by packing together functional code with self-adaptation code capable of handling uncertainty by monitoring the context in order to adapt at runtime.
+Architecture-based (or component-based) approaches adapt the systems by acting on components of the system or by replacing them. A possible solution for development of applications for environment with a high level of uncertainty would be to choose an architecture at runtime for the given environment, distributing software components between available computational units and setting up the right communication channels. But to make it possible we need also a model of the system so we can reason about possible system structure in face of the system requirements and context. So is important that we could trace system components back to requirements.
+
+Goal Oriented Requirements Engineering (GORE) approaches have gained special attention as a technique to specify self-adaption systems. GORE models are design-time models used by system analysts and stakeholders to reason about the system requirements.  Goal modeling represents a shift in relation to Object Oriented approaches as it focus on stakeholder goals and states that the system needs to achieve and not in how it achieves it. Dalpiaz et al proposed Runtime Goal-Models, for reason about runtime fulfillment of goals.
+
+
+
+
+ Goal models allow us to reason about the requirements of the system and its execution context. And component based engineering about the system structure. To the best of our knowledge there is no integrated model to reason about the system structure in relation to its contexts and requirements.
+
+ In this work we will explore the integration of approaches to allow reasoning about the relationship between the system requirements, structure and context of execution. The objective is be able to trace the system goals accomplishment at runtime.
+
+
+
+
+
+
+
+To allow the system make decisions about its structure based on requirements and context we need a model that can correlate these three concepts: the system structure, the requirements and the execution context.
+
+
+
+
+
+
+    
+        Research Question 1 (RQ1): What would be a good model of software system that
+        could allow one to reason about the system structure, context and trace the requirements at runtime? In other words, how to represent the system goals, architectural structure, operation context and their relationship?
+    
+
+
+
+To develop what would be a good model we did more questions in relation to the fitness of the model for the purpose of decide on system adaptations. First of all, we want to realize a valid deployment of the system:
+
+
+
+    
+        Research Question 2 (RQ2): How to, using the model from RQ1, deploy a Self-Adaptive System that is dependable in face of context uncertatint? 
+
+    
+
+
+Beside check the system validity in other to forecast faults we want to be able to tolerate faults. What leads to the next question:
+
+
+
+=======
  
  
  
@@ -47,10 +183,38 @@ To develop what would be a good model we address further questions in relation t
         Research Question 2 (RQ2): How to, using the model from RQ1, deploy a Self-Adaptive System that is dependable in face of context variability? 
     
 Beside checking the system validity in other to predict system dependability, we want to be able to tolerate faults at runtime. This leads us to the next research question:
+>>>>>>> feature/qualify_rev5
     
         Research Question 3 (RQ3): How to guarantee that the systems is dependable in face of error prone components at runtime?
         
     
+<<<<<<< HEAD
+
+
+This research question is the search to insert fault-tolerance.
+
+
+Background
+
+
+
+
+Dependability
+Dependability can be defined as the ability of a system to avoid faults in its services
+that (1) are more frequent or (2) more severe that is acceptable. Or as the characteristic of a system to be justifiably trusted.
+
+A common terminology used for system deviations as the following: 
+
+
+  failure: or service failure is a perceived deviation from the correct service provided by a system.
+  error: is a deviation of correct internal system state that can lead to its subsequent failure.
+  fault: is the adjudged or
+hypothesized cause of an error
+
+
+Dependability include the following attributes:
+
+=======
 General Objectives
   propose, implement and validate a model to reason about and adapt systems based on its adaptation goals, structure and context.
 Specific Objectives
@@ -70,17 +234,124 @@ A common terminology used for system deviations is the following:
   fault: is the adjudged or
 hypothesized cause of an error
 Dependability includes the following attributes:
+>>>>>>> feature/qualify_rev5
   availability: readiness for correct service.
   reliability: continuity of correct service.
   safety: absence of catastrophic consequences on the
 user(s) and the environment.
   integrity: absence of improper system alterations.
   maintainability: ability to undergo modifications and repairs.
+<<<<<<< HEAD
+
+
+
+Many means have been developed of how attain the the attributes of dependability. This meas can be classified as:
+
+
+=======
 Many means have been developed of how to attain the attributes of dependability. These means can be classified as:
+>>>>>>> feature/qualify_rev5
   Fault prevention means to prevent the occurrence or introduction of faults.
   Fault tolerance means to avoid service failures in the presence of faults.
   Fault removal means to reduce the number and severity of faults.
   Fault forecasting means to estimate the present number, the future incidence, and the likely consequences of faults.
+<<<<<<< HEAD
+
+
+
+
+
+Attain Dependability at Runtime 
+To keep dependability in face of uncertainty in the deployment environment some techniques was proposed for runtime analysis at runtime.
+
+Felipe et al propose a method of fault-tolerance for a scientific workflow execution in grid.
+
+Alessandro Leite  propose a fault tolerance schema for cloud deployment based on which a fault instance in the cloud is monitored and in case of failure the instance can be restarted or terminated and them a new instance created.
+
+Danilo et al propose a methodology for fault forecasting by which developer, at design time, annotate the goal decomposition in goal model and specify context variables. A special tool generate a formula for, given a context, evaluate the probability of achieve a goal at runtime.
+
+
+
+
+ 
+
+
+
+
+Proposal
+Proposed Soluction
+
+In order to allow reasoning about the system requirements, structure and context, we proposo a model that represent requirements as a Goal Model, the system structure in a component-based model and the context as a variable resolution mechanism.
+
+This model will be implemented by a middleware, that will keep the traceability between goals and architecture and allow for manage the architecture, and implement fault-tolerance mechanisms.
+
+
+
+
+
+
+Finally we explore how to use the middleware support for development of distributed, open-adaptable, opportunistic and evolvable application.
+
+As a support for open-systems, we propose a multi-agent approach in witch agents can collaborate by making peer agents 'strategies' discoverable.
+
+
+
+
+
+
+
+
+We followed an approach with run-time goal model with an mechanism for compositional adaptation and multi-agent collaboration. In our propose adaptiveness is achieved by means of strategies matching an selection at runtime. For more flexibility we propose a symmetric design.
+
+By composable simetry we mean that we should be able to compose strategies in new strategies, and made agents out of strategies and teams out of agents. All with the same interface, transparent for a peer client.
+
+
+
+
+
+Conceptual Model
+
+
+An agent, in multi-agent systems, is an unit in the system capable of take independent actions. In your conceptual model an agent is an independent computational unit that manages its own resources (CPU, memory, disk, sensors, etc).
+
+
+
+
+
+
+
+
+
+
+The system requirements will be represented by 'capacities'. Capacities are what goals a system can accomplish in a goal-model semantics. The system 'capacities' are implemented by 'strategies'.
+The 'strategy' is both a mean of achieving a goal (as in goal-based RE) and a component in the architecture. By this we aim at creating an appropriate abstraction to allow composable adaptable architecture while keeping the traceability between the requirements and implementation at runtime.
+
+An agent in the system has a repository of strategies that had all its runnable code. The agent have a model of that repository that it can use for reason about its capacities. The agent can also insert and remove strategies from its repository.
+
+
+  Capability: description of a kind of goal that an agent can perform.   Its an interface description in the architecture. (e.g SUM a and b)
+  Goal Instance: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
+  Strategy: a strategy is a 'Capability Goal' alternative implementation (e.g (SUM,a,b) => a+b). Its also a module in the architecture.
+  Strategies Resepository: repository of know strategies
+  Utilitarian Function: select strategies based on context
+  Runtime Context Model: data structures that represent the knowledge of the agent.
+
+
+In the proposed model an actor achieve a goal by deploing a strategy. For instance the deployment of goals is a capability itself, as follows:
+
+
+
+
+
+
+
+
+
+
+<Fulfill Goals> Goal the capability of fulfill generic goals.
+
+<Utilitarianlly Fulfill Goals> Strategy  strategy to fulfill goals by selecting available strategies and evaluating them with an utilitarian function. Consist of 3 sub-goals:
+=======
 Attain Dependability at Runtime 
 To keep dependability in face of uncertainty in the deployment environment some techniques have been proposed for runtime analysis at runtime.
 Felipe et al propose a method of fault-tolerance for a scientific workflow execution in grid.
@@ -141,11 +412,54 @@ At a low level an agent has the capability of fulfill goals. Inspired by compone
 The capacity and strategy should be as follows:
 <Fulfill Goals> Goal the capability of fulfill generic goals.
 <Fulfill Goals> Strategy  strategy to fulfill goals by selecting available strategies and evaluating them with an utility function. Consist of 3 sub-goals:
+>>>>>>> feature/qualify_rev5
   
     Find Matching Strategies
     Decide on Strategies
     Deploy the Selected Strategy
   
+<<<<<<< HEAD
+
+
+And the following three strategies implement the previous 3 goals.
+
+
+  <Find Local Matching Strategies> Strategy accomplish <find matching strategies>
+  return the list of matching strategies. An matching strategy is any strategy that implement the goal interface.
+
+  <Utilitarianlly Select a Strategy> Strategy accomplish <Utilitarianlly Fulfill Goals>
+  use a pre-configured utilitarian function that analyses strategies metadata and select a strategy.
+
+  <Deploy Strategy> Strategy accomplish <Deploy Strategy>.
+  Consist of call the strategy code for the 'goal issue' runtime context model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Related Work
+
+
+
+Rainbow is a framework for self-adaptation architecture based. It keeps an model of the architecture of the system and can be extended with rules to analyses the system behavior at runtime, find adaptation strategies and perform this changes. It separate the functional  code (internal mechanisms) from adaptation code (external mechanism) in a schema called external control, influenced by control theory. 
+Different from our proposal Rainbow don't enforce an specific architecture what could be special useful in case of retrofitting a pre-existent systems. Different from our proposal its not goal-oriented an for the best of our knowledge there is no work on how to map goals to  components.
+
+MUSIC project provides a component-based middleware for adaptation that propose to separate the self-adaptation from business logic and delegate adaptation logic to generic middleware. As in our propose it adapts buy evaluate in runtime the utility of alternatives, to chose a feasible one (e.g., the one evaluated as with highest utility). As Rainbow, MUSIC is not goal-oriented.
+
+
+=======
 And the following three strategies implement the previous 3 goals.
   <Find Local Matching Strategies> Strategy accomplish <Find Matching Strategies>
   return the list of matching strategies. A matching strategy is any strategy that implement the goal interface.
@@ -167,15 +481,42 @@ Related Work
 Rainbow is a framework for self-adaptation architecture based. It keeps an model of the architecture of the system and can be extended with rules to analysis the system behavior at runtime, find adaptation strategies and perform this changes. It separate the functional code (internal mechanisms) from adaptation code (external mechanism) in a schema called external control, influenced by control theory. 
 Different from our proposal it isn't goal-oriented an there is no work on how to relate Rainbow components to requirements.
 MUSIC project provides a component-based middleware for adaptation that propose to separate the self-adaptation from business logic and delegate adaptation logic to generic middleware. As in our propose it adapts by evaluating in runtime the utility of alternatives, to chose a feasible one (e.g., the one evaluated as with highest utility). As Rainbow, MUSIC is not goal-oriented.
+>>>>>>> feature/qualify_rev5
 Salehie et al.  propose a run-time goal model and its related
 action selection. It models adaptable software as a system that exposes sensors and effectors and  proposes a model consisting in Goals, Attributes and Action for selecting actions that will effect the adaptable software at runtime, giving sensed attributes.
 So the adaptation mechanism is to choose the best action given the actual attributes.
 As this work it uses explicit runtime goals and make them visible and traceable.
 Different from it we use a more symmetric approach that can allow for functional
 and adaptation management.
+<<<<<<< HEAD
+
+
+Günalp et al.  propose a middleware for pervarsive software with autonomic capabilities. The approach is service based. It proposes a component written in a custom language and the use of components repository that allows the discovery on new sensors. The system present a support for adaptability by using policies.
+
+
+Objectives
+General Objectives
+
+  propose, implement and validate a model for reason about and adapt systems based on its requirements, structure and context.
+
+
+Specific Objectives
+
+  propose a conceptual model for component-based runtime goal-model system
+  implement and validate a middleware for component-based runtime goal model
+  
+  
+  release the middleware as a comprehensible open source project
+  implement and validate runtime strategies for dependability in the proposed platform
+
+
+Methodology
+In this section we will describe our methodology. At a hight level our main activities will be review the literature, elaborate a conceptual model, implement and evaluate a middleware, write the dissertation and defence the work.
+=======
 Günalp et al.  propose a middleware for pervasive software with autonomic capabilities. The approach is service based. It proposes a component written in a custom language and the use of components repository that allows the discovery on new sensors. The system present a support for adaptability by using policies.
 Methodology
 In this section we will describe our methodology. At a hight level our main activities will be: review the literature, elaborate a conceptual model, implement and evaluate a middleware, write the dissertation, write paper and viva presentation.
+>>>>>>> feature/qualify_rev5
 The implementation will be divided in 2 phases so we can submit intermediate results to scientific conferences.
 
 
@@ -191,6 +532,15 @@ In parallel to the literature review, we will develop a conceptual model to inte
 
 implement and validate a middleware (Core)
 
+<<<<<<< HEAD
+At this stage we will implement the core of a middleware to support execution of components as described by the proposed conceptual model and evaluate. To do the evaluation we will specify and describe a study case system and implement the system using the middleware and the proposed architecture. We will report the results as an article.
+
+
+
+
+
+
+=======
 At this stage we will implement the core of a middleware to support execution of components as described by the proposed conceptual model and evaluate. To do the evaluation we will specify and describe a study case system and implement the system using the middleware and the proposed architecture.
 
 write paper about the middleware (Core)
@@ -199,11 +549,40 @@ We will report the results of the middleware implementation and validation as a 
 
 
 
+>>>>>>> feature/qualify_rev5
 
  
 
 implement and validate dependability strategies
 
+<<<<<<< HEAD
+ implement and evaluate GODA strategy for runtime dependability analysis at runtime. Report the results.
+
+write dissertation
+
+gather all intermediate results and format as a dissertation.
+
+defence
+
+defence of the dissertation.
+
+
+
+Expected Results
+Expected Results
+
+With this work we expect to:
+
+
+Collaborate to self-adaptation corpus of knowledge by contributing with a conceptual model that map concepts of Goal-Model and Architecture-based adaptation.
+
+Generate a propose of architecture and reference middleware for development of applications that face a high level of uncertainty and couple with this uncertainty by reasoning about its goal model at runtime.
+
+By the former two items, we expect to allow for future development of more flexible and dependable software systems.
+
+
+
+=======
  implement and evaluate GODA strategy for runtime dependability analysis at runtime.
 
  write paper about dependability strategies
@@ -225,6 +604,7 @@ With this work we expect to:
 Collaborate to self-adaptation corpus of knowledge by contributing with a conceptual model that maps concepts of Goal-Model and Architecture-based adaptation.
 Generate a proposal of architecture and reference middleware for development of applications that face a high level of context variation and couple this uncertainty by reasoning about its goal model at runtime.
 By the former two items, we expect to allow for future development of more flexible and dependable and adaptable software system.
+>>>>>>> feature/qualify_rev5
 Chronogram
 The proposed work is composed of the following activities:
 
@@ -232,6 +612,47 @@ The proposed work is composed of the following activities:
 literature review
 elaborate a conceptual model
 implement and validate a middleware (Core)
+<<<<<<< HEAD
+implement and validate dependability strategies
+write dissertation
+defence
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+plain
+
+
+=======
 write paper about the middleware (Core)
 implement and validate dependability strategies
  write paper about dependability strategies
@@ -243,3 +664,4 @@ viva
 
 
 plain
+>>>>>>> feature/qualify_rev5
