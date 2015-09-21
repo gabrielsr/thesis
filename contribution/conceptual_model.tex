@@ -3,17 +3,24 @@
 
 \subsection{Component Model}
 
-We propose and extension to Tropos Model with a component model.By this we aim at creating an appropriate abstraction to allow composable architecture while keeping the traceability between the requirements and implementation at runtime.
+We propose and extension to Tropos Model with a component model. By this we aim at creating an appropriate abstraction to allow composable architecture while keeping the traceability between the requirements and implementation at runtime.
 
-Or component model is build around the concept of \textit{strategy}. The strategy has a double meaning. It is an alternative way of achieving a goal (as in GORE). And also it is a component in the architecture. A capacity is a interface description the component model.
-From a goal model, each goal will originate a capacity and strategy. Each OR decomposition of a goal, in the goal model, should correspond to an additional strategy.
+Or component model is build around the concept of \textit{strategy}. The strategy at goal model level is a mean of achieving a particular goal. It can have the following realization at runtime:
+
+\begin{itemize}
+  \item a strategy can be implemented by a component in the architecture.
+  \item can be a delegation to another known agent as a runtime decision.
+  \item can be a fault tolerant proxy that combines a implementation or delegation with a fault tolerance technique.
+\end{itemize}
+
+From a goal model, each goal will originate at least a capacity and strategy. Each OR decomposition of a goal, in the goal model, should correspond to an additional strategy.
 An agent in the system has a repository of strategies.
 
 The main concepts are:
 
 \begin{itemize}
   \item \textbf{Agent}: agent is an independent computational unit that manages its own resources (CPU, memory, disk, sensors, etc). After system deployment an agent is turned into an actor of a Tropos model.
-  \item \textbf{Capability}: description of a kind of goal that an agent can perform. Its a component interface description in the architecture. (e.g SUM a and b)
+  \item \textbf{Capability}: description of a kind of goal that an agent can perform. Its a component interface description in the architecture. (e.g SUM a and b).
   \item \textbf{Strategy}: a strategy is a capability alternative implementation (e.g (SUM,a,b) => {a+b}). Its also a module in the architecture. A strategy should implement one capability.
   \item \textbf{Strategy Repository}: an agent has a repository of its capabilities and strategies.
   \item \textbf{System Deployment}: the process of putting the right strategies in agents repositories.
@@ -22,7 +29,7 @@ The main concepts are:
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth]{goalp-agent-repo-rcm-depl}
-  \caption{Agent}
+  \caption{Agent Respresentation}
   \label{fig:goalp-agent}
 \end{figure}
 
@@ -36,18 +43,43 @@ For the implementation of the conceptual model, we propose an architecture of th
   \item \textbf{Application}: This layer if responsible for functional strategies. The functional strategies are the one that implement user application.
 \end{itemize}
 
+\subsection{Runtime Model}
+
+Dalpiaz et al. \cite{dalpiaz_runtime_2013} argue that traditional goal models are not enough for reason about the system at runtime. They propose a distinction between Desgin-time Goal Model (DGM) and Runtime Goal Model (RGM). We extend their proposal of RGM with a component model and runtime strategy selection.
+
+\begin{itemize}
+
+\item \textbf{Goal Instance}: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
+
+\item \textbf{Believe}: in the model of an actor about itself and the context.
+
+\item \textbf{Strategy Deployment}: occurs after the strategy selection, is the the binding between the strategy, its dependencies and its environment dependencies.
+
+\end{itemize}
+
+In the proposed model an actor achieve a goal by \emph{deploying a strategy}. For instance the deployment of a strategy is a capability itself.
+
 \subsection{Strategy Deployment}
 
 In order to allow component based adaptation we propose a mechanist of strategy selection at runtime. This mechanism is part of the infrastructure layer. For a hight level of flexibility we propose that the selection mechanism itself should be implemented by components in the architecture.
 
 At a low level an agent has the capability of fulfill goals. Inspired by component based frameworks like Rainbow\cite{garlan_rainbow:_2004} we propose that the strategy should be chosen by means of a utility function. That utility function should be responsible to calculate which available strategy will have a better contribution for softgoals.
 
-The capacity and strategy should be as follows:
+After a strategy is selected it is deployed. Strategy deployment corresponds to a component binding in CBSE.
+
+The capacity <fulfill goal> and its corresponding strategy should be as follows:
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\linewidth]{strategy_deployment}
+  \caption{The deployment of a strategy}
+  \label{fig:agent_composition}
+\end{figure}
 
 \begin{itemize}
-\item \textbf{<Fulfill Goals> Goal} the capability of fulfill generic goals.
+\item \textbf{<Fulfill Goals>} the capability to fulfill generic goals.
 
-\item \textbf{<Fulfill Goals> Strategy } strategy to fulfill goals by selecting available strategies and evaluating them with an utility function. Consist of 3 sub-goals:
+\item \textbf{<Fulfill Goals>} strategy to fulfill goals by selecting available strategies and evaluating them with an utility function. Consists of 3 sub-goals:
   \begin{itemize}
     \item Find Matching Strategies
     \item Decide on Strategies
@@ -58,40 +90,14 @@ The capacity and strategy should be as follows:
 And the following three strategies implement the previous 3 capabilities.
 
 \begin{itemize}
-  \item \textbf{<Find Local Matching Strategies> Strategy} accomplish <Find Matching Strategies>
-  return the list of matching strategies. A matching strategy is any strategy that implement the goal interface.
+  \item \textbf{<Find Local Matching Strategies>} accomplishes <Find Matching Strategies>
+  returns the list of matching strategies. A matching strategy is any strategy that implements the goal interface.
 
-  \item \textbf{<Select a Strategy> Strategy} accomplish <Decide on Strategies>
-  use a pre-configured utility function that analyses strategies metadata and select a strategy.
+  \item \textbf{<Select a Strategy>} accomplishes <Decide on Strategies>
+  using a pre-configured utility function that analyses strategies metadata and select a strategy.
 
-  \item \textbf{<Deploy Strategy> Strategy} accomplish <Deploy the Selected Strategy>.
-  Consist in deploying the chosen component.
+  \item \textbf{<Deploy Strategy>} accomplishes <Deploy the Selected Strategy>. Bind the components with the goal instance an dependent strategies.
 \end{itemize}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=\linewidth]{strategy_deployment}
-  \caption{The deployment of a strategy}
-  \label{fig:agent_composition}
-\end{figure}
-
-\subsection{Runtime Model}
-
-Dalpiaz et al. \cite{dalpiaz_runtime_2013} argue that traditional goal models are not enough for reason about the system at runtime. They propose a distinction between Desgin-time Goal Model and Runtime Goal Model. We extend their proposal with model at runtime of the agent.
-
-\begin{itemize}
-
-\item \textbf{Goal Instance}: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
-
-\item \textbf{Believe}: in the knowledge of an actor about itself and the context.
-
-\item \textbf{Strategy Deployment}: occurs after the strategy selection, is the the binding between the strategy, its dependencies and its environment dependencies.
-
-\end{itemize}
-
-In the proposed model an actor achieve a goal by \emph{deploying a strategy}. For instance the deployment of a strategy is a capability itself, as follows:
-
-
 
 \subsection{Awareness}
 
@@ -107,19 +113,3 @@ Self-awareness is provided by a set of self-awareness strategies. Example of sel
   \item \textbf{<List Deployed Strategies> Strategy} How the agent can know it current running strategies.
 
 \end{itemize}
-
-
-%
-% \section{Resources}
-%
-% \section{Strategy Declaration}
-%
-%
-% \section{Fault Model}
-% Consistent/Inconsistent Failure
-%
-% Agent failure
-%
-% Resource failure
-%
-% Strategy failure
