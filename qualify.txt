@@ -25,8 +25,8 @@ With increasing popularity of mobile computation and wireless networks we have s
 Example of such domains are Ubiquitous Computing , Internet of Things (IoT), Assisted Living and Opportunistic Computing. In such domains, the computing environment can greatly vary from place to place.
 Solutions for these domains would benefit if they could plan the deployment of the system for a given computing environment at runtime.
  Salehie at al.  define self-adaptive software as one that adjust artifacts or attributes in response to changes in the self and in the context of a software system.
-self being the whole body of software. And context being everything in the operating environment that affects the system's properties and its behavior.
-Architecture-based (or component-based) self-adaptive approaches adapt the systems by acting on components of the system or by replacing them. A possible solution for development of applications for environment with a high level of uncertainty would be to choose an architecture at runtime for the given environment, distributing software components between available computational units and setting up the right communication channels. But to make it possible we need also a model of the system so we can reason about possible system structures in face of the system requirements and context.
+Self being the whole body of software. And context being everything in the operating environment that affects the system's properties and its behavior.
+Architecture-based (or component-based) self-adaptive approaches to implement self-adaptive systems adapt the systems by acting on components of the system or by replacing them. A possible solution for development of applications for environment with a high level of uncertainty would be to choose an architecture at runtime for the given environment, distributing software components between available computational units and setting up the right communication channels. But to make it possible we need also a model of the system so we can reason about possible system structures in face of the system requirements and context.
 So it is important to trace system components back to requirements.
 Goal Oriented Requirements Engineering (GORE) approaches have gained special attention as a technique to specify self-adaptative systems.
 Goals capture, the various objectives the system under consideration should achieve.
@@ -37,6 +37,7 @@ Goal models allow us to reason about the requirements of the system and its exec
 In addition, we need methods to reason about the system levels of operation and change them at runtime, whenever needed. In this work, we propose to address those issues by devising a component-based model approach for self-adaptation relying on GORE (goal-oriented requirements engineering) and a component-based architecture model.
 Such model would allow us to built more dependable systems. For example, we could choose to use fault tolerance techniques to more critical tasks of the system.
  In this work we will explore the integration of approaches to allow reasoning about the relationship between the system goals, components and context of execution.
+ 
  The objective is be able to create valid deployment configurations, trace the system goals accomplishment at runtime and use fault tolerance techniques to improve the dependability of the system in face of error prone components.
 In order to allow the system make decisions about its structure based on requirements and context we need a model that can correlate these three concepts: the system structure, the goals and the execution context.
     
@@ -130,59 +131,81 @@ The following are the key concepts in the Tropos metamodel:
     Dependency: its a relationship between to actors that specify that one actor (the depended) have a dependency to other actor (the dependee) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the dependum.
     Capability: it represents both the ability of an actor to perform some action and the opportunity of doing this.
 Multiagent systems (MAS)
-According to Wooldridge, Multiagent systems (MAS) are systems composed of multiple interacting computing elements known as agents. Agents are computer systems that are capable of autonomous action and interacting with other agents.
+Wooldridge  define Multiagent Systems (MAS) as systems composed of multiple interacting computing elements known as agents.
+Agents are computer systems that are capable of autonomous action and interacting with other agents.
 Proposal
 Proposed Solution
 We propose a component model for goal oriented multi-agent systems  and a runtime model that allows reason about the system levels of operation.
-This model will be implemented by a middleware, that will keep the traceability between goals and architecture and allow for managing the architecture.
-In addition we pretend to implementing fault-tolerance techniques as reusable components.
+This model will be implemented by a middleware, that will keep the traceability between goals and architecture and allow for managing the architecture and implementing fault-tolerance in face of fault components at runtime.
 Conceptual Model
 Component Model
-We propose and extension to Tropos Model with a component model.By this we aim at creating an appropriate abstraction to allow composable architecture while keeping the traceability between the requirements and implementation at runtime.
-Or component model is build around the concept of strategy. The strategy has a double meaning. It is an alternative way of achieving a goal (as in GORE). And also it is a component in the architecture. A capacity is a interface description the component model.
-From a goal model, each goal will originate a capacity and strategy. Each OR decomposition of a goal, in the goal model, should correspond to an additional strategy.
+We propose and extension to Tropos Model with a component model. By this we aim at creating an appropriate abstraction to allow composable architecture while keeping the traceability between the requirements and implementation at runtime.
+Or component model is build around the concept of strategy. The strategy at goal model level is a mean of achieving a particular goal. It can have the following realization at runtime:
+  a strategy can be implemented by a component in the architecture.
+  can be a delegation to another known agent as a runtime decision.
+  can be a fault tolerant proxy that combines a implementation or delegation with a fault tolerance technique.
+From a goal model, each goal will originate at least a capacity and strategy. Each OR decomposition of a goal, in the goal model, should correspond to an additional strategy.
 An agent in the system has a repository of strategies.
 The main concepts are:
   Agent: agent is an independent computational unit that manages its own resources (CPU, memory, disk, sensors, etc). After system deployment an agent is turned into an actor of a Tropos model.
-  Capability: description of a kind of goal that an agent can perform. Its a component interface description in the architecture. (e.g SUM a and b)
-  Strategy: a strategy is a capability alternative implementation (e.g (SUM,a,b) => a+b). Its also a module in the architecture. A strategy should implement one capability.
-  Strategy Repository: an agent has a repository of its capabilities and strategies.
-  System Deployment: the process of putting the right strategies in agents repositories.
+  Capability: description of a kind of goal that an agent can perform. Its a component interface description in the architecture.
+  Strategy: a strategy is an alternative way to achieve a goal.
+  Strategy Repository: an agent has a repository of its known strategies.
+A strategy should declare its functional interface by declaring which capability it implements. A strategy also needs to declare its dependencies as plans and capacities that it depends on. A strategy is active if all its dependencies are currently satisfied. It is inactive otherwise. A capability is satisfied if an agent has at least one active strategy that implement that capability.
 Architectural Layers
 For the implementation of the conceptual model, we propose an architecture of three layers:
   Infrastructure: This layer is responsible for the component model implementation, how capability, strategies, plans and goals instances are described. It also responsible for agent and goals life cycle, strategies management and selection.
   Adaptation: This layer is responsible for keep the level of service. It contains strategies to discover peers, team up with peers, gather information to improve strategy selection, etc.
   Application: This layer if responsible for functional strategies. The functional strategies are the one that implement user application.
-Strategy Deployment
+Runtime Model
+Dalpiaz et al.  argue that traditional goal models are not enough for reason about the system at runtime. They propose a distinction between Desgin-time Goal Model (DGM) and Runtime Goal Model (RGM). We extend their proposal of RGM with a component model and runtime strategy selection.
+Goal Instance: an actual instance of an objective for a given data set.
+Believe: is the model of an actor about itself and the context. Represents what the agent know.
+Strategy Deployment: occurs after the strategy selection, is the the binding between the strategy, its capacities dependencies and its environment dependencies.
+In the proposed model an actor achieve a goal by deploying a strategy and executing it. For instance the deployment of a strategy is a capability itself.
+Strategy Selection and Deployment
 In order to allow component based adaptation we propose a mechanist of strategy selection at runtime. This mechanism is part of the infrastructure layer. For a hight level of flexibility we propose that the selection mechanism itself should be implemented by components in the architecture.
 At a low level an agent has the capability of fulfill goals. Inspired by component based frameworks like Rainbow we propose that the strategy should be chosen by means of a utility function. That utility function should be responsible to calculate which available strategy will have a better contribution for softgoals.
-The capacity and strategy should be as follows:
-<Fulfill Goals> Goal the capability of fulfill generic goals.
-<Fulfill Goals> Strategy  strategy to fulfill goals by selecting available strategies and evaluating them with an utility function. Consist of 3 sub-goals:
+After a strategy is selected it is deployed. Strategy deployment corresponds to a component binding in CBSE.
+The capacity <fulfill goal> and its corresponding strategy should be as follows:
+<Fulfill Goals> the capability to fulfill generic goals.
+<Fulfill Goals> strategy to fulfill goals by selecting available strategies and evaluating them with an utility function. Consists of 3 sub-goals:
   
     Find Matching Strategies
     Decide on Strategies
     Deploy the Selected Strategy
   
 And the following three strategies implement the previous 3 capabilities.
-  <Find Local Matching Strategies> Strategy accomplish <Find Matching Strategies>
-  return the list of matching strategies. A matching strategy is any strategy that implement the goal interface.
-  <Select a Strategy> Strategy accomplish <Decide on Strategies>
-  use a pre-configured utility function that analyses strategies metadata and select a strategy.
-  <Deploy Strategy> Strategy accomplish <Deploy the Selected Strategy>.
-  Consist in deploying the chosen component.
-Runtime Model
-Dalpiaz et al.  argue that traditional goal models are not enough for reason about the system at runtime. They propose a distinction between Desgin-time Goal Model and Runtime Goal Model. We extend their proposal with model at runtime of the agent.
-Goal Instance: an actual instance of an objective for a given data set. (e.g SUM 2 and 3)
-Believe: in the knowledge of an actor about itself and the context.
-Strategy Deployment: occurs after the strategy selection, is the the binding between the strategy, its dependencies and its environment dependencies.
-In the proposed model an actor achieve a goal by deploying a strategy. For instance the deployment of a strategy is a capability itself, as follows:
+  <Find Local Matching Strategies> accomplishes <Find Matching Strategies>
+  returns the list of matching strategies. A matching strategy is any strategy that implements the goal interface.
+  <Select a Strategy> accomplishes <Decide on Strategies>
+  using a pre-configured utility function that analyses strategies metadata and select a strategy.
+  <Deploy Strategy> accomplishes <Deploy the Selected Strategy>. Bind the components with the goal instance and dependencies.
 Awareness
 The agent have a model of that repository that it can use for reason about its capacities, strategies and plans. The agent is also able to manage its own repository.
 Self-awareness is provided by a set of self-awareness strategies. Example of self-aware strategies are:
-  <List Local Strategies> Strategy How the agent can know it actual capabilities.
-  <List Goal Instances> Strategy How the agent can know it current intentions.
-  <List Deployed Strategies> Strategy How the agent can know it current running strategies.
+  <List Local Strategies>, how the agent can know it actual capabilities.
+  <List Goal Instances>, how the agent can know it current intentions.
+  <List Deployed Strategies>, how the agent can know it current running strategies.
+Multi Agent Deployment
+In order to support multi-agent deployments we will extend the conceptual model and create a set of strategies at the adaptation level. First, in the conceptual model, we propose a extension of the Tropos model concept of role.
+A role, in runtime, will be associated with a set of capabilities. A role is interpreted also as responsibilities of an actor. So if an agent accepts a role it should keep active strategies to accomplish goals related to capabilities associated with its role.
+We will call the state when an actor is satisfying all its assigned roles as satisfying actor.
+The deployment is the process of assign all needed roles to available agents and moving them to a state of satisfying actors.
+In order to allow a system to adapt to deployment variability we propose an actor verification strategy. With this strategy the actor should check if itself is currently a satisfying actor. If there is a capability that the agent is currently not satisfying it can use recovery strategies.
+Recovery strategies could be:
+  lookup for strategy in external strategy repository;
+  redistribute roles with peers;
+  lookup for a peer with the missing capability;
+  restore resource availability;
+  
+Virtual Strategies
+To extend the model with adaptation capabilities we propose Virtual Strategies (VS). VS are means of achieving a goal that is not by binding a component. We propose two kinds of VS:
+  delegating strategies. VS that allow an agent to achieve a goal by delegating it to a peer agent. When a agent discover that a peer have some capacities it creates proxy strategies in its own repository that allow it to fulfill goals by delegating to the peer.
+  fault tolerance strategies. VS that wrap other strategies in a fault tolerance scheme. Examples of possible fault tolerance strategies are active replication and retry.
+The creation of virtual strategies will be performed by Virtual Strategy Producers (VSP) that are strategies in itself. The creation of a VSP is a Virtual Strategy Instance VSI.
+A VSI has its own metadata and is evaluated by the utility function in the process of strategy selection.
+ A VSP can reason about the context in order to adapt the strategy creation. So, for example, in a context that the agent needs to save battery, the active replication strategy may not be produced.
 Related Work
 Rainbow is a framework for self-adaptation architecture based. It keeps an model of the architecture of the system and can be extended with rules to analysis the system behavior at runtime, find adaptation strategies and perform this changes. It separate the functional code (internal mechanisms) from adaptation code (external mechanism) in a schema called external control, influenced by control theory. 
 Different from our proposal it isn't goal-oriented an there is no work on how to relate Rainbow components to requirements.
