@@ -3,22 +3,10 @@
  
  
  imagens/  
-A Goal-Oriented Middleware for Dependable Self-Adaptive Systems
 [a][a] [a] Genaina Nunes RodriguesCIC/UnB
-[a][a] [a] Alba Cristina Magalhaes Alves de MeloCIC/UnB
-9Junho2016
-CIC/UnB
-CIC/UnB
-Gabriel SiqueiraRodrigues
-004.4
-dependabilidade
-dependability
-american
-In recent years, we see a growing availability of devices with computer capabilities. Along with this advent, comes out an opportunity to develop and deploy applications that explore those devices in dynamic environments. However, such environments are inherently characterized by uncertainty, in particular from the perspective of the system designer. To design dependable solutions for environments with a high level of uncertainty, we need models at runtime to represent the system structure, requirements as well as the system's contexts of operation in an integrated way. In addition, we need methods to reason about the system levels of operation and change them at runtime, whenever needed. In this work, we propose to address those issues by devising a component-based model approach for self-adaptation relying on GORE (goal-oriented requirements engineering) and a component-based architecture model. By these means, we plan to develop a middleware that follows and implements that model. Last, but not least, the middleware we will provide fault tolerance strategies to build a foundation for dependable systems.
-  To design dependable solutions to environments with a high level of uncertainty we need models to represent system structure, requirements, context in an integrated way. We need also methods for reason about the system method and change it.
-  
-  
-  
+25Setembro2015
+Gabriel Siqueira Rodrigues
+A Goal-Oriented Middleware for Dependable Self-Adaptive Systems
 Introduction
 In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation contexts.
 With increasing popularity of mobile computation and wireless networks we have seen the rise of  interest in new domains of computation that uses the capacity of heterogeneous computer units in a given location.
