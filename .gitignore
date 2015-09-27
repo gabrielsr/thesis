@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-*.aux
-*.bbl
-*.blg
-*.brf
-*.dvi
-*.lof
-*.log
-*.out
-*.pdf
-*.toc
-=======
+qualify.txt
+dissertacao.txt
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -119,4 +109,3 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
->>>>>>> 9ba5be145fe9527da0bedb79d44dff1f9bf946f2
