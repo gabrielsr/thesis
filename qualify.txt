@@ -12,6 +12,9 @@ A Goal-Oriented Middleware for Dependable Self-Adaptive Systems
 [a][a] [a] Alba Cristina Magalhaes Alves de MeloCIC/UnB
 25Setembro2015
 Gabriel SiqueiraRodrigues
+<<<<<<< HEAD
+>>>>>>> feature/review_9
+=======
 >>>>>>> feature/review_9
 Introduction
 In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation contexts.
