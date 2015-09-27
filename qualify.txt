@@ -4,9 +4,15 @@
  
  imagens/  
 [a][a] [a] Genaina Nunes RodriguesCIC/UnB
+<<<<<<< HEAD
 25Setembro2015
 Gabriel Siqueira Rodrigues
 A Goal-Oriented Middleware for Dependable Self-Adaptive Systems
+=======
+[a][a] [a] Alba Cristina Magalhaes Alves de MeloCIC/UnB
+25Setembro2015
+Gabriel SiqueiraRodrigues
+>>>>>>> feature/review_9
 Introduction
 In the last decade we have seen advances in the study of autonomic computing systems as an alternative to handle the crescent complexity of systems. The complexity in systems come with the need to execute in heterogeneous platforms, to run in multiple environments and handle multiple operation contexts.
 With increasing popularity of mobile computation and wireless networks we have seen the rise of  interest in new domains of computation that uses the capacity of heterogeneous computer units in a given location.
@@ -72,6 +78,7 @@ Many means have been developed of how to attain the attributes of dependability.
   Fault tolerance means to avoid service failures in the presence of faults.
   Fault removal means to reduce the number and severity of faults.
   Fault forecasting means to estimate the present number, the future incidence, and the likely consequences of faults.
+Resilient systems  are expected to continuously provide justifiably be trusted services despite changes coming from the environment or from their specifications.
 Attain Dependability at Runtime 
 To keep dependability in face of uncertainty in the deployment environment some techniques have been proposed for runtime analysis at runtime.
 Felipe et al propose a method of fault-tolerance for a scientific workflow execution in grid.
@@ -113,11 +120,13 @@ The Tropos key concepts
 The methodology adopts the i*  modeling framework, which proposes the concepts of actor, goal, task, resource and social dependency to model both the system-to-be and its organizational operating environment. In more recent publication  about the Tropos modeling framework the concept of task was renamed to plan.
 The following are the key concepts in the Tropos metamodel:
     Actor: an entity that has strategic goals and intentionality
+    Agent: physical manifestation of an actor.
     Goals: it represents actors’ strategic interests. Hard goals are goals that have clear-cut criteria for deciding whether they are satisfied or not. Softgoals have no clear-cut criteria and are normally used to describe preferences and quality-of-service demands.
     Plan: it represents, at an abstract level, a way of doing something. The execution of a plan can be a means for satisfying a goal or for satisficing (i.e. sufficiently satisfying) a softgoal.
     Resource: it represents a physical or an informational entity.
-    Dependency: its a relationship between to actors that specify that one actor (the depended) have a dependency to other actor (the dependee) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the dependum.
+    Dependency: its a relationship between two actors that specify that one actor (the depended) have a dependency to other actor (the dependee) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the dependum.
     Capability: it represents both the ability of an actor to perform some action and the opportunity of doing this.
+    Belief: it represents actor knowledge of the world.
 Multiagent systems (MAS)
 Wooldridge  define Multiagent Systems (MAS) as systems composed of multiple interacting computing elements known as agents.
 Agents are computer systems that are capable of autonomous action and interacting with other agents.
@@ -205,6 +214,9 @@ As this work it uses explicit runtime goals and make them visible and traceable.
 Different from it we use a more symmetric approach that can allow for functional
 and adaptation management.
 Günalp et al.  propose a middleware for pervasive software with autonomic capabilities. The approach is service based. It proposes a component written in a custom language and the use of components repository that allows the discovery on new sensors. The system present a support for adaptability by using policies.
+Pinto et al.  introduces a approach to support traceability through requirements specifications, system architecture models, static and dynamic software design models and implementation artifacts of agent-oriented software systems.
+The authors use a set of types of relationships and structure the traceable information in levels (external, organizational and management) to improve the semantic of requirement traceability.
+The work also includes a process to be followed during the development of the traceability model
 Methodology
 In this section we will describe our methodology. At a hight level our main activities will be: review the literature, elaborate a conceptual model, implement and evaluate a middleware, write the dissertation, write paper and viva presentation.
 The implementation will be divided in 2 phases so we can submit intermediate results to scientific conferences.

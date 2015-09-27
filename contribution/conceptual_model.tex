@@ -13,7 +13,7 @@ Or component model is build around the concept of \textit{strategy}. The strateg
   \item can be a fault tolerant proxy that combines a implementation or delegation with a fault tolerance technique.
 \end{itemize}
 
-From a goal model, each goal will originate at least a capacity and strategy. Each OR decomposition of a goal, in the goal model, should correspond to an additional strategy.
+From a goal model, each goal will originate at least a capability and strategy. Each OR decomposition of a goal, in the goal model, should correspond to an additional strategy.
 An agent in the system has a repository of strategies.
 
 The main concepts are:
@@ -32,7 +32,7 @@ The main concepts are:
   \label{fig:goalp-agent}
 \end{figure}
 
-A strategy should declare its functional interface by declaring which capability it implements. A strategy also needs to declare its dependencies as plans and capacities that it depends on. A strategy is active if all its dependencies are currently satisfied. It is inactive otherwise. A capability is satisfied if an agent has at least one active strategy that implement that capability.
+A strategy should declare its functional interface by declaring which capability it implements. A strategy also needs to declare its dependencies as plans and capabilities that it depends on. A strategy is active if all its dependencies are currently satisfied. It is inactive otherwise. A capability is satisfied if an agent has at least one active strategy that implement that capability.
 
 \subsection{Architectural Layers}
 
@@ -54,7 +54,7 @@ Dalpiaz et al. \cite{dalpiaz_runtime_2013} argue that traditional goal models ar
 
 \item \textbf{Believe}: is the model of an actor about itself and the context. Represents what the agent know.
 
-\item \textbf{Strategy Deployment}: occurs after the strategy selection, is the the binding between the strategy, its capacities dependencies and its environment dependencies.
+\item \textbf{Strategy Deployment}: occurs after the strategy selection, is the the binding between the strategy, its capabilities dependencies and its environment dependencies.
 
 \end{itemize}
 
@@ -68,7 +68,7 @@ At a low level an agent has the capability of fulfill goals. Inspired by compone
 
 After a strategy is selected it is deployed. Strategy deployment corresponds to a component binding in CBSE.
 
-The capacity <fulfill goal> and its corresponding strategy should be as follows:
+The capability <fulfill goal> and its corresponding strategy should be as follows:
 
 \begin{figure}
   \centering
@@ -102,7 +102,7 @@ And the following three strategies implement the previous 3 capabilities.
 
 \subsection{Awareness}
 
-The agent have a model of that repository that it can use for reason about its capacities, strategies and plans. The agent is also able to manage its own repository.
+The agent have a model of that repository that it can use for reason about its capabilities, strategies and plans. The agent is also able to manage its own repository.
 
 Self-awareness is provided by a set of self-awareness strategies. Example of self-aware strategies are:
 
@@ -141,7 +141,7 @@ Recovery strategies could be:
 To extend the model with adaptation capabilities we propose \textif{Virtual Strategies} (VS). VS are means of achieving a goal that is not by binding a component. We propose two kinds of VS:
 
 \begin{itemize}
-  \item \textbf{delegating strategies}. VS that allow an agent to achieve a goal by delegating it to a peer agent. When a agent discover that a peer have some capacities it creates proxy strategies in its own repository that allow it to fulfill goals by delegating to the peer.
+  \item \textbf{delegating strategies}. VS that allow an agent to achieve a goal by delegating it to a peer agent. When a agent discover that a peer have some capabilities it creates proxy strategies in its own repository that allow it to fulfill goals by delegating to the peer.
   \item \textbf{fault tolerance strategies}. VS that wrap other strategies in a fault tolerance scheme. Examples of possible fault tolerance strategies are \textit{active replication} and \textit{retry}.
 \end{itemize}
 
