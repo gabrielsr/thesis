@@ -1,0 +1,59 @@
+\section{Related Work}
+\label{sec:related}
+
+In the literature, there are proposals that tackle the problem of handling changes at system context~\cite{angelopoulos_capturing_2015}\cite{knauss_acon:_2016}. These proposals focus on the system external context, reasoning about known facts about the external managed world and how it affects the systems goals.
+Asadie et al.~\cite{asadi_goal-oriented_2011} relates Goal-Oriented requirements and feature models for the development of SPL using a goal-oriented approach. In the described approach Goal-Models complement feature-models providing a mechanism to choose a set of features from stakeholder intentions.
+Angelopoulos et al.~\cite{angelopoulos_capturing_2015} present an approach to handle context variability at three different levels: goals, behavior and architecture.
+
+
+Rainbow is a framework for self-adaptation architecture based\cite{garlan_rainbow:_2004}. It keeps an model of the architecture of the system and can be extended with rules to analysis the system behavior at runtime, find adaptation strategies and perform this changes. It separate the functional code (internal mechanisms) from adaptation code (external mechanism) in a schema called external control, influenced by control theory. \cite{garlan_software_2009}
+%Different from our proposal Rainbow don't enforce an specific architecture what could be special useful in case of retrofitting a pre-existent systems.
+Different from our proposal it isn't goal-oriented an there is no work on how to relate Rainbow components to requirements.
+
+MUSIC project provides a component-based middleware for adaptation that propose to separate the self-adaptation from business logic and delegate adaptation logic to generic middleware. As in our propose it adapts by evaluating in runtime the utility of alternatives, to chose a feasible one (e.g., the one evaluated as with highest utility)\cite{rouvoy_music:_2009}. As Rainbow, MUSIC is not goal-oriented.
+% Yet it provide means of supporting seamless configuration of component frameworks based on local, remote components and services.
+
+Salehie et al. \cite{salehie_towards_2012} propose a run-time goal model and its related action selection. It models adaptable software as a system that exposes sensors and effectors and  proposes a model consisting in Goals, Attributes and Action for selecting actions that will effect the adaptable software at runtime, giving sensed attributes.
+So the adaptation mechanism is to choose the best action given the actual attributes.
+As this work it uses explicit runtime goals and make them visible and traceable.
+Different from it we use a more symmetric approach that can allow for functional
+and adaptation management.
+%The validation is make on simulated environment.
+
+Günalp et al. \cite{gunalp_autonomic_2012}\citep{gunalp_rondo_2015} propose a middleware for pervasive software with autonomic capabilities. The approach is service based. It proposes a component written in a custom language and the use of components repository that allows the discovery on new sensors. The system present a support for adaptability by using policies.
+% Different from this work it did not present support for collaboration/delegation of goals to another peers. It don't allow for runtime incorporation of adaptation strategies, also.
+
+%% Traceability
+Pinto et al. \cite{pinto_process_2005} introduces a approach to support traceability through requirements specifications, system architecture models, static and dynamic software design models and implementation artifacts of agent-oriented software systems.
+The authors use a set of types of relationships and structure the traceable information in levels (external, organizational and management) to improve the semantic of requirement traceability.
+The work also includes a process to be followed during the development of the traceability model
+
+\cite{bencomo_dynamically_2008} uses a SPL approach. It associate a architecture variability model with a environment variability model. The environment variability is modeled as a transition system. The structural variability is responsible for the system adaptation. A configuration or a product is a set of component selected. A configuration is associated with states in the environment variability model. It focus on the adaptation in the configuration at runtime but not in the deployment. The variability model as presented do not allow for open adaptation. Mizouni at al. \citep{mizouni_framework_2014} uses a feature model associated with context requirements.
+
+Ali et~al.\cite{ali_requirements-driven_2014} explore the optimization of the deployment for a given context variability space in which the system will be deployed. It differ from this work in which we explore the variability in the computing environment itself, in terms of computing resources available to the system. We envisage that a joint usage with our approach would enrich the adaptiveness to the system to a a given environment.
+
+% GOAL-Architecture
+In this work we present a Goal-Architecture view. Such view was presented in the literature. STREAM-A\cite{pimentel_deriving_2012} create specialized agents. We create components. Components are not agents as they do not have autonomy, instead they are means of achieving a goal.
+
+% But must of these approaches ignores variability in the computing environment, the underline computing resources that form the infrastructure for executing the system software. None of them solve the problem of software development for a highly variable environment from different software providers. Our approach focus on how move components to target environment.
+
+Leite et al. \cite{ferreira_leite_user_2014} proposes and approach for automatic deployment on inter-cloud environments. It relies on abstract and concrete features models and constraint satisfaction problem solver to create a computing environment using resources distributes across various clouds. The approach relies on centralized models of the environment and not address open adaptation problem.
+
+% While package mangers such as aptitude and RPM can get components and handle some variabilities, e.g CPU architecture, they are not adaptive, so they not handle changes in the computing environment at runtime. They favor reuse at a library level. We propose reuse at component level.
+
+Table~\ref{table_related_works} characterizes and compares research related to Goald.
+
+\begin{table*}[]
+\centering
+\caption{Comparing characteristic properties of selected approaches related to Goald}
+\label{table_related_works}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+ \textbf{Work by} & \textbf{Goal Oriented} & \textbf{Adaptive Deployment} &  \textbf{Open Adaptation} \\ \hline
+Ali et al.\citep{ali_requirements-driven_2014} & Yes & No & No \\ \hline
+Gunalp et al.\citep{gunalp_rondo_2015} & No & Yes  &  No\\ \hline
+Leite et al. \citep{ferreira_leite_user_2014}  & No & Yes & No \\ \hline
+Mizouni et al. \citep{mizouni_framework_2014} & No & Yes & No \\ \hline
+Goald & Yes & Yes & Yes \\ \hline
+\end{tabular}
+\end{table*}

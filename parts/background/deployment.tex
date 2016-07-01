@@ -1,0 +1,29 @@
+\subsection{Software Deployment}
+
+Deployment is the process of get a software ready to user in a target computing environment. The deployment process can vary depending on the application domain and execution platform. In embedded platforms the deployment can consist in burn software into a chip. In consumer personal or business domain, for a desktop platform, the deployment can consist in a install process with collaboration between a person and a script that automate some steps.
+In a enterprise domain, for a web platform in can consist in coping and editing some files in a couple of machines. In many of this scenarios software will be periodically updated, frequently being unavailable in the process.
+The complexity of the software deployment can also vary in function of how much the platform is distributed (i.e. the number of nodes), how much heterogeneous it is, and how much is known about the deployment computing environment at design-time. In a dynamic and heterogeneous environment deployment can be specially complex.
+
+\label{sub:deployment}
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\linewidth]{deployment_extended_process}
+  \caption{Artifacts Deployment}
+  \label{fig:deployment_extended_process}
+\end{figure}
+
+Deployment artifacts are the artifacts needed at the deployment environment. Artifacts are build at development and build environment. Built artifacts are move for a delivery system where they can be accesses from the target environment. At deployment the artifacts are moved from the delivery system to the target computing environment. Also configuration activities can be realized.
+In the software industry, a \emph{continuous integration} environment applies automation in building and getting components ready to delivery. In such a environment if a developer push changes to a code repository components are automatically built and published to delivery system. The build process commonly evolves fetching build dependencies, compiling source code, running automated quality control (tests and static analysis) and packaging. Artifacts are published if target quality policies are met.
+%dependency manager
+Fundamental to continuous integration environments are \emph{Package Management Systems} tools. Theses tools simplify the process of manage software dependencies~\cite{spinellis_package_2012}. That tools ensure that development team members are working with same dependencies that are used in the build environment.
+%Sistemas de Gereencia de Pacotes simplificam o processo de instalacao de dependencias. Um pacote contem em um formato padronizado codigo ou codigo compilado, juntamente a sua documentacao e metadados [7]. Os metadados normalmente incluem nome, versao e especificacao de instalacao. Sistemas de Gerencia de Pacotes gerenciam a obtencao e instalac ̧a  ̃ o de dependˆ encias de forma automatizada, com o m ́ınimo de interac ̧ a  ̃o com o usu ́ ario e consequentemente favorecem a reprodutibilidade.
+%build manager
+\emph{Continuous delivery} extends the continuous integration environment, moving components from the delivery system to a target computing environment with none or minimum human intervention.
+In modern enterprise environments the deployment activity has seen significant changes with popularization of use of virtual machines and cloud computing.
+%package managers, virtual machine, middleware support
+
+Devops\cite{bang_grounded_2013} is a movement in software industry that advocates that all configuration steps needed to configure the computing environment should be written as code (\emph{infrastructure as code}), and follow best practices of software development. That movement favor the documentation, reproducibility, automation and scalability.
+%Tools such as Puppet and Chef are used by devopers to manage infrastructure.
+Devops allow for management of scalable computing environments. It can offer significant advantage for enterprise environment in relation to manual approaches in which system administrators configure the system by manually following configuration steps.
+
+Current continuous integration/delivery and devops practices are not sufficient for highly dynamic and heterogeneous target computing environments; they requires that highly specialized system administrators to analyze the environment and create build pipelines and create environment configuration descriptors.

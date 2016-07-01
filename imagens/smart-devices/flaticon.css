@@ -1,0 +1,316 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}.flaticon-computer175:before {
+	content: "\e000";
+}
+.flaticon-computer176:before {
+	content: "\e001";
+}
+.flaticon-computer177:before {
+	content: "\e002";
+}
+.flaticon-console11:before {
+	content: "\e003";
+}
+.flaticon-console12:before {
+	content: "\e004";
+}
+.flaticon-console13:before {
+	content: "\e005";
+}
+.flaticon-console14:before {
+	content: "\e006";
+}
+.flaticon-controller2:before {
+	content: "\e007";
+}
+.flaticon-game59:before {
+	content: "\e008";
+}
+.flaticon-gamepad8:before {
+	content: "\e009";
+}
+.flaticon-htc1:before {
+	content: "\e00a";
+}
+.flaticon-htc:before {
+	content: "\e00b";
+}
+.flaticon-ipad30:before {
+	content: "\e00c";
+}
+.flaticon-ipad31:before {
+	content: "\e00d";
+}
+.flaticon-ipad32:before {
+	content: "\e00e";
+}
+.flaticon-ipad33:before {
+	content: "\e00f";
+}
+.flaticon-ipad34:before {
+	content: "\e010";
+}
+.flaticon-iphone14:before {
+	content: "\e011";
+}
+.flaticon-iphone15:before {
+	content: "\e012";
+}
+.flaticon-iphone16:before {
+	content: "\e013";
+}
+.flaticon-iphone17:before {
+	content: "\e014";
+}
+.flaticon-iphone18:before {
+	content: "\e015";
+}
+.flaticon-iphone19:before {
+	content: "\e016";
+}
+.flaticon-iphone20:before {
+	content: "\e017";
+}
+.flaticon-iphone21:before {
+	content: "\e018";
+}
+.flaticon-iphone22:before {
+	content: "\e019";
+}
+.flaticon-iphone23:before {
+	content: "\e01a";
+}
+.flaticon-iphone24:before {
+	content: "\e01b";
+}
+.flaticon-iphone25:before {
+	content: "\e01c";
+}
+.flaticon-ipod16:before {
+	content: "\e01d";
+}
+.flaticon-ipod17:before {
+	content: "\e01e";
+}
+.flaticon-laptop124:before {
+	content: "\e01f";
+}
+.flaticon-laptop125:before {
+	content: "\e020";
+}
+.flaticon-laptop126:before {
+	content: "\e021";
+}
+.flaticon-laptop127:before {
+	content: "\e022";
+}
+.flaticon-mm3:before {
+	content: "\e023";
+}
+.flaticon-mobile phone10:before {
+	content: "\e024";
+}
+.flaticon-mobile phone11:before {
+	content: "\e025";
+}
+.flaticon-mobile phone12:before {
+	content: "\e026";
+}
+.flaticon-mobile phone13:before {
+	content: "\e027";
+}
+.flaticon-mobile phone14:before {
+	content: "\e028";
+}
+.flaticon-mobile phone2:before {
+	content: "\e029";
+}
+.flaticon-mobile phone3:before {
+	content: "\e02a";
+}
+.flaticon-mobile phone4:before {
+	content: "\e02b";
+}
+.flaticon-mobile phone5:before {
+	content: "\e02c";
+}
+.flaticon-mobile phone6:before {
+	content: "\e02d";
+}
+.flaticon-mobile phone7:before {
+	content: "\e02e";
+}
+.flaticon-mobile phone8:before {
+	content: "\e02f";
+}
+.flaticon-mobile phone9:before {
+	content: "\e030";
+}
+.flaticon-monitor90:before {
+	content: "\e031";
+}
+.flaticon-mp314:before {
+	content: "\e032";
+}
+.flaticon-mp47:before {
+	content: "\e033";
+}
+.flaticon-mp48:before {
+	content: "\e034";
+}
+.flaticon-mp49:before {
+	content: "\e035";
+}
+.flaticon-nintendo10:before {
+	content: "\e036";
+}
+.flaticon-notebook76:before {
+	content: "\e037";
+}
+.flaticon-notebook77:before {
+	content: "\e038";
+}
+.flaticon-phone391:before {
+	content: "\e039";
+}
+.flaticon-phone392:before {
+	content: "\e03a";
+}
+.flaticon-phone393:before {
+	content: "\e03b";
+}
+.flaticon-phone394:before {
+	content: "\e03c";
+}
+.flaticon-phone395:before {
+	content: "\e03d";
+}
+.flaticon-phone396:before {
+	content: "\e03e";
+}
+.flaticon-phone397:before {
+	content: "\e03f";
+}
+.flaticon-phone399:before {
+	content: "\e040";
+}
+.flaticon-ps47:before {
+	content: "\e041";
+}
+.flaticon-samsung1:before {
+	content: "\e042";
+}
+.flaticon-samsung:before {
+	content: "\e043";
+}
+.flaticon-screen61:before {
+	content: "\e044";
+}
+.flaticon-screen63:before {
+	content: "\e045";
+}
+.flaticon-smartphone36:before {
+	content: "\e046";
+}
+.flaticon-smartphone37:before {
+	content: "\e047";
+}
+.flaticon-smartphone38:before {
+	content: "\e048";
+}
+.flaticon-smartphone39:before {
+	content: "\e049";
+}
+.flaticon-smartphone40:before {
+	content: "\e04a";
+}
+.flaticon-smartphone41:before {
+	content: "\e04b";
+}
+.flaticon-tablet100:before {
+	content: "\e04c";
+}
+.flaticon-tablet101:before {
+	content: "\e04d";
+}
+.flaticon-tablet102:before {
+	content: "\e04e";
+}
+.flaticon-tablet98:before {
+	content: "\e04f";
+}
+.flaticon-tablet99:before {
+	content: "\e050";
+}
+.flaticon-touch screen3:before {
+	content: "\e051";
+}
+.flaticon-touch screen4:before {
+	content: "\e052";
+}
+.flaticon-touch screen5:before {
+	content: "\e053";
+}
+.flaticon-video game1:before {
+	content: "\e054";
+}
+.flaticon-video game2:before {
+	content: "\e055";
+}
+.flaticon-video game3:before {
+	content: "\e056";
+}
+.flaticon-video game4:before {
+	content: "\e057";
+}
+.flaticon-videogame4:before {
+	content: "\e058";
+}
+.flaticon-videogame5:before {
+	content: "\e059";
+}
+.flaticon-videogame6:before {
+	content: "\e05a";
+}
+.flaticon-videogame7:before {
+	content: "\e05b";
+}
+.flaticon-video game:before {
+	content: "\e05c";
+}
+.flaticon-windows37:before {
+	content: "\e05d";
+}
+.flaticon-windows38:before {
+	content: "\e05e";
+}
+.flaticon-windows39:before {
+	content: "\e05f";
+}
+.flaticon-windows40:before {
+	content: "\e060";
+}
+.flaticon-windows41:before {
+	content: "\e061";
+}
+.flaticon-xbox22:before {
+	content: "\e062";
+}
+.flaticon-xbox23:before {
+	content: "\e063";
+}

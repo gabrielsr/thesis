@@ -1,0 +1,55 @@
+% Proposal (3.5p)
+\section{Proposed Method}
+\label{sec:proposal}
+
+% General discussion
+An autonomous deployment platform should maximize the opportunity to make goals achievable by preparing the system for a broad range of context variability space.
+
+
+This section describes our method to tackle the challenges presented in~(\ref{sec:challenges}). It consists in offline activities for development of artifacts keeping trace to user goals. And in online support to autonomous handle deployment.
+
+As offline activities, components are defined from a CGM using appropriate patterns. These components are packaged in artifacts together with metadata that describe what goals the packaged component can achieve, its context restrictions and dependencies.
+
+At runtime the adaptation platform receive what goals the user wants to achieve in that environment and look for artifacts that allows it achieve its goals. The platform them assemble and architecture that allows the goal achievement.
+
+\begin{figure*}[!htb]
+  \centering
+  \includegraphics[width=0.8\linewidth]{transformations}
+  \caption{Transformations: (1) components definition; (2) packaging; (3) deployment}
+\label{fig:overview}
+\end{figure*}
+
+
+Relate Architecture with Requirements.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\linewidth]{jig-saw}
+  \caption{Proposal Overview}
+\label{fig:overview}
+\end{figure}
+
+
+
+\subsection{Concepts}
+
+\input{parts/proposal/concepts}
+\input{parts/proposal/metamodel}
+
+\subsection{Off-line}
+\label{sec:offline}
+\input{parts/proposal/process}
+
+\input{parts/proposal/actors}
+
+\subsection{On-line}
+\label{sec:online}
+
+
+\input{parts/proposal/request}
+
+\input{parts/proposal/manager}
+
+\input{parts/proposal/architecture}
+
+\input{parts/proposal/deployment_planning}

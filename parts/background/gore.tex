@@ -1,0 +1,51 @@
+\section{Goal Modeling}
+Goal Oriented Requirements Engineering (GORE) approaches have gained special attention as a technique to specify self-adaptive systems \cite{morandini_goal-oriented_2009}.
+Goals capture, the various objectives the system under consideration should achieve.
+
+Tropos\cite{bresciani_tropos:_2004} is a methodology for developing multi-agent systems that uses goal models for requirement analyzes. Tropos encompasses the software development phases, from Early Requirements to Implementation and Testing.
+
+\subsubsection{The Tropos key concepts}
+
+Tropos use a modeling framework based on i* \cite{yu_modelling_1996} which proposes the concepts of actor, goal, plan, resource and social dependency to model both the system-to-be and its organizational operating environment \cite{bresciani_tropos:_2004} \cite{morandini_tropos_2014}.
+
+Key concepts in the Tropos metamodel are:
+
+\begin{description}%[leftmargin=6em,style=nextline]
+  \item[Actor] an entity that has strategic goals and intentionality
+
+  \item[Agent] physical manifestation of an actor.
+
+  \item[Goals] it represents actors’ strategic interests. \emph{Hard goals} are goals that have clear-cut criteria for deciding whether they are satisfied or not. \emph{Softgoals} have no clear-cut criteria and are normally used to describe preferences and quality-of-service demands.
+
+  \item[Plan] it represents, at an abstract level, a way of doing something. The execution of a plan can be a means for satisfying a goal or for \emph{satisficing} (i.e. sufficiently satisfying) a softgoal.
+
+  \item[Resource]  it represents a physical or an informational entity.
+
+  \item[Dependency] it is a relationship between two actors that specify that one actor (the \emph{depended}) have a dependency to another actor (the \emph{dependee}) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the \emph{dependum}.
+
+  \item[Capability] it represents both the \emph{ability} of an actor to perform some action and the \emph{opportunity} of doing this.
+
+  %Domain assumption
+
+  %\item[Belief] it represents actor knowledge of the world.
+
+\end{description}
+
+
+In Tropos requirements are represented as actors goals that are successively refined by AND/OR refinements. There are usually different ways to achieve a goal, and this is captured in goal models through multiple OR refinements.
+
+% Traditional goal models are design-time artifacts. These models are not  sufficiently detailed to reason about system execution at runtime. A design-time goal model (DGM), for example, define what plans/functions the system shall implement, but do not capture information on the status of requirements as the system is executing, nor on the history of an execution~\cite{borgida_requirements_2013}.
+
+% Goal models are a traditionally a requirements tool, as such it must capture the space of the solution. Many works relates goal models with another aspects such as configuration, runtime execution, components
+
+% \subsubsection{Goals}
+%
+% \begin{itemize}
+%   \item Service
+%   \item Achieve
+% \end{itemize}
+%
+
+\subsubsection{Contextual Goal Model}
+
+Contextual Goal Model, proposed in~\cite{ali_goal-based_2010}, captures the relation between system goals and the changes into the environment that surround it. Context goal models extends goal models with context information. Goals and context is related by inserting context conditions on variation points of the goal model. Context Analysis is a technique that allows to derive a formula in verifiable peaces of information (facts). Facts are directed verified by the system, while a formula represents whether a context holds.
