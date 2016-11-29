@@ -13,17 +13,18 @@ work.
 
 % In the literature, there are proposals that tackle the problem of handling changes at system context~\cite{knauss_acon:_2016}. These proposals focus on the system external context, reasoning about known facts about the external managed world and how it affects the systems goals.
 
-Bencomo et al.~\cite{bencomo_dynamically_2008} associate an architecture variability model with an environment variability model. The environment variability is modeled as a transition system. The structural variability is responsible for the system adaptation. A configuration or a product is a set of component selected. A configuration is associated with states in the environment variability model. Unlike our approach, their focus is on the adaptation in the configuration at runtime but not in the deployment. \citep{mizouni_framework_2014} uses a feature model associated with context requirements.
+Bencomo et al.~\cite{bencomo_dynamically_2008} uses a SPL approache to adaptation. It  associates an architecture variability model with an environment variability model. The environment variability is modeled as a transition system. The structural variability is responsible for the system adaptation. A configuration or a product is a set of component selected. A configuration is associated with states in the environment variability model. Unlike our approach, their focus is on the adaptation in the configuration at runtime but not in the deployment. \citep{mizouni_framework_2014} uses a feature model associated with context requirements.
 
 %In order to allow a decentralized evolution of the system, Goalp do not rely on a centralized model created at design-time. Instead, metadata present into artifacts contained into an artifact repository is used. This allows third party developers to provide software components with different restrictions of the original developer, creating more variability and in consequence, allowing the application to be executed in a more broad range of devices.
-Ferreira et al.~\cite{ferreira_leite_user_2014} proposes an approach for automatic deployment on inter-cloud environments. It relies on abstract and concrete features models and constraint satisfaction problem solver to create a computing environment using resources distributed across various clouds. The approach is specific to cloud environments and require instantiating at design-time a model with knowledge about the environment. It also strongly depends on design-time created scripts to realize the deployment of an application, which limits the autonomy of the approach, specially in a unknown environment.
+Leite et al.~\cite{ferreira_leite_user_2014} proposes an approach for automatic deployment on inter-cloud environments. It relies on abstract and concrete features models and constraint satisfaction problem solver to create a computing environment using resources distributed across various clouds.
+It integrates a self-healing schema for cloud deployment based on which virtual machines in the cloud are monitored and in case of failure the machine can be
+restarted or terminated and them a new one created.
+The approach is specific to cloud environments and require instantiating at design-time a model with knowledge about the environment.
+It also strongly depends on design-time created scripts to realize the deployment of an application, which limits the autonomy of the approach, specially in a unknown environment.
 
 Gunalp et al.~\citep{gunalp_rondo_2015} presents an approach for automatic deployment, in which the deployment specialist specifies the system deployment in terms of resources and desired target states of this resources. The approach follow preset strategies to keep the managed software resources in the specified states. They uses a low level model to driven the adaptation (target states and strategies to change states). Differently, our approach uses a goal-model with is a more abstract model.
 
 Angelopoulos et al.~\cite{angelopoulos_capturing_2015} present an approach to handle  variability at three different dimensions: goals, behavior and architecture. Variability can occur at goals dimension as an OR-refinement or context selection; at behavior dimension as different plans flows; and in architecture with variability of components and implementations. However, their approach does handle variability at deployment.
-
-
-
 
 % Asadie et al.~\cite{asadi_goal-oriented_2011} relates Goal-Oriented requirements and feature models for the development of SPL using a goal-oriented approach. In the described approach Goal-Models complement feature-models providing a mechanism to choose a set of features from stakeholder intentions.
 
