@@ -2,6 +2,13 @@
 \section{Proposed Approach}
 \label{sec:proposal}
 
+
+% Gena: Are you really following this approach???
+%The rationale behind our approach is the following: an external agent (user or another system) creates a \emph{deployment request}, with goals that should be achieved in a given computing environment. A deployment agent, is responsible to handle that \emph{deployment request} autonomously. The deployment agent is capable of discover available resources in a computing environment it manages. That knowledge about the computing environment is the \emph{context} for the target deployment. The deployment agent is also capable of choosing artifacts from a repository that allows the satisfaction of the deployment request. The process of choosing the correct set of artifacts to allow the deployment request satisfaction is the \emph{deployment planning}.
+
+% General discussion
+Following the model proposet by Andersson et al.\cite{andersson_software_2013} for adaptive software development process, we divide our approach into \emph{offline} and \emph{online} activities. In this work, the \emph{offline} activities are conducted by software engineers, and result in development and publishing of software components. The \emph{online} activities are autonomously executed in target environment, and result in the deployment of the system. Figure~\ref{fig:overview} presents an overview of the process.
+
 \begin{figure*}[!htb]
   \centering
   \includegraphics[width=1\linewidth]{transformations}
@@ -9,11 +16,6 @@
 \label{fig:overview}
 \end{figure*}
 
-% Gena: Are you really following this approach???
-%The rationale behind our approach is the following: an external agent (user or another system) creates a \emph{deployment request}, with goals that should be achieved in a given computing environment. A deployment agent, is responsible to handle that \emph{deployment request} autonomously. The deployment agent is capable of discover available resources in a computing environment it manages. That knowledge about the computing environment is the \emph{context} for the target deployment. The deployment agent is also capable of choosing artifacts from a repository that allows the satisfaction of the deployment request. The process of choosing the correct set of artifacts to allow the deployment request satisfaction is the \emph{deployment planning}.
-
-% General discussion
-Following the model proposet by Andersson et al.\cite{andersson_software_2013} for adaptive software development process, we divide our approach into \emph{offline} and \emph{online} activities. In this work, the \emph{offline} activities are conducted by software engineers, and result in development and publishing of software components. The \emph{online} activities are autonomously executed in target environment, and result in the deployment of the system.
 
 In the artifact creation process, components are mapped from the system CGM using patterns. These components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies. Next, the artifacts are put into a repository. As the result of the offline activities, artifacts are created that implement a system specified by a goal model.
 
@@ -188,6 +190,64 @@ Artifacts can have be of 3 types:
 
 \end{description}
 
-\textcolor{red}{As an architecture style, I do suggest showing the interfaces and connectors among the metaclasses to make visually clear and refer in the explanation.}
-
 These types of components has not different treatment by the deployment planning but following it will increase the flexibility of deployment.
+
+
+\section{The Process}
+
+\subsubsection{Roles}
+The proposed process considers three roles: users, requirements engineers and software architects.
+Figure~\ref{fig:process_roles} summarize the collaboration between the roles.
+
+ \begin{figure}[!htb]
+   \centering
+   \includegraphics[width=.4\linewidth]{process_roles}
+   \caption{Roles collaboration}
+ \label{fig:process_roles}
+ \end{figure}
+
+\begin{description}
+  \item[User]
+  This role has access to a particular computing environment and want to achieve some goals there.
+  \item[Requirements Engineer]
+  Is responsible to translate users goals to a contextual goal model. Also is responsible to analyze the different contexts that the system is meant to operate and how it affects the goals.
+  \item[Architect] Architect project the software architecture such as to permit variability of deployment.
+  From the point of view of dynamic heterogeneous computing environments, the focus is to create interfaces for components that can allow for goal achievements using different computing resources.
+
+\end{description}
+
+
+
+\subsubsection{Activities}
+
+Figure~\ref{fig:deployment_process_flow} describe the development process activities.
+
+\label{sub:Proposal}
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\linewidth]{deployment_process_flow}
+  \caption{Deployment Process Activities}
+\label{fig:deployment_process_flow}
+\end{figure}
+
+\subsubsection{Goal Modeling}
+This phase is coordinated by a requirement engineer with participation of a domain specialist, possibly the user.
+A process such as TROPOS can be used. The output of this phase is a goal model.
+Here, the goal model assumes a central role in the software development process. The goal model besides define the space of the solution, also works as common language. The goal model formalize the domain knowledge. It defines a common language between user and developers that will allow software deployment driven by user goals.
+
+
+\subsubsection{Context Goal Modeling}
+In this phase, the Goal model should be annotated with \emph{context conditions} related with the computing environment. That analysis is a context analysis and could benefit of the process described in~\cite{ali_goal-based_2010}. The requirements engineer should use knowledge about the computing resources that may be available at the computing environment.
+
+
+\subsubsection{Component Analysis}
+Software engineer should identify variability points.
+Variability points in the contextual goal model are points where goals can be achieve with different strategies, each one having different context conditions.
+Component interfaces are created following the guidelines described in Section~\ref{sec:rules}. The input and output of components are defined.
+
+Also at this phase, it should be defined the sensors needed to evaluate facts about the computing environment.
+
+\subsubsection{Component Development and Packaging}
+
+Component development includes the cycle coding, build and test of software components.
+The component package in the standard packaging schema is an artifact and should be put in a delivery system.

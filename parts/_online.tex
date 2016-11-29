@@ -1,12 +1,26 @@
 
-\section{Deployment Planning}
-\label{sec:planning}
-
-The deployment planning is a online part of the presented approach. It is executed in the target environment. It is conducted autonomously, using a metamodel and algorithm to come up with a deployment plan.
+The deployment planning is a online part of the presented approach, executed in the target environment. It is conducted autonomously, using a metamodel and algorithm to come up with a deployment plan.
 
 \begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.95\linewidth]{metamodel}
+  \includegraphics[width=0.5\linewidth]{deployment_actors}
+  \caption{Goald Deployment Actors}
+\label{fig:deployment_actors}
+\end{figure}
+
+Figure~\ref{fig:deployment_actors} depicts the deployment execution. A user interested in using a computing environment to achieve a set of goals submits to this environment which goals it want to achieve in the form of a deployment request.
+
+Then, the system introspect about available computing resources and artifacts present in repository and plan the deployment, generating a deployment plan that is a selection of artifacts that can allow for the goals achievement in the available computing environment. The deployment is them executed by fetching the appropriate artifacts from the repositories.
+
+
+\section{Deployment Planning}
+\label{sec:planning}
+
+
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.5\linewidth]{metamodel}
   \caption{The Goalp Deployment metamodel}
   \label{fig:metamodel}
 \end{figure}
@@ -24,6 +38,13 @@ Note that components do not appear here in this model. Components are architectu
 Artifacts are \emph{deployable} for an agent if all its context conditions and dependencies are satisfiable.
 Goals are \emph{achievable} if artifacts that provide that goal are deployable, so there is a \emph{deployment plan} that is able to satisfy this goal.
 
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=.6\linewidth]{dependency_graph}
+  \caption{Dependency Graph}
+  \label{fig:dependency_graph}
+\end{figure}
+
 % \begin{figure}[!htb]
 %   \centering
 %   \includegraphics[width=.6\linewidth]{dependency_graph}
@@ -35,7 +56,7 @@ Goals are \emph{achievable} if artifacts that provide that goal are deployable, 
 
 To come up with a deployment plan for a given a given deployment request and context we present the Algorithm~\ref{plan_method}. It implements the \emph{Agent}'s \emph{doPlanDeployment} method (Figure~\ref{fig:metamodel}).
 
-\begin{algorithm}
+\begin{algorithm}[!htb]
  \KwIn{DeploymentRequest request}
  \KwResult{DeploymentPlan plan}
   var resultingPlan $\leftarrow$ new DeploymentPlan() \;
