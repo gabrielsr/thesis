@@ -2,14 +2,11 @@
 % \section{Related Work}
 % \label{sec:related}
 
-In this chapter, we will highlight the most closely related
-work.
-%Before we describe Goalp in detail, we review relate work and the background terms necessary to understand our approach.
-
+In this chapter, we will highlight the our most closely related work. Table~\ref{table_related_works} summarize research related to Goalp.
 
 % Other approaches for context-aware systems threat context-requirements as a tupla (context, requirement)\cite{knauss_acon:_2016}. These approaches handle the runtime of a context-requirements. When the context is valid the requirements apply. In this work, we handle the deployment view. Therefore, we need a different view: if the context is possible, the requirement should be satisfiable.
 
-% Research in software configuration and deployment, has focused on respond to dynamisms in a known environment. This could be costs and failures in a cloud environmet \cite{ferreira_leite_user_2014}, changes in managed resources \citep{gunalp_rondo_2015}, and changes in the context of operation \cite{bencomo_dynamically_2008}.
+
 
 % In the literature, there are proposals that tackle the problem of handling changes at system context~\cite{knauss_acon:_2016}. These proposals focus on the system external context, reasoning about known facts about the external managed world and how it affects the systems goals.
 
@@ -38,12 +35,10 @@ It differ from our work in which we explore the context of the computing environ
 % Must of these approaches ignores variability in the computing environment, the underline computing resources that form the infrastructure for executing the system software. None of them solve the problem of software development for a highly variable environment from different software providers.
 % Our approach focus on how move components to target environment.
 
-In the industry, package managers such as aptitute/apt-get(Debian based Linux distributions), yum (Red Hat based Linux distributions), Homebrew (MacOS) and Chocolatey (Windows) are capable of solve dependencies and deploy software. They require that a managed application declare their dependencies by name and version. In our approach, differently, the dependencies are declared in terms of interfaces for which implementations are required, not specific implementations. For example, in our case study, the advisor root strategy declares that it requires any artifact that provides \emph{Get Position} goal achievement, but not a specific artifact is required.
+Package managers such as aptitute/apt-get are capable of solve dependencies and deploy software. They require that a managed application declare their dependencies by name and version. In our approach, differently, the dependencies are declared in terms of interfaces for which implementations are required, not specific implementations. For example, in our case study, the advisor root strategy declares that it requires any artifact that provides \emph{Get Position} goal achievement, but not a specific artifact is required.
 This requirement declaration, in terms of interface, associated with context conditions allow for a more flexible dependency resolution at deployment-time.
 
-Table~\ref{table_related_works} characterizes and compares research related to Goalp.
-
-\begin{table*}[t]
+\begin{table*}[!ht]
 \centering
 \caption{Comparing characteristic properties of selected approaches related to Goalp}
 \label{table_related_works}
@@ -62,6 +57,7 @@ Gunalp et al.\citep{gunalp_rondo_2015} & No & Yes  &  No\\ \hline
 Goalp & Yes & Yes & Yes \\ \hline
 \end{tabular}
 \end{table*}
+
 
 
 % While package mangers such as aptitude and RPM can get components and handle some variabilities, e.g CPU architecture, they are not adaptive, so they not handle changes in the computing environment at runtime. They favor reuse at a library level. We propose reuse at component level.
