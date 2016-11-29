@@ -31,12 +31,18 @@ Rainbow\cite{garlan_rainbow:_2004} is a framework for self-adaptation architectu
 
 MUSIC\cite{rouvoy_music:_2009} project provides a component-based middleware for adaptation that propose to separate the self-adaptation from business logic and delegate adaptation logic to generic middleware. As in our propose it adapts by evaluating in runtime the utility of alternatives, to chose a feasible one (e.g., the one evaluated as with highest utility).
 
-In order to allow dynamically component binding at runtime we can make use of an existing component model, such as OSGi platform\cite{the_osgi_alliance_osgi_2007}. OSGi is a Java centric platform that allows dynamic bind and unbind of components, usually named bundles. Ferreira et al.\cite{ferreira_-osgi:_2012} proposed a framework for adaptation based on OSGi.
+Flashmob~\cite{sykes_flashmob:_2011} is an approach for distributed self-assembly. Different from MUSIC and Rainbow, it handles component-based adaptation in a distributed environment. The self-assembly can be described as: given a set of available components (with various functional and non-functional properties), and a configuration of components which are already running, find a new configuration which works (better) in the changed execution environment (including hardware),
+meets new user requirements or takes account of new component implementations~\cite{sykes_flashmob:_2011}. Flashmod uses a three-layer model: goals, management and components proposed by Kramer and Magee~\cite{kramer_self-managed_2007}, extending it to allow distributed agreement in a given configuration.
+
+OSGi\cite{the_osgi_alliance_osgi_2007} is a Java centric platform that allows dynamic bind and unbind of components, usually named bundles. Ferreira et al.\cite{ferreira_-osgi:_2012} proposed a framework for adaptation based on OSGi.
 
 \subsection{From Goals to Components}
 
-Lamsweerde \cite{van_lamsweerde_system_2003} present a method for derive architecture from KAOS goal model. First an abstract draft is generated from functional goals. Secondly, the architecture is refined to meet non-functional requirements such as cohesion.   the relation between software requirements and components.
+Lamsweerde \cite{van_lamsweerde_system_2003} present a method for derive architecture from KAOS goal model. First an abstract draft is generated from functional goals. Secondly, the architecture is refined to meet non-functional requirements such as cohesion.
 
+% Penserini \citep{penserini_design_2007} propose a method for generate agents from goal models.
+% Morandini \cite{morandini_towards_2008}
+% Tropos - Jadex-BDI}
 Pimentel et al. \cite{pimentel_deriving_2012} present a method  using i* models to produce architectural models in Acme. If focus in he development of adaptive systems. First, it transforms a i* model into a modular i* model by means of horizontal transformation. Secondly, it creates an architecture model from the i* modularized model by means of vertical transformation. Architectural design models is made easier by the
 presence of actor and dependency concepts.
 

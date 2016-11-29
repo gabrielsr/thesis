@@ -32,12 +32,9 @@ Key concepts in the Tropos metamodel are:
 
 In Tropos requirements are represented as actors goals that are successively refined by AND/OR refinements. There are usually different ways to achieve a goal, and this is captured in goal models through multiple OR refinements.
 
+Goal models are a traditionally a requirements tool, as such it must capture the space of the solution and are not sufficiently detailed to reason about system execution and do not capture information on the status of requirements as the system is executing, nor on the history of an execution~\cite{borgida_requirements_2013}. These traditional goal model can be named design-time goal model (DGM)~\cite{dalpiaz_runtime_2013}.
+More recent works relates goal models with another more dynamically aspects such of a system, such as configuration~\cite{yu_goals_2008}, behavior~\cite{dalpiaz_runtime_2013},  probability of achieving success~\cite{mendonca_dependability_2015} and achievability of goals~\cite{pontes_guimaraes_pragmatic_2015}. The Jadex is a platform that provides a number of features that facilitate development of mult-agent systems~\cite{braubach_developing_2012}.
+
 \subsubsection{Contextual Goal Model}
 
 Contextual Goal Model, proposed in~\cite{ali_goal-based_2010}, captures the relation between system goals and the changes into the environment that surround it. Context goal models extends goal models with context information. Goals and context is related by inserting context conditions on variation points of the goal model. Context Analysis is a technique that allows to derive a formula in verifiable peaces of information (facts). Facts are directed verified by the system, while a formula represents whether a context holds.
-
-\subsubsection{Goals and Behaviour}
-
-Goal models are a traditionally a requirements tool, as such it must capture the space of the solution. Also, the traditional goal model are not sufficiently detailed to reason about system execution at runtime. A design-time goal model (DGM) define what plans/functions the system shall implement, but do not capture information on the status of requirements as the system is executing, nor on the history of an execution~\cite{borgida_requirements_2013}.
-
- More recent works relates goal models with another aspects such as behavior, configuration, runtime execution and components.
