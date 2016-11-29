@@ -9,24 +9,41 @@
 \usepackage{verbatim} %% multiline comments
 \usepackage{dirtytalk} %% Quotes
 
+\usepackage{epsfig}
+
+\usepackage{listings}
+\usepackage{packages/tikz-uml}
+
+%% Algorithm
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{float}
+\newfloat{algorithm}{t}{lop}
+\floatname{algorithm}{Algorithm}
+%% End Algorithm
+
+%% definitions
+\usepackage{amsmath}
+\newtheorem{thm}{Theorem} % reset theorem numbering for each chapter
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+%% end definitions
+
 \graphicspath{ {imagens/} } % path to images
 
 %\bibpunct[; ]{(}{)}{,}{a}{}{;}%muda colchetes para parenteses
 
 % definicoes previas do documento
 %\selectlanguage{brazil}
-\title{A Run-Time Goal Model for Self-Adaptation in Open-Systems}
+\title{Autonomic Goal-Driven Deployment in Heterogeneous Computing Environments}
 
 \orientador[a]{\prof[a] \dr[a] Genaina Nunes Rodrigues}{CIC/UnB}
 
 \coordenador[a]{\prof[a] \dr[a] Alba Cristina Magalhaes Alves de Melo}{CIC/UnB}
 
-\diamesano{9}{Junho}{2016}
+\diamesano{16}{Dezembro}{2016}
 
 
 \membrobanca{\prof }{CIC/UnB}
-
-\membrobanca{\prof }{CIC/UnB}
+\membrobanca{\prof Raian Ali}{Bournemouth University}
 
 \autor{Gabriel Siqueira}{Rodrigues}
 
@@ -54,11 +71,13 @@
 
 \begin{abstract}%\textbf{}
 
-  In recent years we see a growing availability of devices with computer capabilities. With this come an opportunity for applications that use a number of heterogeneous computer units in an opportunistic way. The development of such application are currently challenging.
+  \input{parts/abstract}
+
+  % In recent years we see a growing availability of devices with computer capabilities. With this come an opportunity for applications that use a number of heterogeneous computer units in an opportunistic way. The development of such application are currently challenging.
 
   % In a non-adaptive computer systems the computer is static linked to its function in the system.  To achieve a hight level of dependability in such systems one would either rely on right dependable units or on a hight level of redundancy. Both this solutions genearly leads to expensive systems. Appling self-adaptiveness is possible to a system tolerate to failures without a proibit level of redundancy. allow the development of dependable multi-processor heterogeneous systems in face of not dependable units with a lower level of redundancy.
 
-  Our approach is a middleware that permit uses a  multi-agent runtime goal model, in witch agents can accomplish goals by selecting strategies in its local strategies repository, evaluating them by a utility function. On top of this we aim at easy the development of adaptable open-systems applications, allowing runtime discovery of peers and opportunistically sharing tasks between them, easy integration of new functional strategies and easy integration of new adaptation strategies.
+  % Our approach is a middleware that permit uses a  multi-agent runtime goal model, in witch agents can accomplish goals by selecting strategies in its local strategies repository, evaluating them by a utility function. On top of this we aim at easy the development of adaptable open-systems applications, allowing runtime discovery of peers and opportunistically sharing tasks between them, easy integration of new functional strategies and easy integration of new adaptation strategies.
 
 \end{abstract}
 
@@ -70,14 +89,18 @@
 \textual
 
 \chapter{Introduction}
-\input{intro/introduction}
-\input{intro/problem_definition}
-\input{intro/proposal}
-\input{intro/contributions}
-\input{intro/plan_for_completion}
+\input{parts/introduction}
+
+%\input{intro/problem_definition}
+%\input{intro/proposal}
+%\input{intro/contributions}
+%\input{intro/plan_for_completion}
+
+%\input{parts/case_study/filling_station_advisor}
 
 \chapter{Background}
 
+\input{parts/background/_background}
 %\input{background/self_adaptability}
 %\input{background/architecture}
 %\input{background/cloud}
@@ -93,14 +116,26 @@
 %\input{related/component_based}
 %\input{related/dependability}
 %\input{related/ecs}
-\input{related/related}
+%\input{related/related}
 
-\input{contribution/conceptual_model}
+%\input{contribution/conceptual_model}
+\input{parts/related}
+
+\chapter{Filling Station Advisor}
+\input{parts/case_study/filling_station_advisor}
+
+\chapter{From Goals To Artifacts}
+\input{parts/_offline}
+
+\chapter{Autonomic Deployment Planning}
+\input{parts/_online}
 
 %\input{content}
-%\chapter{Evaluation}
+\chapter{Evaluation}
+\input{parts/evaluation}
 %\input{end/evaluation}
-%\chapter{Conclusion}
+\chapter{Conclusion}
+\input{parts/conclusion}
 %\input{end/conclusion}
 
 \postextual

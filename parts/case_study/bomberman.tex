@@ -1,0 +1,22 @@
+Example:
+Bomberman
+
+PlayBomberman
+Mandatory:BombermanModel
+BombermanVideo
+  AwReq: framerate > 30
+
+BombermanControl
+  AwReq: latency < 300ms
+
+Optional:BombermanAudio
+
+Local Logic
+  Awreq: battery --, latency +
+
+Remote Logic
+  Awreq: battery +, latency -
+
+
+
+Repo:BombermanControlKeyboard, BombermanControlJoystick

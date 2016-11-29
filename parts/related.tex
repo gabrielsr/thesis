@@ -1,0 +1,66 @@
+% Related Work(0.5p)
+% \section{Related Work}
+% \label{sec:related}
+
+In this chapter, we will highlight the most closely related
+work.
+%Before we describe Goalp in detail, we review relate work and the background terms necessary to understand our approach.
+
+
+% Other approaches for context-aware systems threat context-requirements as a tupla (context, requirement)\cite{knauss_acon:_2016}. These approaches handle the runtime of a context-requirements. When the context is valid the requirements apply. In this work, we handle the deployment view. Therefore, we need a different view: if the context is possible, the requirement should be satisfiable.
+
+% Research in software configuration and deployment, has focused on respond to dynamisms in a known environment. This could be costs and failures in a cloud environmet \cite{ferreira_leite_user_2014}, changes in managed resources \citep{gunalp_rondo_2015}, and changes in the context of operation \cite{bencomo_dynamically_2008}.
+
+% In the literature, there are proposals that tackle the problem of handling changes at system context~\cite{knauss_acon:_2016}. These proposals focus on the system external context, reasoning about known facts about the external managed world and how it affects the systems goals.
+
+Bencomo et al.~\cite{bencomo_dynamically_2008} associate an architecture variability model with an environment variability model. The environment variability is modeled as a transition system. The structural variability is responsible for the system adaptation. A configuration or a product is a set of component selected. A configuration is associated with states in the environment variability model. Unlike our approach, their focus is on the adaptation in the configuration at runtime but not in the deployment. \citep{mizouni_framework_2014} uses a feature model associated with context requirements.
+
+%In order to allow a decentralized evolution of the system, Goalp do not rely on a centralized model created at design-time. Instead, metadata present into artifacts contained into an artifact repository is used. This allows third party developers to provide software components with different restrictions of the original developer, creating more variability and in consequence, allowing the application to be executed in a more broad range of devices.
+Ferreira et al.~\cite{ferreira_leite_user_2014} proposes an approach for automatic deployment on inter-cloud environments. It relies on abstract and concrete features models and constraint satisfaction problem solver to create a computing environment using resources distributed across various clouds. The approach is specific to cloud environments and require instantiating at design-time a model with knowledge about the environment. It also strongly depends on design-time created scripts to realize the deployment of an application, which limits the autonomy of the approach, specially in a unknown environment.
+
+Gunalp et al.~\citep{gunalp_rondo_2015} presents an approach for automatic deployment, in which the deployment specialist specifies the system deployment in terms of resources and desired target states of this resources. The approach follow preset strategies to keep the managed software resources in the specified states. They uses a low level model to driven the adaptation (target states and strategies to change states). Differently, our approach uses a goal-model with is a more abstract model.
+
+Angelopoulos et al.~\cite{angelopoulos_capturing_2015} present an approach to handle  variability at three different dimensions: goals, behavior and architecture. Variability can occur at goals dimension as an OR-refinement or context selection; at behavior dimension as different plans flows; and in architecture with variability of components and implementations. However, their approach does handle variability at deployment.
+
+
+
+
+% Asadie et al.~\cite{asadi_goal-oriented_2011} relates Goal-Oriented requirements and feature models for the development of SPL using a goal-oriented approach. In the described approach Goal-Models complement feature-models providing a mechanism to choose a set of features from stakeholder intentions.
+
+Ali et~al.\cite{ali_requirements-driven_2014} explore the optimization of the deployment for a given context variability space in which the system will be deployed. CGM was used to represent aspects of the environment related to the space of solution, that were to be analyses at design-time. This analyses at design-time can be used to evaluate which alternative strategy to implement.
+It differ from our work in which we explore the context of the computing environment. Our approach analysis allow for choosing between components already implemented at deployment time. Both approaches could be used in tandem, as they use the same model (CGM) and provides different analysis.
+
+% GOAL-Architecture
+% In this work we present a Goal-Architecture view. Such view was presented in the literature. STREAM-A\cite{pimentel_deriving_2012} create specialized agents. We create components. Components are not agents as they do not have autonomy, instead they are means of achieving a goal.
+% Different for other works
+
+% Must of these approaches ignores variability in the computing environment, the underline computing resources that form the infrastructure for executing the system software. None of them solve the problem of software development for a highly variable environment from different software providers.
+% Our approach focus on how move components to target environment.
+
+In the industry, package managers such as aptitute/apt-get(Debian based Linux distributions), yum (Red Hat based Linux distributions), Homebrew (MacOS) and Chocolatey (Windows) are capable of solve dependencies and deploy software. They require that a managed application declare their dependencies by name and version. In our approach, differently, the dependencies are declared in terms of interfaces for which implementations are required, not specific implementations. For example, in our case study, the advisor root strategy declares that it requires any artifact that provides \emph{Get Position} goal achievement, but not a specific artifact is required.
+This requirement declaration, in terms of interface, associated with context conditions allow for a more flexible dependency resolution at deployment-time.
+
+Table~\ref{table_related_works} characterizes and compares research related to Goalp.
+
+\begin{table*}[t]
+\centering
+\caption{Comparing characteristic properties of selected approaches related to Goalp}
+\label{table_related_works}
+\begin{tabular}{|p{4cm}|p{1.75cm}|p{1.75cm}|p{1.75cm}|p{1.75cm}|}
+\hline
+Work by &
+   Goal  \newline Oriented &
+    Handle  \newline Heterogeneity &
+    Autonomic  \newline  Deployment \newline Planning \\ \hline
+
+Ali et al.\citep{ali_requirements-driven_2014} & Yes & No & No \\ \hline
+Angelopoulos et al. \cite{angelopoulos_capturing_2015} & Yes & No & No \\ \hline
+Mizouni et al. \citep{mizouni_framework_2014} & No & Yes & No \\ \hline
+Leite et al. \citep{ferreira_leite_user_2014}  & No & Yes & No \\ \hline
+Gunalp et al.\citep{gunalp_rondo_2015} & No & Yes  &  No\\ \hline
+Goalp & Yes & Yes & Yes \\ \hline
+\end{tabular}
+\end{table*}
+
+
+% While package mangers such as aptitude and RPM can get components and handle some variabilities, e.g CPU architecture, they are not adaptive, so they not handle changes in the computing environment at runtime. They favor reuse at a library level. We propose reuse at component level.
