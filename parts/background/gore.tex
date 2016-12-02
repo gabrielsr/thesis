@@ -1,44 +1,44 @@
 \section{Goal Modeling}
 
-Goal-Oriented analysis is a requirements engineering approach that captures and documents the intentionality behind requirements. Goal-oriented Requirements Engineering (GORE) approaches have gained special attention as a technique to specify adaptable systems~\cite{morandini_goal-oriented_2009}. Goals capture the various objectives the system under consideration should achieve. In particular, Tropos\cite{bresciani_tropos:_2004} is a methodology for developing multi-agent systems that uses goal models for requirement analysis.
-Wooldridge~\cite{woolridge_introduction_2001} defines Multiagent Systems (MAS) as systems composed of multiple interacting computing elements known as \emph{agents}.
-Agents are computer systems that are capable of autonomous action and interacting with other agents. The Jadex is a platform that facilitate development of mult-agent systems~\cite{braubach_developing_2012}.
+Goal-Oriented Analysis is a requirements engineering approach that captures and documents the intentionality behind requirements. Goal-Oriented Requirements Engineering (GORE) approaches have gained special attention as a technique to specify adaptable systems~\cite{morandini_goal-oriented_2009}. Goals capture the various objectives the system under consideration should achieve. In particular, Tropos\cite{bresciani_tropos:_2004} is a methodology for developing multi-agent systems that uses goal models for requirement analysis.
+% Wooldridge~\cite{woolridge_introduction_2001} defines Multiagent Systems (MAS) as systems composed of multiple interacting computing elements known as \emph{agents}.
+% Agents are computer systems that are capable of autonomous action and interacting with other agents. Jadex is a platform that facilitates development of mult-agent systems~\cite{braubach_developing_2012}.
 
 \subsubsection{The Tropos key concepts}
 
-Tropos use a modeling framework based on i* \cite{yu_modelling_1996} which proposes the concepts of actor, goal, plan, resource and social dependency to model both the system-to-be and its organizational operating environment \cite{bresciani_tropos:_2004} \cite{morandini_tropos_2014}.
+Tropos uses a modeling framework based on i* \cite{yu_modelling_1996} which proposes the concepts of actor, goal, plan, resource and social dependency to model both the system-to-be and its organizational operating environment \cite{bresciani_tropos:_2004} \cite{morandini_tropos_2014}.
 
 In Tropos, requirements are represented as actors goals that are successively refined by AND/OR refinements. There are usually different ways to achieve a goal, and this is captured in goal models through multiple OR refinements.
 
 Key concepts in the Tropos metamodel are:
 
 \begin{description}%[leftmargin=6em,style=nextline]
-  \item[Actor] an entity that has strategic goals and intentionality
+  \item[Actor] is an entity that has strategic goals and intentionality
 
-  \item[Agent] physical manifestation of an actor.
+  \item[Agent] is the physical manifestation of an actor.
 
-  \item[Goals] it represents actors’ strategic interests. \emph{Hard goals} are goals that have clear-cut criteria for deciding whether they are satisfied or not. \emph{Softgoals} have no clear-cut criteria and are normally used to describe preferences and quality-of-service demands.
+  \item[Goals] represent actors’ strategic interests. \emph{Hard goals} are goals that have clear-cut criteria for deciding whether they are satisfied or not. \emph{Soft goals} have no clear-cut criteria and are usually used to describe preferences and quality-of-service demands.
 
-  \item[Plan] it represents, at an abstract level, a way of doing something. The execution of a plan can be a means for satisfying a goal or for \emph{satisficing} (i.e. sufficiently satisfying) a softgoal.
+  \item[Plans] represent a way of doing something. Plans are concrete actions or procedures that an agent can perform. The execution of a plan can be a means for satisfying a goal or for \emph{satisficing} (i.e. sufficiently satisfying) a soft goal.
 
-  \item[Resource]  it represents a physical or an informational entity.
+  \item[Resource] represents a physical or an informational entity.
 
-  \item[Dependency] it is a relationship between two actors that specify that one actor (the \emph{depended}) have a dependency to another actor (the \emph{dependee}) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the \emph{dependum}.
+  \item[Dependency] it is a relationship between two actors that specify that one actor (the \emph{depended}) has a dependency to another actor (the \emph{dependee}) to attain some goal, execute some plan or deliver a resource. The object of the dependence is the \emph{dependum}.
 
-  \item[Capability] it represents both the \emph{ability} of an actor to perform some action and the \emph{opportunity} of doing this.
+  \item[Capability] represents both the \emph{ability} of an actor to perform some action and the \emph{opportunity} of doing so.
 
 \end{description}
 
 
 In Tropos requirements are represented as actors goals that are successively refined by AND/OR refinements. There are usually different ways to achieve a goal, and this is captured in goal models through multiple OR refinements.
 
-Goal models are a traditionally a requirements tool, as such it must capture the space of the solution and are not sufficiently detailed to reason about system execution and do not capture information on the status of requirements as the system is executing, nor on the history of an execution~\cite{borgida_requirements_2013}. These traditional goal model can be named design-time goal model (DGM). Dalpiaz et al.\cite{dalpiaz_runtime_2013} describe a method for extend Design-time Goal Models (DGMs) to create Runtime Goal Models (RGM). RGMs can be used to analyze the system's runtime behavior. Other works relates goal models with another dynamic aspects of systems, such as configuration~\cite{yu_goals_2008}, behavior~\cite{dalpiaz_runtime_2013},  probability of achieving success~\cite{mendonca_dependability_2015} and achievability of goals~\cite{pontes_guimaraes_pragmatic_2015}.
+Goal models are a traditional requirements tool, as such it must capture the solution space and are not sufficiently detailed to reason about system execution and do not capture information on the status of requirements as the system is executing, nor on the history of an execution~\cite{borgida_requirements_2013}. Traditional goal models can be named design-time goal model (DGM). Dalpiaz et al.\cite{dalpiaz_runtime_2013} describe a method for extending Design-time Goal Models (DGMs) to create Runtime Goal Models (RGM). RGMs can be used to analyze the system's runtime behavior. Other works relate goal models with another dynamic aspects of systems, such as configuration~\cite{yu_goals_2008}, behavior~\cite{dalpiaz_runtime_2013},  probability of achieving success~\cite{mendonca_dependability_2015} and achievability of goals~\cite{pontes_guimaraes_pragmatic_2015}.
 
-Salehie et al.~\cite{salehie_towards_2012} propose a run-time goal model and its related action selection. It models adaptable software as a system that exposes sensors and effectors and  proposes a model consisting in Goals, Attributes and Action for selecting actions that will effect the adaptable software at runtime, giving sensed attributes.
+Salehie et al.~\cite{salehie_towards_2012} propose a run-time goal model and its related action selection. They model adaptable software as a system that exposes sensors and effectors and proposes a model consisting in \emph{Goals}, \emph{Attributes}, and \emph{Action} for selecting actions that will affect the adaptable software at runtime, giving sensed attributes.
 So the adaptation mechanism is to choose the best action given the actual attributes.
-It uses explicit runtime goals and make them visible and traceable.
+It uses explicit runtime goals and makes them visible and traceable.
 
-Mendonça et al.~\cite{mendonca_dependability_2015} propose a methodology for fault forecasting by which developer, at design-time, annotate the goal decomposition in goal model and specify context variables.A special tool generate a formula for, given a context, evaluate the probability of achieve a goal at runtime.
+Mendonça et al.~\cite{mendonca_dependability_2015} propose GODA: a methodology  for dependability analysis by which the software engineer, at design-time, annotates the goal decomposition in goal model and specify context variables. A special tool generates a formula to evaluate for a given context the probability of achieving a goal at runtime.
 
 \subsubsection{Contextual Goal Model}
 
