@@ -1,85 +1,73 @@
+Nowadays, people are surrounded by different devices with computing capability. Phones, watches, TVs, and cars are example of daily devices for which there are smart versions with computing capability and where is possible to install software applications. Typically, these devices have connectivity capability and can form networks. These networks can be rich computing environments as each device brings different computing resources. This presents a great potential, but developing software that harvests the capability of such environment is challenging.
+In this work, we call such environment a highly heterogeneous computing environment: a computing environment formed by different sets of devices, with different resources, and which are unknown at design-time. Ubiquitous Computing~\cite{bell_yesterdays_2007}, Internet of Things (IoT)\cite{atzori_internet_2010}, Assisted Living\cite{kleinberger_ambient_2007} and Opportunistic Computing\cite{smaldone_improving_2011} are examples of domains that typically rely on highly heterogeneous computing environments for achieving user goals.
 
-Nowadays, people are surrounded by different devices with computing capability. Phones, watches, TVs and cars are example of daily devices for which there are smart versions with computing capability and where is possible to install software applications. Typically, these devices has connectivity capability and can form networks. These networks can be rich computing environment as each device brings different resources and capabilities. This present a great potential, but developing software that harvest the capability of such environment is very challenging.
-In this work, we call such environment a highly heterogeneous computing environment, a computing environment formed by different sets of devices, with different resources, and which are unknown at design-time. Ubiquitous Computing~\cite{bell_yesterdays_2007}, Internet of Things (IoT)\cite{atzori_internet_2010}, Assisted Living\cite{kleinberger_ambient_2007} and Opportunistic Computing\cite{smaldone_improving_2011} are examples of domains that typically rely on highly heterogeneous computing environments for achieving user goals.
-
-Software deployment is the process of getting a software ready to be used in a given computing environment\cite{carzaniga_characterization_1998}. It evolves planning which artifacts should be deployed, copying compatible artifacts to the target environment, configuring the environment and start execution. The \emph{deployment planning} is a specially challenging activity, it requires analyzing the environment and the software architecture to solve variabilities, and come up with which software artifacts should be present in the deployment.
+Software deployment is the process of getting a software ready to be used in a given computing environment\cite{carzaniga_characterization_1998}. It involves planning which artifacts should be deployed, moving compatible artifacts to the target environment, configuring the environment and starting execution. \emph{Deployment planning} is a specially challenging activity, it requires analyzing the environment and the software architecture to solve variabilities, and coming up with which software artifacts should be present in the deployment.
 
 
 \section{Problem Definition}
 
 
 Current software deployment approaches do not suit highly heterogeneous computing environment.
-The simplest approach to deployment as a whole is manual configuration, in which all steps in the deployment planning and execution are conducted by a human. It is normally applied when developing customized software that will be executed in devices managed by the development team. This approach do not scale for applications that target mass use, because it requires the deployment to be executed by a person with knowledge about the application internals.
-Another approach, common in cloud environments, is the use of scripts to automate software deployment execution. This approach is normally used in virtualized environments that simulate a very homogeneous environment. The scripts are tailored at design-time a specific target environment. When some variability can be solved at deployment-time with conditionals in the script, this is do not scalable as the script rely on a centralized model created at design-time.
-\emph{Software store} is another alternative approach. Typically, the developer uploads to the store the software configuration for each kind of target device, solving any variability at this point.
-In such cases, the deployment execution can relies actions by the ende-user such as accessing the store interface, searching for the application, and initiate the installation of the application.
-Neither scripts nor software stores are suitable for heterogeneous environments because they rely on a centralized method for deployment that requires knowledge about the target environment at design-time. In summary, current approaches for deployment do not suit deployment in highly heterogeneous computing environments as they require human interaction or knowledge about the runtime environment at design-time.
+The simplest approach to deployment as a whole is manual configuration, in which a human conducts all steps in the deployment planning and execution. It is normally applied when developing customized software that will be executed in devices managed by the development team. Such approach does not scale for applications that target massive use, because it requires the deployment to be executed by a person with knowledge about the application internals\cite{andersson_jesper_deployment_2000}.
+Another approach, common in cloud environments, is the use of scripts to automate software deployment execution\cite{spinellis_dont_2012}. Such approach is normally used in virtualized environments that simulate a very homogeneous environment. The scripts are tailored at design-time a specific target environment. When some variability can be solved at deployment-time with conditionals in the script, it does not scale as the script relies on a centralized model created at design-time.
+\emph{Software store} is another alternative approach. Typically, the developer uploads to the store backend site the software configuration for each kind of target device, solving any variability at this point.
+In such cases, the deployment execution can rely on actions by the end-user such as accessing the store interface, searching for the application, and initiating the installation of the application.
+Neither scripts nor software stores are suitable for heterogeneous environments because they are highly dependent on a centralized method for deployment that requires knowledge about the target environment at design-time. In summary, current approaches for deployment do not suit deployment in highly heterogeneous computing environments as they require human interaction or knowledge about the runtime environment at design-time.
 
 The challenges related to deployment in emerging highly heterogeneous computing environment can be summarized as follows:
 
 \begin{itemize}
-  \item \textbf{ Challenge 1: heterogeneity.}: the system is mean to run in a broad range of configurations of the computing environment.
+  \item \textbf{ Challenge 1: heterogeneity.}  The system is meant to run in a broad range of configurations of the computing environment.
 
-  \item \textbf{ Challenge 2: uncertainty at design time.} The system architech/developer do not know the configuration of the end user computing environment.
+  \item \textbf{ Challenge 2: uncertainty at design-time.} The system architec/developer cannot precisely ascertain the configuration of the end user computing environment.
 
-  \item \textbf{ Challenge 3: deployment should be autonomous.} A deployment specialist probably will not be available in the target environment, so the deployment should be planned and executed autonomously.
+  \item \textbf{ Challenge 3: deployment should be autonomous.} A deployment specialist is unlikely available at deployment time for a particular environment, so the deployment should be planned and executed autonomously.
 \end{itemize}
-
-
-
-
-
-
 
 %\textbf{ Challenge 4: openness.} Third party developers should be able to develop components to the system. The objective here is achieve decentralization and independence of provider. According, the system should not drive adaptation relying on models that can not be extensible at runtime.
 
-
-Many works have investigated the relation of goals and architecture of a system \cite{van_lamsweerde_system_2003}\citep{penserini_design_2007}\cite{kramer_self-managed_2007}\cite{morandini_towards_2008}\cite{pimentel_deriving_2012}.
-Some works in the literature has investigated variability at goal-models with adaptation purpose~\cite{yu_goals_2008}\cite{angelopoulos_capturing_2015}. These works shows that goal-models are a promising approach to manage variability at the design of the software. But, to the best of our knowledge, none has investigated goal models at deployment level.
+Many works have investigated the relation of goals and architecture of a system \cite{kramer_self-managed_2007}\cite{morandini_towards_2008}\citep{penserini_design_2007}\cite{pimentel_deriving_2012}\cite{van_lamsweerde_system_2003}.
+Some works in the literature have investigated variability in goal models with adaptation purpose~\cite{angelopoulos_capturing_2015}\cite{yu_goals_2008}. These works show that goal modeling is a promising approach to manage variability at the design of the software. But, to the best of our knowledge, none investigated goal models at deployment level.
 Accordingly, our first research question emerges:
 
 \bigskip
  \setlength{\fboxsep}{12pt}
  \noindent\fbox{%
      \parbox{0.95\textwidth}{%
-         \textbf{Research Question 1 (RQ1):} Would a goal-driven approach be a viable one to manage variability at deployment?
+         \textbf{Research Question 1 (RQ1):} Would a goal-driven approach be a viable one to manage variability for software deployment?
      }%
  }\bigskip
 
-With RQ1 we are interested in extend goal-oriented variability models to deployment level. With this we expect to allow the deployment of the system be adaptable to the characteristics of the target environment. However, in order to allow the adaptation, we also need to solve the variability, that is, we need to evaluate the points of variability of the system and the characteristics of the environment, and come up with a valid configuration that adapts the system deployment for the environment. From this, our second research question arises:
+With RQ1 we are interested in extending goal-oriented variability models to deployment level. By addressing RQ1, we expect to allow the deployment of the system to be adaptable to the characteristics of the target environment. However, in order to allow the adaptation, we also need to solve the variability, that is, we need to evaluate the points of variability of the system and the characteristics of the environment, and come up with a valid configuration that adapts the system deployment for the environment. From this, our second research question arises:
 
 \bigskip
 \setlength{\fboxsep}{10pt}
 \noindent\fbox{%
     \parbox{0.95\textwidth}{%
-        \textbf{Research Question 2 (RQ2):} Is it feasible and scalable to solve deployment variability autonomously, at deployment time?
+        \textbf{Research Question 2 (RQ2):} Is it feasible and scalable to solve deployment variability autonomously at deployment time?
     }%
 }\bigskip
 
-With RQ2, we will investigate how to autonomously solve the variability, then finding a deployment plan that allows the achievement on goals in the target computing environment.
-%A preliminary component-connector view is generated from a goal model by creating an interface type for each goal. The interface name is directly derived from the goal name. Goals refinements result in implementation of components. If a goal is And-decomposed, the component has as many \emph{requires} interfaces as subgoals.
-
-
-
-
-
+With RQ2, we will investigate how to autonomously solve the variability, then finding a deployment plan that allows the achievement of user goals in the target computing environment.
 
 \section{Proposed Solution}
 
-This work proposes an approach – Goalp – that determines the computing environment and the available resources at runtime and to determine a suitable configuration from a general set of configurations for deployment in highly heterogeneous computing environments. We focus on autonomous deployment planning as the major part of the deployment in heterogeneous environments. In our approach, deployment planning occurs late in the software lifecycle, when the target computing environment is known. The planning is executed autonomously, do not requiring humans to interact with the system at deployment time.
+This work proposes an approach Goalp: a method that follows a goal-oriented approach for deployment in highly heterogeneous computing environments, capable of determining a suitable configuration from a general set of configurations for deployment. In particular, we focus on autonomous deployment planning as the major part of the deployment in heterogeneous environments.
+In our approach, the planning is executed autonomously, that is, it does not require a human to interact with the system at deployment time.
 
 An abstract model is used that consider the following information:
-(i) what the system needs to achieve (i.e., the goals), (ii) how it can achieve the goals (i.e., its its alternative strategies), and (iii) the resource restrictions.
-The what part (i) is a requirements model, the how part (ii) is artifacts containing software components and metadata, and the restrictions part (iii) is conditions that can be evaluated against the environment in order to find if a given artifact can be deployed.
+(i) \emph{what} the system needs to achieve (i.e., the goals), (ii) \emph{how} it can achieve the goals (i.e., its alternative strategies), and (iii) the \emph{restrictions} to the strategies (i.e., the resources needed).
+Part (i) comprehends requirements modeling. Part (ii) comprehends artifacts containing software components and metadata. Part (iii) comprehends conditions that can be evaluated against the environment in order to find if a given artifact can be deployed.
 
-Goal Oriented Requirements Engineering is a suitable modeling approach to model what the user want to achieve, where system requirements are modelled as intentions of actors in strategic goals\cite{yu_modelling_1996}\cite{bresciani_tropos:_2004}\cite{dardenne_goal-directed_1993}. Context goal models (CGMs) extend goal models\cite{ali_goal-based_2010}, inserting the context as another dimension. We propose to use CGMs to model resource as context information that restricts how goals can be achieved, or more specifically which artifacts can be deployed.
+Goal-oriented Requirements Engineering is a suitable modeling approach to model what the user wants to achieve, where system requirements are modeled as intentions of actors in strategic goals\cite{bresciani_tropos:_2004}\cite{dardenne_goal-directed_1993}\cite{yu_modelling_1996}. Context goal models (CGMs) extend goal models\cite{ali_goal-based_2010}, inserting the context as another dimension. We propose to use CGMs to model resource as context information that restricts how goals can be achieved, or more specifically which artifacts can be deployed.
 
 
 %An algorithm at deployment time is responsible for the deployment planning, allowing the deployment to be autonomous as it do not require an human to interact with the system at deployment time.
 
-%A suitable modeling approach to model what the user want to achieve can be found in Goal Oriented Requirements Engineering, where system requirements are modelled as intentionality of actors in strategic goals~\cite{}. In a goal modeling approach, high level goals are progressively refined into more concrete actions. AND/OR-refinements in goal models allow the definition of strategies to achieve a goal. In addition, context goal models (CGM) extends goal models, inserting the context as another dimension. The context in CGMs can models how the environment restricts the means to achieving the goals~\cite{}. Following a CGM approach, resource availability can be seen as context information that restricts how goals can be achieved, or more specifically to deployment, which artifacts can be deployed.
+%A suitable modeling approach to model what the user want to achieve can be found in Goal-oriented Requirements Engineering, where system requirements are modelled as intentionality of actors in strategic goals~\cite{}. In a goal modeling approach, high level goals are progressively refined into more concrete actions. AND/OR-refinements in goal models allow the definition of strategies to achieve a goal. In addition, context goal models (CGM) extends goal models, inserting the context as another dimension. The context in CGMs can models how the environment restricts the means to achieving the goals~\cite{}. Following a CGM approach, resource availability can be seen as context information that restricts how goals can be achieved, or more specifically to deployment, which artifacts can be deployed.
 
-Goalp consists of: (i) rules to refine context-goal models into software components, (ii) a description on how to create artifacts that package components together of relevant metadata; (iii) a metamodel that describes the deployment; (iv) an algorithm to analyse the metamodel and, for a given computing environment and a set of goals, select an appropriate set of artifacts that allows the achievement of the goals in the computing environment. The evaluation results show that the approach can be used to guide the development and the autonomous planning is able to plan the deployment of a system with thousands of artifacts in seconds.
+Goalp consists of: (i) rules to refine context-goal models into software components; (ii) a description on how to create artifacts as packaged components with deployment metadata information; (iii) a deployment metamodel that characterize deployment information; (iv) an algorithm to analyze the deployment metamodel and, for a given computing environment together with a set of goals, select an appropriate set of artifacts that allows the achievement of the goals in the computing environment.
+Goalp was evaluated in a case study and using a randomly generated workload. The results show that the approach can be used to guide the development and the autonomous planning is able to plan the deployment of a system with thousands of artifacts in seconds.
 
 %Also, the system can at runtime change its deployment in response to changes in its context, capabilities and available software modules.
 
@@ -90,29 +78,29 @@ Goalp consists of: (i) rules to refine context-goal models into software compone
 %Goal-driven introspectiveness are a promising approach in dynamic systems. Goal-driven introspective system can reason about its goals at runtime and adapt to tackle changes in the environment.
 %Context runtime goal models insert the context as another dimension, modeling the variability of interest in the environment as context an how it affect the system goals and means of achieving its goals.
 %The advantages of goal-driven adaptation is the high level of flexbility and easy the development by reuse the goal model.
-%Using Context-goal models to driven the deployment, we can avoid rework by reusing a model already developed in a requirements eliciting stage. Also, because goal-models are highly abstract models, we can achieve a higher level of flexibility. In addition, by using user goals as a drive of adaptation we expect to make deployment configuration accessible to users, even if they do not have technical skills in system administration.
+%Using Context-goal models to driven the deployment, we can avoid rework by reusing a model already developed in a requirements eliciting stage. Also, because goal models are highly abstract models, we can achieve a higher level of flexibility. In addition, by using user goals as a drive of adaptation we expect to make deployment configuration accessible to users, even if they do not have technical skills in system administration.
 
 %The idea is that with a support of a self-adaptive framework the system can achieve a high degree of autonomy in its deployment, allowing not specialized users configure the deployment by choosing the goals that they want to achieve in a given computing environment.
 %To execute the adaptation we propose the use of component-based adaptation in which the system is adapted by binding and unbinding software components at runtime. We find it promising as a component present a good level of abstraction (opposed to code or variable levels). It also builds upon mature component-based software engineering.
 
-%To allow open and decentralized evolution of the system we avoid the use of centralized design time models. Instead we propose break strategies to achieve goals as components that can be discovered at runtime. So third party developers can provide new components for achieve goals using different set of resources.
+%To allow open and decentralized evolution of the system we avoid the use of centralized design-time models. Instead we propose break strategies to achieve goals as components that can be discovered at runtime. So third party developers can provide new components for achieve goals using different set of resources.
 
 %In order to easy the development of solutions that use the approach proposed in this work we are developing a reusable framework. The framework should have much the adaptation logic needed for the autonomous deployment.
 \section{Contributions Summary}
 
-This section summarizes the contributions of this proposal.
+This section summarizes the major contributions of this proposal.
 
 \begin{enumerate}
 
-\item An approach to develop systems with variability at deployment
+\item A method to develop systems for heterogeneous computing environments that supports variability for software deployment, comprising:
 \begin{itemize}
   \item patterns to map components from a contextual goal model (CGM)
   \item guide on how to package the components into artifacts keeping variability
 \end{itemize}
 
-\item An approach to autonomously plan the deployment at the target environment
+\item An approach to autonomously plan the deployment at the target environment comprising:
 \begin{itemize}
-  \item A metamodel that describe the deployment
+  \item A metamodel that describes the deployment
   \item An algorithm to autonomously planning the deployment
   \item A Java implementation of the algorithm
 \end{itemize}
@@ -121,5 +109,5 @@ This section summarizes the contributions of this proposal.
 
 \section{Structure}
 
-This dissertation is organized as follows. Chapter~\ref{chap:background} introduces the theory in which our work is based. Chapter~\ref{chap:related} presents related work. Chapter~\ref{chap:case_study} Presents the case study Filling Station Advisor.  Chapter~\ref{chap:online} presents patterns and guidelines to develop software to heterogeneous computing environments. Chapter~\ref{chap:online} presents the support for autonomous deployment.
- Chapter~\ref{chap:evaluation} depicts the evaluation of our concepts and Chapter~\ref{chap:conclusion} concludes the paper and outlines future works.
+This dissertation is organized as follows. Chapter~\ref{chap:background} introduces the theoretical background underlying our work. Chapter~\ref{chap:related} presents most relevant related literature work. Chapter~\ref{chap:case_study} Presents the case study of the Filling Station Advisor. Chapter~\ref{chap:proposal} presents patterns and guidelines to develop software to heterogeneous computing environments and the support for autonomous deployment.
+ Chapter~\ref{chap:evaluation} depicts the evaluation of Goalp and Chapter~\ref{chap:conclusion} concludes the paper and outlines future works.
