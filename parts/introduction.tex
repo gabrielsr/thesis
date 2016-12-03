@@ -7,7 +7,7 @@ Software deployment is the process of getting a software ready to be used in a g
 \section{Problem Definition}
 
 
-Current software deployment approaches do not suit highly heterogeneous computing environment.
+Current software deployment approaches do not suit highly heterogeneous computing environment\cite{miorandi_internet_2012}.
 The simplest approach to deployment as a whole is manual configuration, in which a human conducts all steps in the deployment planning and execution. It is normally applied when developing customized software that will be executed in devices managed by the development team. Such approach does not scale for applications that target massive use, because it requires the deployment to be executed by a person with knowledge about the application internals\cite{andersson_jesper_deployment_2000}.
 Another approach, common in cloud environments, is the use of scripts to automate software deployment execution\cite{spinellis_dont_2012}. Such approach is normally used in virtualized environments that simulate a very homogeneous environment. The scripts are tailored at design-time a specific target environment. When some variability can be solved at deployment-time with conditionals in the script, it does not scale as the script relies on a centralized model created at design-time.
 \emph{Software store} is another alternative approach. Typically, the developer uploads to the store backend site the software configuration for each kind of target device, solving any variability at this point.
