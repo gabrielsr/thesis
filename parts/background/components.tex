@@ -25,11 +25,11 @@ CBSE is built on the following four principles\cite{crnkovic_software_2011}:
 
 \subsection{Component-Based Adaptation}
 
-In the literature was proposed frameworks for architecture and components based adaptation.
+In the literature, there has been proposals of framework for architecture and components based adaptation.
 
-Rainbow\cite{garlan_rainbow:_2004} is a framework for self-adaptation architecture based. It keeps an model of the architecture of the system and can be extended with rules to analysis the system behavior at runtime, find adaptation strategies and perform this changes. It separate the functional code (internal mechanisms) from adaptation code (external mechanism) in a schema called external control, influenced by control theory.
+Rainbow\cite{garlan_rainbow:_2004} is a framework for architecture based self-adaptation. It keeps a model of the architecture of the system and can be extended with rules to analyze the system behavior at runtime, find adaptation strategies and perform changes. It separates the functional code (internal mechanisms) from adaptation code (external mechanism) in a schema called external control, influenced by control theory.
 
-MUSIC\cite{rouvoy_music:_2009} project provides a component-based middleware for adaptation that propose to separate the self-adaptation from business logic and delegate adaptation logic to generic middleware. As in our propose it adapts by evaluating in runtime the utility of alternatives, to chose a feasible one (e.g., the one evaluated as with highest utility).
+MUSIC\cite{rouvoy_music:_2009} project provides a component-based middleware for adaptation that proposes to separate the self-adaptation from business logic and delegate adaptation logic to generic middleware. It adapts by evaluating in runtime the utility of alternatives, to chose a feasible one (e.g., the one evaluated as with highest utility).
 
 Flashmob~\cite{sykes_flashmob:_2011} is an approach for distributed self-assembly. Different from MUSIC and Rainbow, it handles component-based adaptation in a distributed environment. The self-assembly can be described as: given a set of available components (with various functional and non-functional properties), and a configuration of components which are already running, find a new configuration which works (better) in the changed execution environment (including hardware),
 meets new user requirements or takes account of new component implementations~\cite{sykes_flashmob:_2011}. Flashmod uses a three-layer model: goals, management and components proposed by Kramer and Magee~\cite{kramer_self-managed_2007}, extending it to allow distributed agreement in a given configuration.
@@ -38,17 +38,17 @@ OSGi\cite{the_osgi_alliance_osgi_2007} is a Java centric platform that allows dy
 
 \subsection{From Goals to Components}
 
-Lamsweerde \cite{van_lamsweerde_system_2003} present a method for derive architecture from KAOS goal model. First an abstract draft is generated from functional goals. Secondly, the architecture is refined to meet non-functional requirements such as cohesion.
+Lamsweerde \cite{van_lamsweerde_system_2003} presents a method for deriving architecture from KAOS goal model\cite{dardenne_goal-directed_1993}. Firstly, an abstract draft is generated from functional goals. Secondly, the architecture is refined to meet non-functional requirements such as cohesion.
 
 % Penserini \citep{penserini_design_2007} propose a method for generate agents from goal models.
 % Morandini \cite{morandini_towards_2008}
 % Tropos - Jadex-BDI}
-Pimentel et al. \cite{pimentel_deriving_2012} present a method  using i* models to produce architectural models in Acme. If focus in he development of adaptive systems. First, it transforms a i* model into a modular i* model by means of horizontal transformation. Secondly, it creates an architecture model from the i* modularized model by means of vertical transformation. Architectural design models is made easier by the
+Pimentel et al. \cite{pimentel_deriving_2012} present a method  using i* models to produce architectural models in Acme, a language employed to describe architectural models.  Firstly, i* model is transformed into a modular i* model employing a horizontal transformation. Secondly, an architecture model is created from the i* modularized model employing a vertical transformation. Architectural design models is made easier by the
 presence of actor and dependency concepts.
 
-Yu et al.~\cite{yu_goals_2008} proposed an approach for keep the variability that exists in the goal model into the architecture.
-It present a method for creating a component-connector view from a goal model.
-A preliminary component-connector view is generated from a goal model by creating an interface type for each goal. The interface name is directed derived from the goal name. Goals refinements result in implementation of components.
+Yu et al.~\cite{yu_goals_2008} proposed an approach for keeping the variability that exists in the goal model into the architecture.
+It presents a method for creating a component-connector view from a goal model.
+A preliminary component-connector view is generated from a goal model by creating an interface type for each goal. The interface name is directly derived from the goal name. Goals refinements result in the implementation of components.
 If a goal is And-decomposed, the component has as many \emph{requires} interfaces as subgoals.
 
 \begin{lstlisting}
@@ -71,7 +71,7 @@ Component G2 {
 }
 \end{lstlisting}
 
-A component equivalent to the parent goal is generated with a switch.
+% A component equivalent to the parent goal is generated with a switch.
 
 
 %TODO Input and outputs are added to the interface.
