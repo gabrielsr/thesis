@@ -6,7 +6,7 @@
 %The rationale behind our approach is the following: an external agent (user or another system) creates a \emph{deployment request}, with goals that should be achieved in a given computing environment. A deployment agent, is responsible to handle that \emph{deployment request} autonomously. The deployment agent is capable of discover available resources in a computing environment it manages. That knowledge about the computing environment is the \emph{context} for the target deployment. The deployment agent is also capable of choosing artifacts from a repository that allows the satisfaction of the deployment request. The process of choosing the correct set of artifacts to allow the deployment request satisfaction is the \emph{deployment planning}.
 
 % General discussion
-Following the model proposet by Andersson et al.\cite{andersson_software_2013} for adaptive software development process, we divide our approach into \emph{offline} and \emph{online} activities. In this work, the \emph{offline} activities are conducted by software engineers, and result in development and publishing of software components. The \emph{online} activities are autonomously executed in target environment, and result in the deployment of the system. Figure~\ref{fig:overview} presents an overview of the process.
+Following the model proposed by Andersson et al.\cite{andersson_software_2013} for adaptive software development process, we divide our approach into \emph{offline} and \emph{online} activities. In this work, the \emph{offline} activities are conducted by software engineers, and result in development and publishing of software components. The \emph{online} activities are autonomously executed in target environment, and result in the deployment of the system. Figure~\ref{fig:overview} presents an overview of the process.
 
 \begin{figure*}[!htb]
   \centering
@@ -16,20 +16,20 @@ Following the model proposet by Andersson et al.\cite{andersson_software_2013} f
 \end{figure*}
 
 
-In the artifact creation process, components are mapped from the system CGM using patterns. These components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies. Next, the artifacts are put into a repository. As the result of the offline activities, artifacts are created that implement a system specified by a goal model.
+In the offline part, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies. These packaged artifacts are put in a repository.
 
 In the online part of the approach, the Goalp deployment planning is executed in the target computing environment and autonomously finds a deployment plan.
 The deployment planning is responsible to look into the repository of artifacts and based on context information and goals, find a set of artifacts that should be deployed to the target computing environment in order to make the goals achievable.
 
 \section{From Goals To Artifacts}
 
-Previously, goal-driven  approaches was proposed for introducing variability at requirements, context modeling, software behavior, and software architecture\cite{angelopoulos_capturing_2015}\cite{yu_goals_2008}.
+Previously, goal-driven  approaches were proposed for introducing variability at requirements, context modeling, software behavior, and software architecture\cite{angelopoulos_capturing_2015}\cite{yu_goals_2008}.
 In our methodology, we propose a systematic approach to support deployment variability, from requirements to deployment.
 Deployment variability is important since not taking into account the heterogeneity of a computing environment may lead to unnecessary or even unsuited deployment of components.
 Such scenario would bring a negative impact to software performance, or in some cases represent inconsistent deployment of functionalities on the target device.
 
 
-When developing a monolitic software, we implement in the same codebase all functionalities, then all code is build and deployed together.
+When developing a monolithic software, we implement in the same codebase all functionalities, then all code is built and deployed together.
 In the Filling Station Advisor example, if implementing it as a monolic software, the logic to get the vehicle position using GPS or antenna triangulation would stay in the same codebase and would be deployed altogether in the target environment, even when it does not have antenna triangulation capability.
 
 % Interfaces create architecture independency. Yet, even using interfaces we can can have static dependencies at some point, at the implementation instantiation. Using reflexive platforms we eliminate the static dependency as the platform can find available interfaces implementations at runtime.
@@ -44,9 +44,9 @@ In the Filling Station Advisor example, if implementing it as a monolic software
 % We have an implementation dependency between a client components and any component that implements the service it depends on. That dependency can be resolved late on, in deployment time.
 
 In order to better cope with heterogeneity in the computing environment we should minimize the coupling between parts of the code that have dependencies of specific resources in the environment.
-By encapsulating, into components, dependencies on specific resources, it is possible to create variability at architecture level. By packaging the components into different artifacts, it is possible to maintain such variability at deployment level. This variability is useful as it allows the deployment of components only to environment that has the required resources.
+By encapsulating dependencies of specific resources into components, it is possible to create variability at architecture level. By packaging the components into different artifacts, it is possible to maintain such variability at deployment level. Such variability is useful as it allows the deployment of components only to environment that have the required resources.
 
-Regarding the Filling Station Advisor example, components can be implemented providing the actual position of the device by means of GPS or antenna triangulation. These components can be packaged into different artifacts that will only be deployed when the target environment has the appropriate resources.
+Regarding the Filling Station Advisor example, depicted in \ref{fig:goal_model_filling_station_advisor}, for goal \emph{G1}(Get Position), components can be implemented providing the actual position of the device by means of GPS or antenna triangulation. These components can be packaged into different artifacts that will only be deployed when the target environment has the appropriate resources.
 
 \subsection{CGM for heterogeneous computing environments}
 \label{context}
@@ -55,14 +55,15 @@ A systematic way of analysing the capabilities of the computing environment is n
 
 \begin{defn}[Resource]
 
-  A resource provides a specific computing capability, it could be available in the computing environment and used in plans. A resources receive a label.
+  A resource provides a specific computing capability, it could be available in the computing environment and used in plans. A resources receives a label.
 
 \end{defn}
 
+Regarding the Filling Station Advisor, relevant resources are \emph{GPS}, \emph{Antenna Triangulation}, \emph{Internet connection}, \emph{storage}, etc.
 
 \begin{defn}[Context]
 
-  A context Ctx := r1..r, \{ r $\in$ Ctx | a resource labeled r is available in the computing environment\}
+  A context Ctx := r1..rn, \{ r $\in$ Ctx | a resource labeled r is available in the computing environment\}
 \end{defn}
 
 Context is a set of labels. In our example, the set [gps-capability,
@@ -88,11 +89,12 @@ Components are architectural units. In our proposal, components definitions are 
 
 The patterns present in table~\ref{table_cgm_to_components_patterns} are used to map components based on the CGM of the system. By mapping components we mean identifying which component should be developed in order to reflect the CGM of the system. By using the proposed patterns, the variability present in the CGM is kept at architecture of the system. Theses patterns are an extension of Yu et al.\cite{yu_goals_2008} patterns for the Goals-Component view, with contextual conditions.
 
-\begin{table}[]
+\begin{table}[!]
 \centering
 \caption{Contextual Goal Model to components; (1) And-refinement, (2)OR-refinement, (1) context condition, }
 \label{table_cgm_to_components_patterns}
-\begin{tabular}{|c p{3.5cm}|}
+\bigskip
+\begin{tabular}{|c p{5cm}|}
 \hline
  %\textbf{ A } & \textbf{ B} & \textbf{C} \\ \hline
  \raisebox{-\totalheight}{\includegraphics[scale=.7]{patterns_and}} &
