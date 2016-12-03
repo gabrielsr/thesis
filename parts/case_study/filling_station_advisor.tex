@@ -2,14 +2,15 @@
 \section{Motivating Example: The Filling Station Advisor}
 \label{sec:case_study}
 
-In this paper, we use a case study of a filling station advisor application. Filling station here refer to a place where the car can be refueled or recharged (gas station/petro or charge station). The main goal of the filling station advisor is to give direction to a vehicle driver about nearby filling stations that can be reached conveniently. By convenient we mean that certain conditions for the chosen station have to be fulfilled as well as user preferences are considered. Examples of conditions are: fuel is compatible with the vehicle; station is located inside the vehicle distance-to-empty. Examples of users preferences are: low price, low number of stops, small deviation from an actual route, and station reputation.
+In this work, we use a filling station advisor application as a case study to exemplify the application of our approach.
+Filling station here refers to a place where the car can be refueled or recharged (gas station/petrol or charge station). The main goal of the filling station advisor is to give directions to a driver about nearby filling stations that can be reached conveniently. By convenient we mean that certain conditions for the chosen station have to be fulfilled as well as user preferences are considered. Examples of conditions are: fuel is compatible with the vehicle; station is located inside the vehicle distance-to-empty. Examples of users preferences are: low price, low number of stops, small deviation from an actual route, and station reputation.
 
-In this work, we will focus on the challenge of handling the computing variability when developing such application. To maximize the utility, the filling station advisor should be able to run in a broad range of devices like smart-phones and car navigation systems. Each of such devices can have a different set of resources that can be used to find a convenient filling station according to the user preferences. For example, in a scenario where a human driver is using the application with a smart phone, we could use the GPS resource to track the position and the distance since the last refueling; the Internet connection to find nearby filling stations; the device text-to-speech engine to create a voice message to alert the driver when he is passing by a convenient filling station. In another scenario, in which the application is running in on-board computer of an Internet connected self-driving car, we could use a more precise distance-to-empty data from on-board computer, and replace the text-to-speech notification with a system call to the vehicle self-driving system advising the next filling station stop.
+In this work, we will focus on the challenge of handling the computing variability when developing such application. To maximize the utility, the filling station advisor should be able to run in a broad range of devices like smart-phones and car navigation systems. Each of such devices can have a different set of resources that can be used to find a convenient filling station according to the user preferences. For example, in a scenario (s1) where a human driver is using the application with a smart phone, we could use the GPS resource to track the position and the distance since the last refueling; the Internet connection to find nearby filling stations; the device text-to-speech engine to create a voice message to alert the driver when he is passing by a convenient filling station. In another scenario (s2), in which the application is running in on-board computer of an Internet connected self-driving car, we could use a more precise distance-to-empty data from on-board computer, and replace the text-to-speech notification with a system call to the vehicle self-driving system advising the next filling station stop.
 
-The filling station advisor's main goal can be refined into the following five goals, each one with its own computing resources requirements:
+The main goal of the application is refined in the following five goals, each one with its own computing resources requirements:
 
 \begin{description}
-  \item[Identify Vehicle Position:]
+  \item[Get Position:]
   the system should identify the vehicle position using an available positioning system. To fulfil such goal, a GPS or cell antenna triangulation could be used.
 
   \item[Assess Distance to Empty:]
@@ -25,12 +26,6 @@ The filling station advisor's main goal can be refined into the following five g
 
 \end{description}
 
-\begin{figure}[!htb]
- \centering
- \includegraphics[width=\linewidth]{case_study/variability}
- \caption{Variability in the Computing Environment}
-\label{fig:variability}
-\end{figure}
 
 \begin{figure*}[!htb]
  \centering
@@ -38,3 +33,17 @@ The filling station advisor's main goal can be refined into the following five g
  \caption{CGM of the filling station advisor}
 \label{fig:goal_model_filling_station_advisor}
 \end{figure*}
+
+The CGM presented in Figure~\ref{fig:goal_model_filling_station_advisor} depicts the goals to be achieved by the Filling Station Advisor.
+The root objective \emph{G0: Vehicle refueling is assisted} is AND-refined into 5 others objectives G1, G2, G3, G4 and G5. In the Goal modeling semantics it means that in order to achieve the root Goal G0, the agent should achieve the goals G1, G2, G3, G4 and G5.
+\emph{G1:Get Position} has a means-end association with P1, P2 and P3. It means that the goal G1 can be achieved by executing that plans. As it is an OR-refinements, it means that G1 can be achieved by successfully executing any of the plans P1, P2 or P3. This OR-refinement introduces a variability to the system, allowing it to achieve to root goals in different ways. The contexts C1 in the association between P1 and G1 means that the Plan P1 is executable if the context C1 holds.
+Context conditions on the example are of the type "required context"~\cite{ali_goal-based_2010}. These annotations means that a certain way for achieving (executing) a goal (plan) is applicable if the condition holds for the context.
+
+\begin{figure}[!htb]
+ \centering
+ \includegraphics[width=.7\linewidth]{case_study/variability}
+ \caption{Variability in the Computing Environment}
+\label{fig:variability}
+\end{figure}
+
+Figure~\ref{fig:variability} outlines the context space of the target computing environment. It contains variability contexts that are expected to occur in 4 subgoals (G1-G3 and G5) of the application.
