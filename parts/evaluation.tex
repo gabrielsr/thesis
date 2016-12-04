@@ -124,6 +124,14 @@ C1, C3, C7  &
 To evaluate the algorithm's scalability, we developed other test cases.  A repository with randomly generated artifacts was instantiated. And deployment requests that generate plans with different number of artifacts were made. With this we could evaluate the impact of the generated plan size in the the planning time.
 The generated repository had 143,500 artifacts.
 
+A guide to setup the experimental environment and all source code used is available in a repository on github.
+\footnote{The needed source code and a step by step guide are available at
+\url{https://github.com/lesunb/goalp/tree/master/scalability-evaluation} Accessed on December 4th, 2016}
+
+To analyze the experimental results, R Scripts\cite{the_r_foundation_r_2016} were used to handle data and plot graphs. This scripts and the dataset is available in a repository on github.
+\footnote{R Scripts and used dataset are available at:
+\url{https://github.com/lesunb/goalp/tree/master/scalability-evaluation} Accessed on December 4th, 2016}
+
 \emph{Q2.1: How does the algorithm scale over the number of artifacts in the deployment plan?} We executed 100 deployment planning requests, with different levels of complexity, where the generated plans were composed of artifacts summing from 40 to 3,100 artifacts.
 
 \begin{figure}[!htb]
@@ -141,8 +149,8 @@ The result is depicted in figure~\ref{graph_scalability}. Each curve represents 
 
 \begin{figure}[!htb]
   \centering
-  \epsfig{file=results/planning/plan_size_and_context_2d_lines.eps, width=5.2in}
-  \caption{Scalability over variability level}
+  \epsfig{file=results/planning/size_and_variability.eps, width=5.2in}
+  \caption{Scalability over variability level - Average (10 executions)}
 \label{graph_scalability}
 \end{figure}
 
