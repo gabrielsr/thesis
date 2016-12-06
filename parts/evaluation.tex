@@ -42,7 +42,7 @@ Since the Filling Station Advisor has a limited size and does not allow for cont
   \end{itemize}
 \end{itemize}
 
-\subsection{Feasibility Assessment}
+\section{Feasibility Assessment}
 
 We validated the feasibility of the approach applying it to the Filling Station Advisor.
 
@@ -132,7 +132,7 @@ C1, C3, C7  &
     %   \item space occupied during the planning.
     % \end{itemize}
 
-\subsection{Scalability Assessment}
+\section{Scalability Assessment}
 
 To evaluate the algorithm's scalability, we developed other test cases.  A repository with randomly generated artifacts was instantiated. And deployment requests that generate plans with a different number of artifacts were made. With this, we could evaluate the impact of the generated plan size in the planning time.
 The generated repository had 143,500 artifacts.
@@ -173,7 +173,7 @@ The result is depicted in Figure~\ref{graph_scalability}. Each curve represents 
 
 At the worst case, a deployment request that needs 3,100 artifacts, with 10 variants for each artifact, took less than 5s to be planned. Requests that required up to 1,000 artifacts could be fulfilled in less then a half-second.
 
-\subsection{Discussion of Results}
+\section{Discussion of Results}
 
 In conclusion, the time spent planning the deployment is expected to be negligible in face the time that would take to copy the artifacts from a repository to the target environment.
 

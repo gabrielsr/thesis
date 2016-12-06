@@ -11,73 +11,22 @@ Following the model proposed by Andersson et al.\cite{andersson_software_2013} f
 \begin{figure*}[!htb]
   \centering
   \includegraphics[width=1\linewidth]{transformations}
-  \caption{Activities: (1) component mapping; (2) packaging; (3) deployment planning; (4) component binding}
+  \caption{Overview}
 \label{fig:overview}
 \end{figure*}
 
+Figure~\ref{fig:overview} depics an overview of the process.
+Activities: (1) component mapping; (2) packaging;
+(3) deployment planning; (4) deployment execution.
 
-In the offline part, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies. These packaged artifacts are put in a repository.
+In the offline part, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies. These packaged artifacts are put in a repository.  Activities: (1) component mapping; \ref{} (2) packaging;\ref{}
 
 In the online part of the approach, the Goalp deployment planning is executed in the target computing environment and autonomously finds a deployment plan.
-The deployment planning is responsible for looking into the repository of artifacts and based on context information and goals, find a set of artifacts that should be deployed to the target computing environment in order to make the goals achievable.
-
-\section{The Process}
-
-In this section we present an overview of the offline process, its roles and activies.
-
-\subsection{Roles}
-The proposed process considers three roles: users, requirements engineers and software architects.
-Figure~\ref{fig:process_roles} summarizes the collaboration between the roles.
-
- \begin{figure}[!htb]
-   \centering
-   \includegraphics[width=.4\linewidth]{process_roles}
-   \caption{Roles collaboration}
- \label{fig:process_roles}
- \end{figure}
-
-\begin{description}
-  \item[User]
-  This role has access to a particular computing environment and wants to achieve some goals there.
-  \item[Requirements Engineer]
-  Is responsible for translating users goals to a contextual goal model. Also is responsible for analyzing the different contexts that the system is meant to operate and how they affect the goals.
-  \item[Architect] projects the software architecture so as to permit variability of deployment.
-  From the point of view of dynamic heterogeneous computing environments, the focus is to create interfaces for components that can allow for goal achievements using different computing resources.
-
-\end{description}
+The deployment planning is responsible for looking into the repository of artifacts and based on context information and goals, find a set of artifacts that should be deployed to the target computing environment in order to make the goals achievable.(3) deployment planning; (4) deployment execution.\ref{}
 
 
 
-\subsection{Activities}
-
-Figure~\ref{fig:deployment_process_flow} describe the development process activities.
-
-\label{sub:Proposal}
-\begin{figure*}[!htb]
-  \centering
-  \includegraphics[width=\linewidth]{deployment_process_flow}
-  \caption{Deployment Process Activities}
-\label{fig:deployment_process_flow}
-\end{figure*}
-
-\subsubsection{Goal Modeling}
-This phase is coordinated by a requirement engineer with the participation of a domain specialist, possibly the user.
-A process such as TROPOS can be used. The output of this phase is a goal model.
-The goal model has a central role in the software development process. At the goal model is identified the space of the solution, what the system should achieve, and possible strategies to achieve the goals. Also, the goal model creates a common language between users and software engineers.
-
-\subsubsection{Context Goal Modeling}
-In this activity, resources associated the domain should be identified and the Goal model should be annotated with \emph{context conditions} related to the computing environment. That analysis is a context analysis and could benefit of the process described in~\cite{ali_goal-based_2010}.
-
-\subsubsection{Component Analysis}
-
-Variability points are identified and componets and its interafaces are identified. Component interfaces are created following the guidelines described in Section~\ref{sec:goals_components}.
-
-\subsubsection{Component Development}
-
-Component development includes the cycle coding, build and test of software components.
-The components are package into artifacts and should put in the repository. Artifacts are described in Section~\ref{sec_artifacts}
-
-\section{Design with Variability}
+\section{Offline}
 
 Previously, goal-driven  approaches were proposed for introducing variability at requirements, context modeling, software behavior, and software architecture\cite{angelopoulos_capturing_2015}\cite{yu_goals_2008}.
 In our methodology, we propose a systematic approach to support deployment variability, from requirements to deployment.
@@ -93,7 +42,7 @@ By encapsulating dependencies of specific resources into components, it is possi
 
 Regarding the Filling Station Advisor example, depicted in \ref{fig:goal_model_filling_station_advisor}, for goal \emph{G1}(Get Position), components can be implemented providing the actual position of the device by means of GPS or antenna triangulation. These components can be packaged into different artifacts that will only be deployed when the target environment has the appropriate resources.
 
-\subsection{Variability at Requirements}
+\subsection{Resources as Context Information}
 \label{context}
 
 A systematic way of analyzing the capabilities of the computing environment is needed in order to support the resolution of variability at deployment-time. First, the available capabilities in the environment should be represented.
@@ -129,7 +78,7 @@ A context condition is satisfied if its associated label is present in the conte
 
 Context conditions are used to solve variability. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal G1 has two alternatives to be achieved: by executing plan P1 or P2. The plan P1 is applicable if the context condition c1 holds, which is the case when GPS is available in the environment.
 
-\subsection{Variability in the Architecture}
+\subsection{Component Mapping}
 
 \label{sec:goals_components}
 Components are architectural units. In our proposal, components definitions are mapped from the CGM and them developed by the architect/developer. That activity is named component analysis. In our vision, components can \emph{provide} goals which means that they can be executed to \emph{fulfill} a goal at runtime.
@@ -166,17 +115,17 @@ The patterns present in table~\ref{table_cgm_to_components_patterns} are used, a
  Context-condition &
  \raisebox{-\totalheight}{\includegraphics[scale=1]{patterns_condition}} &
  \begin{lstlisting}
- Component CP {
-   provides IP;
+ Component CG {
+   provides IG;
    condition C;
  }
  \end{lstlisting} \\ \hline
 \end{tabular}
 \end{table}
 
-The presented patterns for And/Or-refinements are described using goals but they can be applied for goals and plans without distinction. Both And/Or-refinements or Goal-Plans means-ends relationship will generate interfaces and components in the same way.
+The presented patterns for And/Or-refinements and Context-conditions, are described using goals but they can be applied for goals and plans without distinction. Both And/Or-refinements or Goal-Plans means-ends relationship will generate interfaces and components in the same way.
 
-Context-conditions pattern is applied to plans, as plans are the ones using resources, and being so they are the ones that have restrictions concerning the computing environment.
+ pattern is applied to plans, as plans are the ones using resources, and being so they are the ones that have restrictions concerning the computing environment.
 
 And-refinements result in components that define a strategy to achieve a given goal by achieving two or more sub, more concrete, goals.
 Mapping components from an And-refinemnt results in: (i) a root interface that describe what component provides. (ii) Interfaces for each sub-goal. (iii) A component that provides the root interface and requires each interface generated for sub goals.
@@ -207,10 +156,10 @@ For example, in the Filling Station Advisor, applying the patterns for G1:Get Po
 The two components CP1 and CP2 provides the same goals but have different context conditions (C1:GPS and C2:antenna triangulation). It means that we can achieve the same goal using any of both resource, by deploying one of the two component variants.
 That variability in the architecture allows for the adaptation to the heterogeneity in the target environment.
 
-\subsection{Variability at Deployment}
+\subsection{Packaging}
 \label{sec_artifacts}
 \emph{Artifacts} are deployment units.
-From the deployment point of view, the components and interfaces should be packaged in a file archive to distribution. We name \emph{artifact} such file.
+From the deployment point of view, the components and interfaces should be packaged in a file to be distributed. We name \emph{artifact} as such file.
 An artifact should follow a standard packaging schema, so a package manager can manipulate it.
 In our approach, we propose to include into the artifact metadata to describe its related goals, context conditions, and dependencies. That metadata reflects information about the packaged components. For our approach, the metadata of interest is the following:
 
@@ -263,3 +212,60 @@ Artifacts can be of 3 types:
 \end{description}
 
 These types of artifacts are meant to increase the flexibility of deployment.
+
+
+\subsection{Development Process}
+
+In previous subsections we see the techniques that support the design of software with variability from requirements to deployment. In this section we see how to apply this techniques in a software development process
+
+\subsubsection{Roles}
+The proposed process considers three roles: users, requirements engineers and software architects.
+Figure~\ref{fig:process_roles} summarizes the collaboration between the roles.
+
+ \begin{figure}[!htb]
+   \centering
+   \includegraphics[width=.4\linewidth]{process_roles}
+   \caption{Roles collaboration}
+ \label{fig:process_roles}
+ \end{figure}
+
+\begin{description}
+  \item[User]
+  This role has access to a particular computing environment and wants to achieve some goals there.
+  \item[Requirements Engineer]
+  Is responsible for translating users goals to a contextual goal model. Also is responsible for analyzing the different contexts that the system is meant to operate and how they affect the goals.
+  \item[Architect] projects the software architecture so as to permit variability of deployment.
+  From the point of view of dynamic heterogeneous computing environments, the focus is to create interfaces for components that can allow for goal achievements using different computing resources.
+
+\end{description}
+
+
+
+\subsection{Activities}
+
+Figure~\ref{fig:deployment_process_flow} describe the development process activities.
+
+\label{sub:Proposal}
+\begin{figure*}[!htb]
+  \centering
+  \includegraphics[width=\linewidth]{deployment_process_flow}
+  \caption{Deployment Process Activities}
+\label{fig:deployment_process_flow}
+\end{figure*}
+
+\subsubsection{Goal Modeling}
+This phase is coordinated by a requirement engineer with the participation of a domain specialist, possibly the user.
+A process such as TROPOS can be used. The output of this phase is a goal model.
+The goal model has a central role in the software development process. At the goal model is identified the space of the solution, what the system should achieve, and possible strategies to achieve the goals. Also, the goal model creates a common language between users and software engineers.
+
+\subsubsection{Context Goal Modeling}
+In this activity, resources associated the domain should be identified and the Goal model should be annotated with \emph{context conditions} related to the computing environment. That analysis is a context analysis and could benefit of the process described in~\cite{ali_goal-based_2010}.
+
+\subsubsection{Component Analysis}
+
+Variability points are identified and componets and its interafaces are identified. Component interfaces are created following the guidelines described in Section~\ref{sec:goals_components}.
+
+\subsubsection{Component Development}
+
+Component development includes the cycle coding, build and test of software components.
+The components are package into artifacts and should put in the repository. Artifacts are described in Section~\ref{sec_artifacts}

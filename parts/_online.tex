@@ -1,8 +1,8 @@
-\section{Autonomic Deployment Planning}
+\section{Online}
 \label{sec:online}
-\label{sec:planning}
 
-The deployment planning is the core of the online part of the presented approach. Its objective is to solve the variability present in the design, allowing the system to adapt to the target computing environment. It is executed autonomously in the target environment. In this Section~\ref{sec:metamodel} is presented the metamodel used and in Section~\ref{sec:algorithm} an algorithm to come up with a deployment plan.
+TODO
+In the online part of the approach the artifacts present in the repository are autonomously deployed to the target computing environment. The focus of this work is in the deployment planning, with is developed in the next section. In Section~\ref{sec:execution}, we give directions on how would the execution work.
 
 \begin{figure*}[!htb]
   \centering
@@ -11,11 +11,15 @@ The deployment planning is the core of the online part of the presented approach
 \label{fig:deployment_actors}
 \end{figure*}
 
-Figure~\ref{fig:deployment_actors} depicts the deployment execution. A user interested in using a computing environment to achieve a set of goals submits to such environment which goals it wants to achieve in the form of a deployment request.
+Figure~\ref{fig:deployment_actors} depicts the deployment. A user interested in using a computing environment to achieve a set of goals submits to such environment which goals it wants to achieve in the form of a deployment request. Then, the system analyzes the available computing resources and artifacts present in the repository then plan the deployment, generating a deployment plan that is a selection of artifacts that can allow for the goals achievement in the available computing environment. The deployment is then executed by fetching the appropriate artifacts from the repositories.
 
-Then, the system analyzes the available computing resources and artifacts present in the repository then plan the deployment, generating a deployment plan that is a selection of artifacts that can allow for the goals achievement in the available computing environment. The deployment is then executed by fetching the appropriate artifacts from the repositories.
+\subsection{Autonomic Deployment Planning}
 
-\subsection{Metamodel}
+\label{sec:planning}
+
+The deployment planning is the core of the online part of the presented approach. Its objective is to solve the variability present in the design, allowing the system to adapt to the target computing environment. It is executed autonomously in the target environment. In this Section~\ref{sec:metamodel} is presented the metamodel used and in Section~\ref{sec:algorithm} an algorithm to come up with a deployment plan.
+
+\subsubsection{Metamodel}
 \label{sec:metamodel}
 
 \begin{figure}[!htb]
@@ -44,7 +48,7 @@ Goals are \emph{achievable} if their artifacts are deployable as part of a deplo
 % \label{fig:dependency_graph}
 % \end{figure}
 
-\subsection{Planning Method}
+\subsubsection{Planning Method}
 \label{sec:algorithm}
 
 To come up with a deployment plan for a given deployment request and context, we present the Algorithm~\ref{plan_method}. It implements the \emph{Agent}'s \texttt{doPlanDeployment} method of Goalp metamodel.
@@ -107,7 +111,7 @@ Otherwise, if the context conditions evaluation (line 6) returns \texttt{FALSE} 
 
 It could be the case that there is more than one possible valid plan. But this algorithm will return the first one found.  We let for future works the investigation of approaches to come up with the best alternative plan in case more than one is valid.
 
-\subsection{Verifying a Plan}
+\subsubsection{Verifying a Plan}
 \label{verify_plan}
 
 A deployment plan, is \emph{valid} for a given context if: (i) for each artifact in the plan, for the current context, all context conditions hold.
