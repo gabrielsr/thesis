@@ -15,15 +15,14 @@ Following the model proposed by Andersson et al.\cite{andersson_software_2013} f
 \label{fig:overview}
 \end{figure*}
 
-Figure~\ref{fig:overview} depics an overview of the process.
-Activities: (1) component mapping; (2) packaging;
-(3) deployment planning; (4) deployment execution.
+Figure~\ref{fig:overview} depicts an overview of the approach, which consists in four major activities: (1) goal modeling, (2) context goal modeling, (3) component analysis and (4) component development. We further explain such activities in details as follows.
 
-In the offline part, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies. These packaged artifacts are put in a repository.  Activities: (1) component mapping; \ref{} (2) packaging;\ref{}
+In the offline activities, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies.
+%These packaged artifacts are put in a repository.  Activities: (1) component mapping; \ref{} (2) packaging;\ref{}
 
-In the online part of the approach, the Goalp deployment planning is executed in the target computing environment and autonomously finds a deployment plan.
-The deployment planning is responsible for looking into the repository of artifacts and based on context information and goals, find a set of artifacts that should be deployed to the target computing environment in order to make the goals achievable.(3) deployment planning; (4) deployment execution.\ref{}
-
+In the online part of the approach, the Goalp deployment is autonomously planed in the target computing environment.
+The deployment planning is responsible for looking into the repository of artifacts and based on context information and goals, find a set of artifacts that should be deployed to the target computing environment in order to make the goals achievable.
+%The deployment planning is detailed in the Section~\ref{sec:planning}. Deployment execution is the last activity and is discussed in Section~\ref{sec:execution}
 
 
 \section{Offline}
@@ -79,8 +78,8 @@ A context condition is satisfied if its associated label is present in the conte
 Context conditions are used to solve variability. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal G1 has two alternatives to be achieved: by executing plan P1 or P2. The plan P1 is applicable if the context condition c1 holds, which is the case when GPS is available in the environment.
 
 \subsection{Component Mapping}
-
 \label{sec:goals_components}
+
 Components are architectural units. In our proposal, components definitions are mapped from the CGM and them developed by the architect/developer. That activity is named component analysis. In our vision, components can \emph{provide} goals which means that they can be executed to \emph{fulfill} a goal at runtime.
 
 The patterns present in table~\ref{table_cgm_to_components_patterns} are used, at the component analysis, to map components based on the CGM of the system. By mapping components we mean identifying which component should be developed in order to reflect the CGM of the system. By using the proposed patterns, the variability present in the CGM is kept at the architecture of the system. Theses patterns are an extension of Yu et al.\cite{yu_goals_2008} patterns for the Goals-Component view. We extended Yu et al.\cite{yu_goals_2008} patterns with contextual conditions.
@@ -243,7 +242,7 @@ Figure~\ref{fig:process_roles} summarizes the collaboration between the roles.
 
 \subsection{Activities}
 
-Figure~\ref{fig:deployment_process_flow} describe the development process activities.
+Figure~\ref{fig:deployment_process_flow} describes the development process activities.
 
 \label{sub:Proposal}
 \begin{figure*}[!htb]
@@ -254,18 +253,16 @@ Figure~\ref{fig:deployment_process_flow} describe the development process activi
 \end{figure*}
 
 \subsubsection{Goal Modeling}
-This phase is coordinated by a requirement engineer with the participation of a domain specialist, possibly the user.
+This phase is coordinated by a requirements engineer with the participation of a domain specialist, possibly the user.
 A process such as TROPOS can be used. The output of this phase is a goal model.
-The goal model has a central role in the software development process. At the goal model is identified the space of the solution, what the system should achieve, and possible strategies to achieve the goals. Also, the goal model creates a common language between users and software engineers.
-
-\subsubsection{Context Goal Modeling}
-In this activity, resources associated the domain should be identified and the Goal model should be annotated with \emph{context conditions} related to the computing environment. That analysis is a context analysis and could benefit of the process described in~\cite{ali_goal-based_2010}.
+The goal model has a central role in the software development process. At the goal model it is identified the solution space, what the system should achieve, and possible strategies to achieve the goals. Also, the goal model creates a common language between users and software engineers.
+In this activity, relevant resources should be identified and the goal model should be annotated with \emph{context conditions} related to the computing environment. That analysis is a context analysis and could benefit of the process described in~\cite{ali_goal-based_2010}.
 
 \subsubsection{Component Analysis}
 
-Variability points are identified and componets and its interafaces are identified. Component interfaces are created following the guidelines described in Section~\ref{sec:goals_components}.
+Variability points, componets and its interafaces are identified. Component interfaces are created following the guidelines described in Section~\ref{sec:goals_components}.
 
 \subsubsection{Component Development}
 
-Component development includes the cycle coding, build and test of software components.
-The components are package into artifacts and should put in the repository. Artifacts are described in Section~\ref{sec_artifacts}
+Component development includes the coding, build and test of software components.
+Then, components are package into artifacts and should put in the repository as described in Section~\ref{sec_artifacts}

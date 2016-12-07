@@ -14,7 +14,6 @@ In the online part of the approach the artifacts present in the repository are a
 Figure~\ref{fig:deployment_actors} depicts the deployment. A user interested in using a computing environment to achieve a set of goals submits to such environment which goals it wants to achieve in the form of a deployment request. Then, the system analyzes the available computing resources and artifacts present in the repository then plan the deployment, generating a deployment plan that is a selection of artifacts that can allow for the goals achievement in the available computing environment. The deployment is then executed by fetching the appropriate artifacts from the repositories.
 
 \subsection{Autonomic Deployment Planning}
-
 \label{sec:planning}
 
 The deployment planning is the core of the online part of the presented approach. Its objective is to solve the variability present in the design, allowing the system to adapt to the target computing environment. It is executed autonomously in the target environment. In this Section~\ref{sec:metamodel} is presented the metamodel used and in Section~\ref{sec:algorithm} an algorithm to come up with a deployment plan.
@@ -131,4 +130,4 @@ Being so, we can verify if a deployment plan satisfies a deployment request by e
 
 The last step of the approach is the deployment execution. The deployment execution involves (i) copying the artifacts present in the deployment plan from the repository to the target environment. And (ii) binding together the components present into these artifacts, creating the application architecture.
 
-To bind components, the Dependency Injection\cite{fowler_inversion_2004} design pattern can be used. The basic idea of the Dependency Injection is to have a separate object, an assembler, that wires together client and server components at runtime\cite{fowler_inversion_2004}. The client refers to a component that uses another component (a service) through an interface. The assembler looks for an available service (implementation of the interface), instantiates it, and wires it into the client object.
+To bind components, the Dependency Injection\cite{fowler_inversion_2004} design pattern can be used.
