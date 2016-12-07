@@ -148,7 +148,7 @@ the data obtained and scripts used to handle data and plot graphs.
 \footnote{R Scripts\cite{the_r_foundation_r_2016} and used dataset are available at
 \url{https://github.com/lesunb/goalp/tree/master/scalability-evaluation} Accessed on December 4th, 2016}
 
-\emph{Q2.1: How does the algorithm scale over the number of artifacts in the deployment plan?} We executed 100 deployment planning requests, with different levels of complexity, where the generated plans were composed of artifacts summing from 40 to 3,100 artifacts.
+\emph{Q2.1: How does the algorithm scale over the number of artifacts in the deployment plan?} We executed 100 deployment planning requests, with different levels of complexity, where the generated plans were composed of artifacts summing from 40 to 3,100 artifacts. The experiment was repeated 10 times and the \emph{observed time} vs \emph{plan size} is shown in a boxplot graph in Figure~\ref{graph_plan_size_and_time}.
 
 \begin{figure}[!htb]
   \centering
@@ -157,7 +157,6 @@ the data obtained and scripts used to handle data and plot graphs.
 \label{graph_plan_size_and_time}
 \end{figure}
 
-The observed time in function on the number of artifacts in the plan is shown in Figure~\ref{graph_plan_size_and_time}.
 
 \emph{Q2.2:  How does the algorithm scale over the variability level on the repository?}
 We repeated the experiment for different levels of variability in the repository, from 1 to 10. A variability level of 1 being so that for each plan implementation there was just one artifact that implement the plan. While in variability level 2, for each plan implementation there was two artifacts, and so on. The experiment was repeated 10 times.
@@ -173,10 +172,25 @@ The average of the measures is depicted in Figure~\ref{graph_scalability}. Each 
 
 In the worst case, a deployment request that needs 3,100 artifacts, with 10 variants for each artifact, took less than 5s to be planned. Requests that required up to 1,000 artifacts could be fulfilled in less than half-second.
 
-\section{Discussion of Results}
-
 In conclusion, the time spent planning the deployment is expected to be negligible in face the time that would take to copy the artifacts from a repository to the target environment.
 
+\section{Threats to validity}
+
+We recognize some threats to the validity of the evaluation:
+
+\emph{Construct validity:}
+% Construct validity concerns establishing correct operational measures for the concepts being studied.
+We used GQM methodology to proper design our experiments. We did an assumption that goal can be traced to implemented component and so the artifacts. The mapping of goals and plans to their concrete counterparts in the system architecture is a well-known problem of the requirements engineering community.
+
+\emph{Internal validity:}
+% Internal validity concerns establishing a causal relationship, whereby certain conditions are shown to lead to other conditions.
+The suitability of Goalp for deployment of Filling Station Advisor has been presented. The deployment planning result for the scenarios was validated.
+In regard to scalability, we executed each experiment in a single resource and evaluated each time a single controlled variable.
+
+\emph{External validity:}
+%External validity concerns establishing the domain to which the findings can be generalized.
+The scalability was evaluated for a randomly generated repository. For other repositories, the chains of dependencies could have different properties, which could change how the planning algorithm scale over the plan size.
+Other threat is that the scalability evaluation was conducted in a cloud environment in a reasonably powerful machine. In other scenarios, we could have a much more limited machine in relation to processor power, memory size, network bandwidth and battery. In that case the planning could take longer.
 %-boundary of the results,
 %- limitations of the work
 %- some criticism does make sense.
