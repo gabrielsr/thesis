@@ -14,7 +14,7 @@ So the use of the \emph{new} operator lead to the following disadvantages:
 
 In case of strongly typed languages, normally one will get an exception if the referenced class is not present.
 
-The basic idea of the Dependency Injection is to have a separate object, an \emph{assembler}, that wire together the components at runtime\cite{fowler_inversion_2004}. The client class refers to the service using its interface (the service interface). The assembler can use alternative ways to the \emph{new} to instantiate an object so that the wiring between client objects and implementation service classes could be postponed to runtime. Using reflexive platforms we can eliminate the static dependency as the platform can find available interfaces implementations at runtime.
+The basic idea of the Dependency Injection is to have a separate object, an \emph{assembler}, that wires together the components at runtime\cite{fowler_inversion_2004}. The client class refers to the service using its interface (the service interface). The assembler can use alternative ways to the \emph{new} to instantiate an object so that the wiring between client objects and implementation service classes could be postponed to runtime. Using reflexive platforms we can eliminate the static dependency as the platform can find available interfaces implementations at runtime.
 The assembler can use reflexive capabilities of the platform to discover the available implementations and instantiate them.
 
 In the context of component-based adaptation, decoupling client components from service components would be specially useful, allowing runtime reasoning about what implementation to choose.

@@ -160,18 +160,18 @@ the data obtained and scripts used to handle data and plot graphs.
 The observed time in function on the number of artifacts in the plan is shown in Figure~\ref{graph_plan_size_and_time}.
 
 \emph{Q2.2:  How does the algorithm scale over the variability level on the repository?}
-We repeated the experiment for different levels of variability in the repository, from 1 to 10. A variability level of 1 being so that for each plan implementation there was just one artifact that implement the plan. While in variability level 2, for each plan implementation there was two artifacts, and so on.
+We repeated the experiment for different levels of variability in the repository, from 1 to 10. A variability level of 1 being so that for each plan implementation there was just one artifact that implement the plan. While in variability level 2, for each plan implementation there was two artifacts, and so on. The experiment was repeated 10 times.
 
-The result is depicted in Figure~\ref{graph_scalability}. Each curve represents a different level of variability.
+The average of the measures is depicted in Figure~\ref{graph_scalability}. Each curve represents a different level of variability.
 
 \begin{figure}[!htb]
   \centering
   \epsfig{file=results/planning/size_and_variability.eps, width=5.2in}
-  \caption{Scalability over variability level - Average (10 executions)}
+  \caption{Scalability over variability level}
 \label{graph_scalability}
 \end{figure}
 
-At the worst case, a deployment request that needs 3,100 artifacts, with 10 variants for each artifact, took less than 5s to be planned. Requests that required up to 1,000 artifacts could be fulfilled in less then a half-second.
+In the worst case, a deployment request that needs 3,100 artifacts, with 10 variants for each artifact, took less than 5s to be planned. Requests that required up to 1,000 artifacts could be fulfilled in less than half-second.
 
 \section{Discussion of Results}
 
