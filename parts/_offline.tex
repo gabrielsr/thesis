@@ -48,38 +48,46 @@ A systematic way of analyzing the capabilities of the computing environment is n
 
 \begin{defn}[Resource]
 
-  A resource provides a specific computing capability, it could be available in the computing environment and used in plans. A resource receives a label.
+  A resource is a specific computing capability that could be available in the computing environment and used in plans. A resource receives a label.
 
 \end{defn}
 
-Each resource relevant to the application receives a label.
 Regarding the Filling Station Advisor, examples of relevant resources are \emph{GPS}, (labeled c1) and \emph{antenna triangulation} (labeled c2). Plans can require resources in order to be applicable, for example, \emph{P1: get position using GPS} requires the resource GPS to be available.
+
+\begin{defn}[Deployment Goal Model]
+
+  A Deployment Goal Model (DGM) is a tuple (M, ctx\_spc, ctx\_cond) where:
+
+  \begin{itemize}
+    \item M is a design-time goal model \cite{dalpiaz_runtime_2013} defined as a tuple (N, R), where N is a set of goals and plans in the model, and R the corresponding set of relationship links between the elements in N.
+
+    \item ctx\_spc is a set of resources  in the model.
+
+    \item ctx\_cond: R -> ctx\_spc is a function that associates a relationships in R with resources in  ctx\_spc.
+  \end{itemize}
+
+
+% is\_satisfied(ctx, ctx\_cond) evaluate a context condition against a context. is\_satisfied(ctx, ctx\_cond):=\texttt{TRUE} iff ctx\_cond <> r, r $\in$ ctx (is\_satisfied resturns TRUE if the resource labeled ctx\_cond  is present in the context)
+
+\end{defn}
+
+\emph{Conditions conditions} are used to represent restrictions to the applicability of a plan. Conditions conditions are represented by resource labels and are evaluated against a context.
 
 In order to reason about available resources in the target computing environment, a context model is used.
 In Goalp, the context of a target computing environment is reified as a set of labels.
 
-\begin{defn}[Context]
 
-  A context ctx := r1..rn, \{ r $\in$ ctx | a resource labeled r is available in the target computing environment\}
-\end{defn}
 The semantics is that if a label is present in the set, the resource is available in the target environment.
 In our example, the set [c1, c5, c8] is an example of context, representing that GPS, connection to the Internet and voice synthesizing are resources available in the computing environment.
 
-\begin{defn}[Deployment Goal Model]
+\begin{defn}[Context]
 
-  A Deployment Goal Model (DGM) is a tuple (M, ctx\_cond) where:
-
-  \begin{itemize}
-    \item M is a design-time goal model \cite{dalpiaz_runtime_2013} defined as a tuple (N, R), where N is a set of goals and plans in the model, and R the corresponding set of relationship links between the elements in N.
-    \item ctx\_cond is a context condition associated with a node n $\in$ N. A context condition is associated with a labeled resource, ctx\_cond <> r. is\_satisfied(ctx, ctx\_cond) evaluate a context condition against a context. is\_satisfied(ctx, ctx\_cond):=\texttt{TRUE} iff ctx\_cond <> r, r $\in$ ctx (is\_satisfied resturns TRUE if the resource labeled ctx\_cond  is present in the context)
-  \end{itemize}
-
+  A context ctx := \{ ctx $\in$  ctx\_spc, r1..rn |r $\in$ ctx, the resource r is available in the target computing environment\}
 \end{defn}
 
-\emph{Conditions conditions} represent restrictions to the applicability of a plan. Conditions conditions are represented by labels and are evaluated against a context.
 A context condition is satisfied if its associated label is present in the context. For example, in a scenario with context ctx=[c1, c5], the context condition c1 holds while c2 do not.
 
-Context conditions are used to solve variability. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal \emph{G1:Get position} has two alternatives to be achieved: by executing plan \emph{P1:get position} using GPS or \emph{P2:get position using antenna triangulation}. The plan P1 is applicable if the context condition c1 (GPS) is satisfied, which is the case when GPS capability is available in the target environment.
+Context conditions are used to solve variability at deployment. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal \emph{G1:Get position} has two alternatives to be achieved: by executing plan \emph{P1:get position} using GPS or \emph{P2:get position using antenna triangulation}. The plan P1 is applicable if the context condition c1 (GPS) is satisfied, which is the case when GPS capability is available in the target environment.
 
 \subsection{Component Mapping}
 \label{sec:goals_components}

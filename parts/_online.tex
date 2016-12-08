@@ -138,9 +138,9 @@ In order fetch and bind the components, we can make use of OSGi platform\cite{th
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=0.7\linewidth]{bundle_lifecycle_dimond.pdf}
-  \caption{OSGi - bundles lifecycle}
+  \caption{Representation OSGi bundles lifecycle}
   \label{fig:osgi_bundles}
 \end{figure}
 
-Figure~\ref{fig:osgi_bundles} illustrate the lifecycle of bundles in the OSGi platform. Vertices represent the states of bundles and edges represent commands that can be issued to the platform.
+Figure~\ref{fig:osgi_bundles} illustrate the lifecycle of bundles in the OSGi platform\cite{the_osgi_alliance_osgi_2007}. Nodes represent the states of bundles and edges represent commands that can be issued to the platform.
 The lifecycle begins with an \emph{install} command. This command instructs the platform to fetch the component from a repository. When the component is already in the target environment, it is \emph{INSTALLED}. Then, the platform starts looking for the bundle dependencies. If all dependencies are \emph{INSTALLED} the bundle is moved for the \emph{RESOLVED} state. \emph{RESOLVED} bundles can be started. In the starting process the component is wired to its dependencies. When the starting process is concluded, the bundle gets \emph{ACTIVE}. The lifecycle of the bundle can come to an end by sequence of commands \emph{stop} and \emph{uninstall}. A bundle in states \emph{INSTALLED} and \emph{RESOLVED} can be updated to a newer version by the command \emph{update}.
