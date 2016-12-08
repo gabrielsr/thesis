@@ -41,8 +41,8 @@ By encapsulating dependencies of specific resources into components, it is possi
 
 Regarding the Filling Station Advisor example, depicted in \ref{fig:goal_model_filling_station_advisor}, for goal \emph{G1}(Get Position), components can be implemented providing the actual position of the device by means of GPS or antenna triangulation. These components can be packaged into different artifacts that will only be deployed when the target environment has the appropriate resources.
 
-\subsection{Resources as Context Information}
-\label{context}
+\subsection{Goal Modelling}
+\label{sec:dgm}
 
 A systematic way of analyzing the capabilities of the computing environment is needed in order to support the resolution of variability at deployment-time. First, the available capabilities in the environment should be represented.
 
@@ -55,27 +55,31 @@ A systematic way of analyzing the capabilities of the computing environment is n
 Each resource relevant to the application receives a label.
 Regarding the Filling Station Advisor, examples of relevant resources are \emph{GPS}, (labeled c1) and \emph{antenna triangulation} (labeled c2). Plans can require resources in order to be applicable, for example, \emph{P1: get position using GPS} requires the resource GPS to be available.
 
-In order to reason about available resources in the target computing environment a context model is used. The context model reifies the computing environment.
-In Goalp, the context of a target computing environment is a set of labels. The semantics is that if a label is present in the set, the resource is available in the target environment.
+In order to reason about available resources in the target computing environment, a context model is used.
+In Goalp, the context of a target computing environment is reified as a set of labels.
 
 \begin{defn}[Context]
 
-  A context Ctx := r1..rn, \{ r $\in$ Ctx | a resource labeled r is available in the computing environment\}
+  A context ctx := r1..rn, \{ r $\in$ ctx | a resource labeled r is available in the target computing environment\}
+\end{defn}
+The semantics is that if a label is present in the set, the resource is available in the target environment.
+In our example, the set [c1, c5, c8] is an example of context, representing that GPS, connection to the Internet and voice synthesizing are resources available in the computing environment.
+
+\begin{defn}[Deployment Goal Model]
+
+  A Deployment Goal Model (DGM) is a tuple (M, ctx\_cond) where:
+
+  \begin{itemize}
+    \item M is a design-time goal model \cite{dalpiaz_runtime_2013} defined as a tuple (N, R), where N is a set of goals and plans in the model, and R the corresponding set of relationship links between the elements in N.
+    \item ctx\_cond is a context condition associated with a node n $\in$ N. A context condition is associated with a labeled resource, ctx\_cond <> r. is\_satisfied(ctx, ctx\_cond) evaluate a context condition against a context. is\_satisfied(ctx, ctx\_cond):=\texttt{TRUE} iff ctx\_cond <> r, r $\in$ ctx (is\_satisfied resturns TRUE if the resource labeled ctx\_cond  is present in the context)
+  \end{itemize}
+
 \end{defn}
 
-In our example, the set
-[c1, c5, c8] is an example of context, representing that GPS, connection to the Internet and voice synthesizing are resources available in the computing environment.
+\emph{Conditions conditions} represent restrictions to the applicability of a plan. Conditions conditions are represented by labels and are evaluated against a context.
+A context condition is satisfied if its associated label is present in the context. For example, in a scenario with context ctx=[c1, c5], the context condition c1 holds while c2 do not.
 
-To evaluate if a plan is applicable in a given context we use \emph{context conditions}.
-
-\begin{defn}[Context condition]
-  A context condition cc:=TRUE iff cc:r, r $\in$ Ctx
-\end{defn}
-
-\emph{Conditions restrictions} represent restrictions to the applicability of a plan. Conditions restrictions are represented by labels and are evaluated against a context.
-A context condition is satisfied if its associated label is present in the context. For example, in a scenario with context Ctx=[c1, c5], the context condition c1 holds while c2 do not.
-
-Context conditions are used to solve variability. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal G1 has two alternatives to be achieved: by executing plan P1 or P2. The plan P1 is applicable if the context condition c1 holds, which is the case when GPS is available in the environment.
+Context conditions are used to solve variability. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal \emph{G1:Get position} has two alternatives to be achieved: by executing plan \emph{P1:get position} using GPS or \emph{P2:get position using antenna triangulation}. The plan P1 is applicable if the context condition c1 (GPS) is satisfied, which is the case when GPS capability is available in the target environment.
 
 \subsection{Component Mapping}
 \label{sec:goals_components}
@@ -254,15 +258,14 @@ Figure~\ref{fig:deployment_process_flow} describes the development process activ
 
 \subsubsection{Goal Modeling}
 This phase is coordinated by a requirements engineer with the participation of a domain specialist, possibly the user.
-A process such as TROPOS can be used. The output of this phase is a goal model.
-The goal model has a central role in the software development process. At the goal model it is identified the solution space, what the system should achieve, and possible strategies to achieve the goals. Also, the goal model creates a common language between users and software engineers.
-In this activity, relevant resources should be identified and the goal model should be annotated with \emph{context conditions} related to the computing environment. That analysis is a context analysis and could benefit of the process described in~\cite{ali_goal-based_2010}.
+In this activity a goal model is created. At the goal model it is identified the solution space, what the system should achieve, and possible strategies to achieve the goals. Also, the goal model creates a common language between users and software engineers.
+In this activity, relevant resources should be identified and the goal model should be annotated with \emph{context conditions} related to the computing environment using the formalism described in Section~\ref{sec:dgm}.
 
 \subsubsection{Component Analysis}
 
-Variability points, componets and its interafaces are identified. Component interfaces are created following the guidelines described in Section~\ref{sec:goals_components}.
+The architect is the responsible for this activity. It receives as input a DGM. Then, variability points, components and its interfaces are identified. Component interfaces are created following the guidelines described in Section~\ref{sec:goals_components}.
 
 \subsubsection{Component Development}
 
-Component development includes the coding, build and test of software components.
-Then, components are package into artifacts and should put in the repository as described in Section~\ref{sec_artifacts}
+The architect is the responsible for this activity. Component development includes the coding, build and test of software components.
+Then, components are package into artifacts and put in the repository as described in Section~\ref{sec_artifacts}.

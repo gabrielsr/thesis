@@ -19,7 +19,7 @@ Angelopoulos et al.~\cite{angelopoulos_capturing_2015} present an approach to ha
 Ali et~al.\cite{ali_requirements-driven_2014} explore the optimization of the deployment for a given context variability space in which the system will be deployed. Contextual Goal Model (CGM) was used to represent aspects of the environment related to the solution space, which was to be analyzed at design-time. This analysis at design-time can be used to evaluate which alternative strategy to implement.
 It differs from our work in which we explore the context of the computing environment, not the solution space. Our approach allows for, at deployment time, choosing  between components already available. Both approaches could be used in tandem, as both rely on CGM but provide complementary kinds of analyses.
 
-\section{Dynamic Software Product Lines Approaches}
+\section{Automatic Deployment Approaches}
 Researchers have investigated Dynamic Software Product Line (DSPL) a way of adapt for variations in users requirements and system environments.
  DSPLs extend the concept of conventional Software Product Lines (SPLs) by enabling software-variant generation at runtime. In classic SPL, products can be derived from a SPL infrastructure for a specific customer individual or customer segment, in the assumption that the requirements for that customer and the execution environment will not change. In DSPLs a product can change to another configuration, in runtime, in response to a context change. To make it possible the feature model should be available at runtime.\cite{bencomo_view_2012}
 
@@ -31,10 +31,7 @@ restarted or terminated and then a new one created.
 The approach is specific to cloud environments and requires instantiating at design-time a model knowledgeable about the environment.
 It also strongly depends on design-time created scripts to realize the deployment of an application, which limits the autonomy of the approach, especially in unknown environments.
 
-
-\section{Other Approaches}
-
-Gunalp et al.~\citep{gunalp_rondo_2015} presents an approach for automatic deployment, in which the deployment specialist specifies the system deployment in terms of resources and desired target states of such resources. The approach follows preset strategies to keep the managed software resources in the specified states. They use a low-level model to drive the adaptation: implemented strategies to move watched resources to target states. Differently, our approach uses a goal model which is a more abstract model.
+Gunalp et al.~\citep{gunalp_rondo_2015} presents an approach for automatic deployment, in which the deployment specialist specifies the system deployment in terms of resources and desired target states of such resources. The approach follows preset strategies to keep the managed software resources in the specified states. They use a low-level model to drive the adaptation: implemented strategies to move watched resources to target states. Differently, our approach uses a goal model which is a more abstract model. %They differ from our approach in the sense that we focus/promote/propose/support/enhance/.
 
 
 \section{Package managers}
