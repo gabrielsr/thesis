@@ -10,7 +10,9 @@ In the online part of the approach, the artifacts present in the repository are 
 \label{fig:deployment_actors}
 \end{figure*}
 
-Figure~\ref{fig:deployment_actors} depicts the online activities. A user interested in using a computing environment to achieve a set of goals submits to such environment which goals it wants to achieve in the form of a deployment request. Then, the system analyzes the available computing resources and artifacts present in the repository then plan the deployment, generating a deployment plan that is a selection of artifacts that can allow for the goals achievement in the available computing environment. The deployment is then executed by fetching the appropriate artifacts from the repositories.
+Figure~\ref{fig:deployment_actors} depicts the online activities. A user interested in using a computing environment to achieve a set of goals submits to such environment which goals it wants to achieve in the form of a deployment request.
+The target environment  realizes a deploymeng planning by analyzing the available computing resources and artifacts present in the repository,
+generating a deployment plan:  a selection of artifacts that can allow for the goals achievement in the available computing environment. Then, the deployment is executed by fetching the selected artifacts from the repositories and binding them.
 
 \subsection{Autonomic Deployment Planning}
 \label{sec:planning}
@@ -127,6 +129,18 @@ Being so, we can verify if a deployment plan satisfies a deployment request by e
 
 \subsection{Deployment Execution}
 
-The last step of the approach is the deployment execution. The deployment execution involves (i) copying the artifacts present in the deployment plan from the repository to the target environment. And (ii) binding together the components present into these artifacts, creating the application architecture.
+The last step of the approach is the deployment execution. The deployment execution involves (i) fetching the artifacts present in the deployment plan from the repository to the target environment. And (ii) binding together the components present into these artifacts, creating the application architecture.
 
-To bind components, the Dependency Injection\cite{fowler_inversion_2004} design pattern can be used.
+To avoid static dependence between component implementations, the Dependency Injection\cite{fowler_inversion_2004} design pattern can be used.
+
+In order fetch and bind the components, we can make use of OSGi platform\cite{the_osgi_alliance_osgi_2007}. OSGi is a Java centric platform that allows dynamic fetching, bind and unbind of components, usually named bundles.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.7\linewidth]{bundle_lifecycle_dimond.pdf}
+  \caption{OSGi - bundles lifecycle}
+  \label{fig:osgi_bundles}
+\end{figure}
+
+Figure~\ref{fig:osgi_bundles} illustrate the lifecycle of bundles in the OSGi platform. Vertices represent the states of bundles and edges represent commands that can be issued to the platform.
+The lifecycle begins with an \emph{install} command. This command instructs the platform to fetch the component from a repository. When the component is already in the target environment, it is \emph{INSTALLED}. Then, the platform starts looking for the bundle dependencies. If all dependencies are \emph{INSTALLED} the bundle is moved for the \emph{RESOLVED} state. \emph{RESOLVED} bundles can be started. In the starting process the component is wired to its dependencies. When the starting process is concluded, the bundle gets \emph{ACTIVE}. The lifecycle of the bundle can come to an end by sequence of commands \emph{stop} and \emph{uninstall}. A bundle in states \emph{INSTALLED} and \emph{RESOLVED} can be updated to a newer version by the command \emph{update}.
