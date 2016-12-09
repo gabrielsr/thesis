@@ -2,7 +2,7 @@
 \label{sec:proposal}
 
 
-% Gena: Are you really following this approach???
+
 %The rationale behind our approach is the following: an external agent (user or another system) creates a \emph{deployment request}, with goals that should be achieved in a given computing environment. A deployment agent, is responsible to handle that \emph{deployment request} autonomously. The deployment agent is capable of discover available resources in a computing environment it manages. That knowledge about the computing environment is the \emph{context} for the target deployment. The deployment agent is also capable of choosing artifacts from a repository that allows the satisfaction of the deployment request. The process of choosing the correct set of artifacts to allow the deployment request satisfaction is the \emph{deployment planning}.
 
 % General discussion
@@ -15,13 +15,15 @@ Following the model proposed by Andersson et al.\cite{andersson_software_2013} f
 \label{fig:overview}
 \end{figure*}
 
-Figure~\ref{fig:overview} depicts an overview of the approach, which consists in four major activities: (1) goal modeling, (2) context goal modeling, (3) component analysis and (4) component development. We further explain such activities in details as follows.
+Figure~\ref{fig:overview} depicts an overview of the approach, which consists in four major activities: (1) goal modeling, (2) context goal modeling, (3) component analysis and (4) component development.
 
 In the offline activities, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies.
 %These packaged artifacts are put in a repository.  Activities: (1) component mapping; \ref{} (2) packaging;\ref{}
 
 In the online part of the approach, the Goalp deployment is autonomously planed in the target computing environment.
 The deployment planning is responsible for looking into the repository of artifacts and based on context information and goals, find a set of artifacts that should be deployed to the target computing environment in order to make the goals achievable.
+
+We further explain such activities in details as follows.
 %The deployment planning is detailed in the Section~\ref{sec:planning}. Deployment execution is the last activity and is discussed in Section~\ref{sec:execution}
 
 
@@ -39,7 +41,7 @@ In the Filling Station Advisor example, if implementing it as a monolithic softw
 In order to better cope with heterogeneity in the computing environment, we should minimize the coupling between parts of the code that have dependencies on specific resources in the environment.
 By encapsulating dependencies of specific resources into components, it is possible to create variability at architecture level. By packaging the components into different artifacts, it is possible to maintain such variability at deployment level. Such variability is useful as it allows the deployment of components only to environment that have the required resources.
 
-Regarding the Filling Station Advisor example, depicted in \ref{fig:goal_model_filling_station_advisor}, for goal \emph{G1}(Get Position), components can be implemented providing the actual position of the device by means of GPS or antenna triangulation. These components can be packaged into different artifacts that will only be deployed when the target environment has the appropriate resources.
+Regarding the Filling Station Advisor example, depicted in Figure~\ref{fig:goal_model_filling_station_advisor}, for goal \emph{G1}(Get Position), components can be implemented providing the actual position of the device by means of GPS or antenna triangulation. Such components can be packaged into different artifacts that will only be deployed when the target environment has the appropriate resources.
 
 \subsection{Goal Modelling}
 \label{sec:dgm}
@@ -52,20 +54,17 @@ A systematic way of analyzing the capabilities of the computing environment is n
 
 \end{defn}
 
-Regarding the Filling Station Advisor, examples of relevant resources are \emph{GPS}, (labeled c1) and \emph{antenna triangulation} (labeled c2).
-
-In order to reason about available resources in the target computing environment, a context model is used.
-
-\begin{defn}[Context]
-
-  A context ctx := \{ ctx $\subset$  ctx\_spc\} where
-  \begin{itemize}
-    \item ctx\_spc, context space, is the set of the resources in the model.
-    \item r $\in$ ctx iff the resource r is available
-  \end{itemize}
-
-\end{defn}
-
+Regarding the Filling Station Advisor, examples of relevant resources are \emph{GPS}, (labeled c1) and \emph{antenna triangulation} (labeled c2). In order to reason about available resources in the target computing environment, a context model is used.
+%
+% \begin{defn}[Context]
+%
+%   A context ctx := \{ ctx $\subset$  ctx\_spc\} where
+%   \begin{itemize}
+%     \item ctx\_spc, context space, is the set of the resources in the model.
+%     \item r $\in$ ctx iff the resource r is available
+%   \end{itemize}
+%
+% \end{defn}
 
 In Goalp, the context of a target computing environment is reified as a set of resources.
 The semantics is that if the resource is present in the context, the associated computing capability is available in the target computing environment.
@@ -87,15 +86,19 @@ Plans can require resources in order to be applicable, for example, \emph{P1: ge
 
 \end{defn}
 
-A context condition is satisfied if its associated resource is present in the context. For example, in a scenario with context ctx=[c1, c5], the context condition c1 holds while c2 do not.
+A context condition is satisfied if its associated resource is present in the context. For example, in a scenario with context ctx=[c1, c5], the context condition c1 is satisfied.
 \emph{Context conditions} are restrictions to the applicability of a plan and are used to solve variability at deployment. In Figure~\ref{fig:goal_model_filling_station_advisor}, the goal \emph{G1:Get position} has two alternatives to be achieved: by executing the plans \emph{P1:get position using GPS}  or \emph{P2:get position using antenna triangulation}. The plan P1 is applicable if the context condition c1 (GPS) is satisfied, which is the case when GPS capability is available in the target environment.
 
 \subsection{Component Mapping}
 \label{sec:goals_components}
 
-Components are architectural units. In our proposal, components definitions are mapped from the CGM and them developed by the architect/developer. That activity is named component analysis. In our vision, components can \emph{provide} goals which means that they can be executed to \emph{fulfill} a goal at runtime.
+Components are architectural units. In our proposal, components definitions are mapped from the DGM and them developed by the architect/developer.
+%That activity namely component analysis.
+We postulate that components should \emph{provide} goals which means that they should be executed to \emph{fulfill} a goal at runtime.
 
-The patterns present in table~\ref{table_cgm_to_components_patterns} are used, at the component analysis, to map components based on the CGM of the system. By mapping components we mean identifying which component should be developed in order to reflect the CGM of the system. By using the proposed patterns, the variability present in the CGM is kept at the architecture of the system. Theses patterns are an extension of Yu et al.\cite{yu_goals_2008} patterns for the Goals-Component view. We extended Yu et al.\cite{yu_goals_2008} patterns with contextual conditions.
+The patterns present in Table~\ref{table_cgm_to_components_patterns} are used to map components based on the DGM of the system. By mapping components we mean identifying which component should be developed in order to reflect the DGM of the system. By using the proposed patterns, the variability present in the DGM is kept at the architecture of the system. Theses patterns are an extension of Yu et al.\cite{yu_goals_2008} patterns for the Goals-Component view. We extended Yu et al.\cite{yu_goals_2008} patterns with context conditions.
+The presented patterns are described using goals but they can be applied for goals and plans without distinction.
+
 
 \begin{table}[!htb]
 \centering
@@ -135,11 +138,9 @@ The patterns present in table~\ref{table_cgm_to_components_patterns} are used, a
 \end{tabular}
 \end{table}
 
-The presented patterns are described using goals but they can be applied for goals and plans without distinction.
-
 And-refinements result in components that define a strategy to achieve a given goal by achieving two or more sub, more concrete, goals.
-Mapping components from an And-refinemnt results in: (i) a root interface that describe what component provides. (ii) Interfaces for each sub-goal. (iii) A component that provides the root interface and requires each interface generated for sub goals.
-Such component implements a strategy to achieve its provided goal. It coordinates the sub more specific goals by calling them and passing one result as the input of another, when applicable.
+Mapping components from an And-refinemnt results in: (i) a root interface that describe what component provides, (ii) interfaces for each sub-goal, (iii) a component that provides the root interface and requires each interface generated for sub goals.
+The latter component implements a strategy to achieve its provided goal. It coordinates the sub more specific goals by calling them and passing one result as the input of another, when applicable.
 As an example, applying And-refinement patterns for Root Goal - \emph{G0:Vehicle refueling is assisted} - of the Filling Station Advisor application, will result in interface IG0 and a component G0 that provides IG0 and requires IG1, IG2, IG3, IG4, and IG5.
 \begin{lstlisting}
   Component G0 {
@@ -148,7 +149,7 @@ As an example, applying And-refinement patterns for Root Goal - \emph{G0:Vehicle
   }
 \end{lstlisting}
 
-Applying Or-refinements patterns results in a root interface definition and in multiple implementations. At the CGM, when Or-refinements are associated with context conditions, it allows for alternative strategies using different resources in the computing environment. Using the association of OR-refinement and context-conditions in the component analysis we preserve the variability present in the CGM into the architecture of the system.
+Applying Or-refinements patterns results in a root interface definition and in multiple implementations. In the DGM, when Or-refinements are associated with context conditions, it allows for alternative strategies using different resources in the computing environment. Using the association of OR-refinement and context-conditions in the component analysis we preserve the variability present in the DGM into the architecture of the system.
 
 For example, in the Filling Station Advisor, applying the patterns for G1:Get Position, P1:get position using GPS and P2:get position using antenna triangulation will result in the following components:
 
@@ -163,7 +164,7 @@ For example, in the Filling Station Advisor, applying the patterns for G1:Get Po
   }
 \end{lstlisting}
 
-The two components CP1 and CP2 provides the same goals but have different context conditions (C1:GPS and C2:antenna triangulation). It means that we can achieve the same goal using any of both resource, by deploying one of the two component variants.
+The two components CP1 and CP2 provide the same goals but have different context conditions (C1:GPS and C2:antenna triangulation). It means that we can achieve the same goal using any of the two resource, by deploying one of the two component variants.
 That variability in the architecture allows for the adaptation to the heterogeneity in the target environment.
 
 \subsection{Packaging}
@@ -179,13 +180,13 @@ In our approach, we propose to include into the artifact metadata to describe it
   \item[Dependencies:] required goals that should be provided by other artifacts.
 \end{description}
 
-When creating the artifact we can calculate the metadata by looking at the packaged components. The artifact \emph{provided goals} metadata are the union of all \emph{provided goals} of the components packaged in an artifact. The same is valid for \emph{context conditions} and \emph{dependencies} metadata.
+When creating the artifact we can come up with the metadata by looking at the packaged components. The artifact \emph{provided goals} metadata are the union of all \emph{provided goals} of the components packaged in an artifact. The same is valid for \emph{context conditions} and \emph{dependencies} metadata.
 
 Both \emph{context conditions} and \emph{dependencies} impose restrictions on when an artifact can be deployed.
 \emph{Context conditions} refer to the need for resources in the computing environment that are beyond the deployment agent capacity of management. Such conditions can be related to hardware implementation, e.g. presence of a GPS-module, our platform lower level software implementation, e.g. access to a protocol to query vehicle onboard computer data. If a context condition does not hold, there is nothing that can be done at deployment time to change that.
 \emph{Dependencies}, on the other hand, refer to the need on other artifacts. It is specified in terms of \emph{Provided Goals}. Like other dependency management approaches, an artifact can depend on other artifacts.
-Different from other approaches, we specify the dependency not to a specific version of an artifact identification but in terms of what an artifact provides.
-In the Filling Station Advisor, the artifact A0, that packs the component G0 depends on IG0-definition and IG0. To satisfy the dependency, an artifacts that provides IG0-definition should be available, as well as at least one artifact that provides IG0. The Figure~\ref{fig:dependency_graph} depicts the dependency relationship between artifacts.
+Different from other approaches, we specify the dependency not as specific version of an artifact identification but in terms of what an artifact provides.
+In the Filling Station Advisor, the artifact A0, that packs component G0 depends on IG0-definition and IG0, the interface that describes goal G0. To satisfy the dependency, an artifact that provides IG0-definition should be available, as well as at least one artifact that provides IG0. Figure~\ref{fig:dependency_graph} depicts the dependency relationship between artifacts. A1 is a root interface and have 3 dependencies, that are provides by A2, A3 and A4. A2 and A3 have one common dependency, provided by A5. A5 and A6 has no dependencies.
 
 \begin{figure}[!htb]
   \centering
@@ -203,9 +204,7 @@ Artifacts are registered in a repository which allows the distribution of artifa
 \subsubsection{Deployment Architectural Style}
 \label{depl_arch_style}
 
-In order to maximize the flexibility of systems following Goalp deployment approach, we propose the following architecture style to create artifacts:
-
-Artifacts can be of 3 types:
+In order to maximize the flexibility of systems following Goalp deployment approach, we propose the following architecture style to create artifacts of three types:
 
 \begin{description}
   \item[Definition] artifacts that specify the interface of goals. It contains interfaces declarations and data model. It specify the API or contracts for a given set of goals.
@@ -226,7 +225,7 @@ These types of artifacts are meant to increase the flexibility of deployment.
 
 \subsection{Development Process}
 
-In previous subsections we see the techniques that support the design of software with variability from requirements to deployment. In this section we see how to apply this techniques in a software development process
+In previous subsections we proposed techniques to support the design of software with variability from requirements to deployment. In this section we present activities to apply such techniques in a software development process.
 
 \subsubsection{Roles}
 The proposed process considers three roles: users, requirements engineers and software architects.
@@ -243,8 +242,9 @@ Figure~\ref{fig:process_roles} summarizes the collaboration between the roles.
   \item[User]
   This role has access to a particular computing environment and wants to achieve some goals there.
   \item[Requirements Engineer]
-  Is responsible for translating users goals to a contextual goal model. Also is responsible for analyzing the different contexts that the system is meant to operate and how they affect the goals.
-  \item[Architect] projects the software architecture so as to permit variability of deployment.
+  Is responsible for translating users goals to a goal model. Also is responsible for analyzing the different contexts that the system is meant to operate and how they affect the goals, defining the DGM of the system.
+  \item[Architect]
+  Projects the software architecture so as to permit variability of deployment.
   From the point of view of dynamic heterogeneous computing environments, the focus is to create interfaces for components that can allow for goal achievements using different computing resources.
 
 \end{description}
@@ -258,7 +258,7 @@ Figure~\ref{fig:deployment_process_flow} describes the development process activ
 \label{sub:Proposal}
 \begin{figure*}[!htb]
   \centering
-  \includegraphics[width=.8\linewidth]{deployment_process_flow}
+  \includegraphics[width=.8\linewidth]{goalp_process_activities}
   \caption{Deployment Process Activities}
 \label{fig:deployment_process_flow}
 \end{figure*}
