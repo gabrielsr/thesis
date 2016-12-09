@@ -54,6 +54,8 @@ A systematic way of analyzing the capabilities of the computing environment is n
 
 Regarding the Filling Station Advisor, examples of relevant resources are \emph{GPS}, (labeled c1) and \emph{antenna triangulation} (labeled c2).
 
+In order to reason about available resources in the target computing environment, a context model is used.
+
 \begin{defn}[Context]
 
   A context ctx := \{ ctx $\subset$  ctx\_spc\} where
@@ -64,7 +66,7 @@ Regarding the Filling Station Advisor, examples of relevant resources are \emph{
 
 \end{defn}
 
-In order to reason about available resources in the target computing environment, a context model is used.
+
 In Goalp, the context of a target computing environment is reified as a set of resources.
 The semantics is that if the resource is present in the context, the associated computing capability is available in the target computing environment.
 In our example, the set [c1, c5, c8] is an example of context, representing that GPS, connection to the Internet and voice synthesizing are capabilities available in the computing environment.
