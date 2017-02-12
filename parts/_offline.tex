@@ -10,12 +10,13 @@ Following the model proposed by Andersson et al.\cite{andersson_software_2013} f
 
 \begin{figure*}[!htb]
   \centering
-  \includegraphics[width=1\linewidth]{transformations}
+  \includegraphics[width=1\linewidth]{goalp_overview}
   \caption{Overview}
 \label{fig:overview}
 \end{figure*}
 
-Figure~\ref{fig:overview} depicts an overview of the approach, which consists in four major activities: (1) goal modeling, (2) context goal modeling, (3) component analysis and (4) component development.
+Figure~\ref{fig:overview} depicts an overview of the approach, which consists in five major activities:
+(1) goal modeling; component mapping; (3) packaging; (4) deployment planning; (5) deployment execution;
 
 In the offline activities, occurs the design of the application. In the first step of our approach, components are mapped from the system CGM using patterns. In the second, these components are packaged into artifacts together with their metadata, which describes what goals the artifact provides, its context conditions and dependencies.
 %These packaged artifacts are put in a repository.  Activities: (1) component mapping; \ref{} (2) packaging;\ref{}
@@ -120,11 +121,11 @@ The presented patterns are described using goals but they can be applied for goa
  Or-Refinement &
  \raisebox{-\totalheight}{\includegraphics[scale=1]{patterns_or}} &
  \begin{lstlisting}
- Component CG {
-   provides IGA;
+ Component CGA {
+   provides IG;
  }
- Component CG {
-   provides IGB;
+ Component CGB {
+   provides IG;
  }
  \end{lstlisting} \\ \hline
  Context-condition &
