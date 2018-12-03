@@ -352,6 +352,8 @@
 %% FIM DA DOCUMENTAÇÃO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\usepackage{pacotes/boites}
+
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
 \ProvidesClass{unb-cic}[2008/06/05 v0.93 Classe para trabalhos CIC UnB]
 
@@ -391,24 +393,44 @@
 \DeclareOptionX{baselineskip}{\@baselineskiptrue}
 
 %opções de curso
-\newif\if@mestrado
-\def\@nomecurso{\@empty}
+\newif\if@posgraduacao\@posgraduacaofalse%
+\DeclareOptionX{bacharelado}{%
+    \gdef\@nomecurso{Bacharelado em Ci\^encia da Computa\c{c}\~ao}%
+    \gdef\@mododeescrita{Monografia}}%
+
+\DeclareOptionX{licenciatura}{%
+    \gdef\@nomecurso{Curso de Computa\c{c}\~ao --- Licenciatura}%
+    \gdef\@mododeescrita{Monografia}}%
+
+\DeclareOptionX{engenharia}{%
+    \gdef\@nomecurso{Curso de Engenharia da Computa\c{c}\~ao}%
+    \gdef\@mododeescrita{Monografia}}%
+
+
+\def\@nomecurso{\@empty}%
 \def\@assunto{Monografia (\@ifundefined{XeTeXversion}{Gradua\c{c}\~ao}{Graduação})}
-\DeclareOptionX{mestrado}{\@mestradotrue
-                     \gdef\@nomecurso{Mestrado em Inform\'atica}%
-                     \gdef\@assunto{Disserta\c{c}\~ao (Mestrado)}%
-                     \gdef\@mododeescrita{Disserta\c{c}\~ao}}
+\DeclareOptionX{mestrado}{\@posgraduacaotrue%
+    \gdef\@nomecurso{Mestrado}%
+    \gdef\@assunto{Disserta\c{c}\~ao (Mestrado)}%
+    \gdef\@mododeescrita{Disserta\c{c}\~ao}}%
 
-\DeclareOptionX{bacharelado}{\@mestradofalse
-                     \gdef\@nomecurso{Bacharelado em Ci\^encia da
-                       Computa\c{c}\~ao}%
-                     \gdef\@mododeescrita{Monografia}}
+\newif\if@doutorado\@doutoradofalse%
+\DeclareOptionX{doutorado}{\@posgraduacaotrue\@doutoradotrue%
+    \gdef\@nomecurso{Doutorado}%
+    \gdef\@assunto{Tese de Doutorado}%
+    \gdef\@mododeescrita{Tese}}%
 
-\DeclareOptionX{licenciatura}{\@mestradofalse
-                    \gdef\@nomecurso{Curso de Computa\c{c}\~ao ---
-                      Licenciatura}
-                    \gdef\@mododeescrita{Monografia}}
+\DeclareOptionX{ppginf}{%
+					\gdef\@nomeDoPrograma{Inform\'{a}tica}}%
 
+\newif\if@ppca\@ppcafalse%
+\DeclareOptionX{ppca}{\@ppcatrue%
+					\gdef\@nomeDoPrograma{Computa\c{c}\~{a}o Aplicada}%
+					\gdef\@nomecurso{Mestrado Profissional}}%
+
+\newif\if@qualificacao\@qualificacaofalse%
+\DeclareOptionX{qualificacao}{\@qualificacaotrue}%
+	
 %modo de geração do PDF
 \newif\if@ForScreenView
 \newif\if@LoadHyperref
@@ -1066,7 +1088,7 @@
             pdfkeywords=\@palavraschave}
 		\@ifpackageloaded{natbib}{
 			%compatibilidade entre natbib e hyperref
-    		\RequirePackage{hypernat}
+    		%\RequirePackage{hypernat}
 		}{}
 		%posiciona melhor os links para captions
         \RequirePackage[all]{hypcap}
